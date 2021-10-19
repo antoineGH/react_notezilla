@@ -7,8 +7,8 @@ import {
 	updateUser,
 	selectUpdateUserIsLoading,
 	deleteUser,
-} from './UserSlice'
-import UserAccountForm from '../../forms/userAccountForm'
+} from './userSlice'
+import UserAccountForm from '../../forms/userAccountForm/UserAccountForm'
 import { openNotificationWithIcon } from '../../utils/notification'
 import { Col, Card, Skeleton, Avatar } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
