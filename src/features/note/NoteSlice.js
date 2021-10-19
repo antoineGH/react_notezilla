@@ -8,8 +8,8 @@ import toTitle from '../../utils/toTitle'
 
 const initialValue = {
 	value: [],
-	isLoading: false,
-	hasError: false,
+	isLoadingNotes: false,
+	hasErrorNotes: false,
 	isLoadingAdd: false,
 	hasErrorAddNote: false,
 	isLoadingToggleNote: false,
@@ -117,8 +117,8 @@ export const noteSlice = createSlice({
 	reducers: {},
 	extraReducers: {
 		[loadNotes.pending]: (state) => {
-			state.isLoading = true
-			state.hasError = false
+			state.isLoadingNotes = true
+			state.hasErrorNotes = false
 		},
 		[loadNotes.fulfilled]: (state, action) => {
 			if (action.payload.notes.length <= 1) {
@@ -126,12 +126,12 @@ export const noteSlice = createSlice({
 			} else {
 				state.value = action.payload.notes
 			}
-			state.isLoading = false
-			state.hasError = false
+			state.isLoadingNotes = false
+			state.hasErrorNotes = false
 		},
 		[loadNotes.rejected]: (state) => {
-			state.isLoading = false
-			state.hasError = true
+			state.isLoadingNotes = false
+			state.hasErrorNotes = true
 		},
 		[addNote.pending]: (state) => {
 			state.isLoadingAddNote = true
@@ -184,8 +184,8 @@ export const noteSlice = createSlice({
 ////////////////////////////////
 
 export const selectNotes = (state) => state.notes.value
-export const selectIsLoadingNotes = (state) => state.notes.isLoading
-export const selectHasErrorNotes = (state) => state.notes.hasError
+export const selectIsLoadingNotes = (state) => state.notes.isLoadingNotes
+export const selectHasErrorNotes = (state) => state.notes.hasErrorNotes
 export const selectIsLoadingAddNote = (state) => state.notes.isLoadingAddNote
 export const selecthasErrorAddNote = (state) => state.notes.hasErrorAddNote
 export const selectIsLoadingDeleteNote = (state) =>
