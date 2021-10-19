@@ -1,15 +1,15 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router'
-import Todos from '../features/todos/Todos'
+import Note from '../features/note/Note'
 import User from '../features/user/User'
 
 export default function AuthApp() {
 	return (
 		<>
 			<Switch>
-				<Route path='/todo' component={Todos} />
+				<Route path='/note' component={Note} />
 				<Route path='/user' component={User} />
-				<Redirect from='*' to='/todo' />
+				<Redirect from='*' to='/note' />
 			</Switch>
 		</>
 	)
