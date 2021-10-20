@@ -30,8 +30,8 @@ export const loadNotes = createAsyncThunk('notes/getAllNotes', async () => {
 })
 
 export const addNote = createAsyncThunk('notes/addNote', async (args) => {
-	const { note_description, isCompleted } = args
-	const note = { note_description, completed: isCompleted }
+	const { note_title, note_content, isCompleted } = args
+	const note = { note_title, note_content, completed: isCompleted }
 	const data = await authFetch('http://127.0.0.1:5000/api/notes', {
 		method: 'POST',
 		headers: {
@@ -45,7 +45,7 @@ export const addNote = createAsyncThunk('notes/addNote', async (args) => {
 			'success',
 			'Note Added',
 			`Note '${toTitle(
-				json.note.note_description
+				json.note.note_title
 			)}' has been added to your account.`
 		)
 	} else {
