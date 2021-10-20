@@ -1,0 +1,37 @@
+h1 {
+	padding: 1rem;
+}
+
+.container-form {
+	max-width: 400px;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.container-register {
+	padding: 1rem;
+}
+
+.error_field {
+	border: 1px solid red;
+}
+
+.error_text {
+	color: red;
+}
+
+.errors {
+	min-height: 2rem;
+}
+
+.ant-form-item {
+	margin-bottom: 0rem;
+}
+
+.ant-btn[disabled] > * {
+	pointer-events: none;
+	background: rgba(0, 0, 255, 0);
+	padding-left: 0.4rem;
+}

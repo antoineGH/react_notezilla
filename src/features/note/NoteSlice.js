@@ -19,9 +19,7 @@ const initialValue = {
 }
 
 export const loadNotes = createAsyncThunk('notes/getAllNotes', async () => {
-	const data = await authFetch(
-		`https://flask-notezilla.herokuapp.com/api/notes`
-	)
+	const data = await authFetch(`http://127.0.0.1:5000/api/notes`)
 	const json = await data.json()
 	if (json.hasOwnProperty('message')) {
 		if (json['message'] === 'Notes not found') {
@@ -34,16 +32,13 @@ export const loadNotes = createAsyncThunk('notes/getAllNotes', async () => {
 export const addNote = createAsyncThunk('notes/addNote', async (args) => {
 	const { note_description, isCompleted } = args
 	const note = { note_description, completed: isCompleted }
-	const data = await authFetch(
-		'https://flask-notezilla.herokuapp.com/api/notes',
-		{
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(note),
-		}
-	)
+	const data = await authFetch('http://127.0.0.1:5000/api/notes', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(note),
+	})
 	const json = await data.json()
 	if (json.note.hasOwnProperty('note_id')) {
 		openNotificationWithIcon(
@@ -67,7 +62,7 @@ export const deleteNote = createAsyncThunk(
 	'notes/deleteNote',
 	async (note_id) => {
 		const data = await authFetch(
-			`https://flask-notezilla.herokuapp.com/api/note/${note_id}`,
+			`http://127.0.0.1:5000/api/note/${note_id}`,
 			{
 				method: 'DELETE',
 			}
@@ -97,7 +92,7 @@ export const toggleCheck = createAsyncThunk(
 		const { note_id, completed } = args
 		const note = { completed }
 		const data = await authFetch(
-			`https://flask-notezilla.herokuapp.com/api/note/${note_id}`,
+			`http://127.0.0.1:5000/api/note/${note_id}`,
 			{
 				method: 'PUT',
 				headers: {

@@ -17,9 +17,7 @@ const initialValue = {
 }
 
 export const loadUser = createAsyncThunk('user/getUser', async () => {
-	const data = await authFetch(
-		'https://flask-notezilla.herokuapp.com/api/user'
-	)
+	const data = await authFetch('http://127.0.0.1:5000/api/user')
 	const json = await data.json()
 	return json
 })
@@ -33,16 +31,13 @@ export const updateUser = createAsyncThunk(
 			last_name: lastName,
 			password: password,
 		}
-		const data = await authFetch(
-			'https://flask-notezilla.herokuapp.com/api/user',
-			{
-				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(user),
-			}
-		)
+		const data = await authFetch('http://127.0.0.1:5000/api/user', {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(user),
+		})
 		const json = await data.json()
 		if (json.user.hasOwnProperty('user_id')) {
 			openNotificationWithIcon(
@@ -58,12 +53,9 @@ export const updateUser = createAsyncThunk(
 )
 
 export const deleteUser = createAsyncThunk('user/deleteUser', async () => {
-	const data = await authFetch(
-		'https://flask-notezilla.herokuapp.com/api/user',
-		{
-			method: 'DELETE',
-		}
-	)
+	const data = await authFetch('http://127.0.0.1:5000/api/user', {
+		method: 'DELETE',
+	})
 	const json = await data.json()
 	if (json) {
 		logout()
@@ -128,6 +120,12 @@ export const userSlice = createSlice({
 ////////////////////////////////
 
 export const selectUser = (state) => state.user.value.user
+export const selectUserLogged = (state, logged) => {
+	if (logged) {
+		return state.user.value.user
+	}
+	return undefined
+}
 export const selectUserIsLoading = (state) => state.user.isLoading
 export const selectUserHasError = (state) => state.user.hasError
 export const selectUpdateUserIsLoading = (state) =>

@@ -5,16 +5,13 @@ export default async function createUser(
 	last_name
 ) {
 	const user = { email, password, first_name, last_name }
-	const response = await fetch(
-		'https://flask-todoapp-api.herokuapp.com/api/register',
-		{
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(user),
-		}
-	)
+	const response = await fetch('http://127.0.0.1:5000/api/register', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(user),
+	})
 	let responseJson = undefined
 	let errorJson = undefined
 	if (response.ok) {

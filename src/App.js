@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
+import { BrowserRouter, Switch } from 'react-router-dom'
 import { useAuth } from './utils/authHook'
 import { useSelector, useDispatch } from 'react-redux'
 import { loadUser, selectUser } from './features/user/userSlice'
-import { BrowserRouter, Switch } from 'react-router-dom'
+import { loadNotes, selectNotes } from './features/note/NoteSlice'
 import SiderComponent from './components/siderComponent/SiderComponent'
 import NavbarComponent from './components/navbarComponent/NavbarComponent'
 import AuthApp from './layouts/AuthApp'
@@ -19,10 +20,15 @@ function App() {
 	useEffect(() => {
 		if (logged) {
 			dispatch(loadUser())
+			dispatch(loadNotes())
 		}
 	}, [dispatch, logged])
 
 	const user = useSelector(selectUser)
+	const notes = useSelector(selectNotes)
+
+	console.log('user =>' + user)
+	console.log('notes =>' + notes)
 
 	return (
 		<div className='App'>
@@ -30,11 +36,7 @@ function App() {
 				<Layout>
 					<SiderComponent />
 					<Layout>
-						{logged ? (
-							<NavbarComponent logged={true} user={user} />
-						) : (
-							<NavbarComponent logged={false} user='' />
-						)}
+						{user && <NavbarComponent logged={logged} />}
 						<Content>
 							<div className='div-content'>
 								<Switch>
