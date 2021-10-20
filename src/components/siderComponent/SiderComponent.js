@@ -16,6 +16,7 @@ import {
 	HomeOutlined,
 	LoginOutlined,
 } from '@ant-design/icons'
+import Search from '../../features/search/Search'
 
 export default function SiderComponent(props) {
 	const { logged } = props
@@ -138,6 +139,7 @@ export default function SiderComponent(props) {
 					)}
 				</span>
 			</Dropdown>
+			<Search logged={logged} />
 		</Sider>
 	)
 }
