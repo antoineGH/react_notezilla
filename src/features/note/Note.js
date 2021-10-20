@@ -12,7 +12,7 @@ import {
 } from './NoteSlice'
 import NoteListComponent from '../../components/noteListComponent/NoteListComponent'
 import AddNoteComponent from '../../components/addNoteComponent/AddNoteComponent'
-import ScratchPadComponent from '../../components/scratchPadComponent/ScratchPadComponent'
+import Scratch from '../../features/scratch/Scratch'
 import { Spin, Col, Button } from 'antd'
 
 export default function Note() {
@@ -62,7 +62,7 @@ export default function Note() {
 						isLoadingToggleNote={isLoadingToggleNote}
 					/>
 					<AddNoteComponent />
-					<ScratchPadComponent />
+					<Scratch />
 				</>
 			) : (
 				<Col>

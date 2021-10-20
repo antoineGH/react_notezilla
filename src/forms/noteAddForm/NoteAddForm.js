@@ -40,7 +40,7 @@ export default function NoteAddForm(props) {
 						id='note_title'
 						name='note_title'
 						type='text'
-						placeholder='Title'
+						placeholder='Note Title'
 						className={
 							errors.note_title &&
 							touched.note_title &&
@@ -56,7 +56,7 @@ export default function NoteAddForm(props) {
 						id='note_content'
 						name='note_content'
 						type='text'
-						placeholder='Content'
+						placeholder='Note Content'
 						className={
 							errors.note_content &&
 							touched.note_content &&
