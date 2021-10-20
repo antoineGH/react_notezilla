@@ -11,6 +11,8 @@ import {
 	toggleCheck,
 } from './NoteSlice'
 import NoteListComponent from '../../components/noteListComponent/NoteListComponent'
+import AddNoteComponent from '../../components/addNoteComponent/AddNoteComponent'
+import ScratchPadComponent from '../../components/scratchPadComponent/ScratchPadComponent'
 import { Spin, Col, Button } from 'antd'
 
 export default function Note() {
@@ -51,13 +53,17 @@ export default function Note() {
 				</Col>
 			)}
 			{!isLoadingNotes ? (
-				<NoteListComponent
-					notes={notes}
-					handleDeleteNote={handleDeleteNote}
-					handleToggleNote={handleToggleNote}
-					isLoadingDelete={isLoadingDeleteNote}
-					isLoadingToggleNote={isLoadingToggleNote}
-				/>
+				<>
+					<NoteListComponent
+						notes={notes}
+						handleDeleteNote={handleDeleteNote}
+						handleToggleNote={handleToggleNote}
+						isLoadingDelete={isLoadingDeleteNote}
+						isLoadingToggleNote={isLoadingToggleNote}
+					/>
+					<AddNoteComponent />
+					<ScratchPadComponent />
+				</>
 			) : (
 				<Col>
 					<p>No Notes</p>
