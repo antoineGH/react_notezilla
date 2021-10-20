@@ -116,7 +116,7 @@ export const noteSlice = createSlice({
 			state.hasErrorNotes = false
 		},
 		[loadNotes.fulfilled]: (state, action) => {
-			if (action.payload.notes.length <= 1) {
+			if (action.payload.notes.length < 1) {
 				state.value = []
 			} else {
 				state.value = action.payload.notes

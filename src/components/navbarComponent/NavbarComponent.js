@@ -15,9 +15,7 @@ import {
 	HomeOutlined,
 	LoginOutlined,
 } from '@ant-design/icons'
-import {} from 'antd'
 import './NavbarComponent.css'
-import { render } from '@testing-library/react'
 
 export default function NavbarComponent(props) {
 	const history = useHistory()

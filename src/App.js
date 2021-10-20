@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter, Switch } from 'react-router-dom'
 import { useAuth } from './utils/authHook'
-import { useSelector, useDispatch } from 'react-redux'
-import { loadUser, selectUser } from './features/user/userSlice'
+import { useDispatch } from 'react-redux'
+import { loadUser } from './features/user/userSlice'
 import { loadNotes } from './features/note/NoteSlice'
 import SiderComponent from './components/siderComponent/SiderComponent'
 import NavbarComponent from './components/navbarComponent/NavbarComponent'
@@ -28,7 +28,7 @@ function App() {
 		<div className='App'>
 			<BrowserRouter>
 				<Layout>
-					<SiderComponent />
+					<SiderComponent logged={logged} />
 					<Layout>
 						<NavbarComponent logged={logged} />
 						<Content>
