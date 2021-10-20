@@ -17,6 +17,7 @@ import {
 } from '@ant-design/icons'
 import {} from 'antd'
 import './NavbarComponent.css'
+import { render } from '@testing-library/react'
 
 export default function NavbarComponent(props) {
 	const history = useHistory()
@@ -28,61 +29,64 @@ export default function NavbarComponent(props) {
 	const isLoadingUser = useSelector(selectUserIsLoading)
 	const hasErrorUser = useSelector(selectUserHasError)
 
-	console.log('isLoadingUser => ' + isLoadingUser)
-	console.log('hasErrorUser => ' + hasErrorUser)
+	const menuAuth = () => {
+		return (
+			<Menu className='menu-navbar'>
+				<Menu.Item
+					onClick={() => history.push('/')}
+					className='submenu-navbar'
+					key='1'
+					icon={<HomeOutlined />}>
+					Home
+				</Menu.Item>
+				<Menu.Item
+					onClick={() => history.push('/user')}
+					className='submenu-navbar'
+					key='2'
+					icon={<UserOutlined />}>
+					Edit User
+				</Menu.Item>
+				<Menu.Divider />
+				<Menu.Item
+					onClick={logout}
+					className='submenu-navbar'
+					key='3'
+					icon={<LogoutOutlined />}>
+					Logout
+				</Menu.Item>
+			</Menu>
+		)
+	}
 
-	const menuAuth = (
-		<Menu className='menu-navbar'>
-			<Menu.Item
-				onClick={() => history.push('/')}
-				className='submenu-navbar'
-				key='1'
-				icon={<HomeOutlined />}>
-				Home
-			</Menu.Item>
-			<Menu.Item
-				onClick={() => history.push('/user')}
-				className='submenu-navbar'
-				key='2'
-				icon={<UserOutlined />}>
-				Edit User
-			</Menu.Item>
-			<Menu.Divider />
-			<Menu.Item
-				onClick={logout}
-				className='submenu-navbar'
-				key='3'
-				icon={<LogoutOutlined />}>
-				Logout
-			</Menu.Item>
-		</Menu>
-	)
-
-	const menuUnauth = (
-		<Menu className='menu-navbar'>
-			<Menu.Item
-				onClick={() => history.push('/login')}
-				className='submenu-navbar'
-				key='1'
-				icon={<LoginOutlined />}>
-				Login
-			</Menu.Item>
-			<Menu.Divider />
-			<Menu.Item
-				onClick={() => history.push('/register')}
-				className='submenu-navbar'
-				key='2'
-				icon={<UserOutlined />}>
-				Register
-			</Menu.Item>
-		</Menu>
-	)
+	const menuUnauth = () => {
+		return (
+			<Menu className='menu-navbar'>
+				<Menu.Item
+					onClick={() => history.push('/login')}
+					className='submenu-navbar'
+					key='1'
+					icon={<LoginOutlined />}>
+					Login
+				</Menu.Item>
+				<Menu.Divider />
+				<Menu.Item
+					onClick={() => history.push('/register')}
+					className='submenu-navbar'
+					key='2'
+					icon={<UserOutlined />}>
+					Register
+				</Menu.Item>
+			</Menu>
+		)
+	}
 
 	const renderUserInput = () => {
 		if (hasErrorUser) {
-			;<Col>
-				<p>Error Fetching the API.</p>
-			</Col>
+			return (
+				<Col>
+					<p>Error Fetching the API.</p>
+				</Col>
+			)
 		}
 		if (isLoadingUser) {
 			return (
@@ -97,42 +101,48 @@ export default function NavbarComponent(props) {
 				/>
 			)
 		}
-		return `${user['first_name']} ${user['last_name']}`
+		if (user) {
+			return `${user['first_name']} ${user['last_name']}`
+		}
+	}
+
+	const renderUserAvatar = () => {
+		if (hasErrorUser) {
+		}
+		if (isLoadingUser) {
+			return (
+				<Skeleton.Input
+					style={{
+						width: 32,
+						height: 32,
+						marginTop: 16,
+						marginRight: 24,
+					}}
+					active
+					size={'default'}
+				/>
+			)
+		}
+		return <Avatar shape='square' icon={<UserOutlined />} />
 	}
 
 	return (
 		<>
 			<Header>
 				<>
-					<Dropdown overlay={logged ? menuAuth : menuUnauth}>
+					<Dropdown overlay={logged ? menuAuth() : menuUnauth()}>
 						<span className='container-avatar'>
 							<Text className='avatar-username' strong>
 								{logged ? renderUserInput() : 'Not Connected'}
 							</Text>
-							{/* {logged ? (
-								user ? (
-									<Avatar
-										shape='square'
-										icon={<UserOutlined />}
-									/>
-								) : (
-									<Skeleton.Input
-										style={{
-											width: 32,
-											height: 32,
-											marginTop: 16,
-											marginRight: 24,
-										}}
-										active
-										size={'default'}
-									/>
-								)
+							{logged ? (
+								renderUserAvatar()
 							) : (
 								<Avatar
 									shape='square'
 									icon={<UserOutlined />}
 								/>
-							)} */}
+							)}
 						</span>
 					</Dropdown>
 				</>
