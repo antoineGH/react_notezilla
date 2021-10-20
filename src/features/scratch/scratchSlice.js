@@ -83,7 +83,6 @@ export const deleteScratch = createAsyncThunk(
 				'ScratchPad has not been cleared'
 			)
 		}
-		console.log(json)
 		return json
 	}
 )
@@ -115,7 +114,7 @@ export const scratchSlice = createSlice({
 			state.hasErrorAddScratch = false
 		},
 		[addScratch.fulfilled]: (state, action) => {
-			state.value = action.payload.scratch
+			state.value = [action.payload.scratch]
 			state.isLoadingAddScratch = false
 			state.hasErrorAddScratch = false
 		},
@@ -124,13 +123,11 @@ export const scratchSlice = createSlice({
 			state.hasErrorAddScratch = true
 		},
 		[deleteScratch.pending]: (state) => {
-			state.isLoadingScratch = true
 			state.isLoadingDeleteScratch = true
 			state.hasErrorDeleteScratch = false
 		},
 		[deleteScratch.fulfilled]: (state, action) => {
-			state.value = action.payload.scratch
-			state.isLoadingScratch = false
+			state.value = [action.payload.scratch]
 			state.isLoadingDeleteScratch = false
 			state.hasErrorDeleteScratch = false
 		},

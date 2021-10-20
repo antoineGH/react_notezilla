@@ -16,14 +16,18 @@ import ScratchPadComponent from '../../components/scratchPadComponent/ScratchPad
 export default function Scratch() {
 	const dispatch = useDispatch()
 	const scratch = useSelector(selectScratch)
-	const scratch_title = scratch?.scratch_title ? scratch['scratch_title'] : ''
+	const scratch_title = scratch?.scratch_title
 	const scratch_content = scratch?.scratch_content
-		? scratch['scratch_content']
-		: ''
 	const isLoadingScratch = useSelector(selectisLoadingScratch)
 	const hasErrorScratch = useSelector(selecthasErrorScratch)
 	const isLoadingDeleteScratch = useSelector(selectIsLoadingDeleteScratch)
 	const isLoadingAddScratch = useSelector(selectIsLoadingAddScratch)
+
+	console.log('scratch => ' + scratch)
+	console.log('type of scratch => ' + typeof scratch)
+	// console.log(Object.getOwnPropertyNames(scratch))
+	console.log('scratch_title => ' + scratch_title)
+	console.log('scratch_content => ' + scratch_content)
 
 	useEffect(() => {
 		dispatch(loadScratch())
@@ -47,7 +51,12 @@ export default function Scratch() {
 				</Col>
 			)
 		}
-		if (isLoadingScratch || isLoadingAddScratch || isLoadingDeleteScratch) {
+		if (
+			isLoadingScratch ||
+			isLoadingAddScratch ||
+			isLoadingDeleteScratch ||
+			typeof scratch !== 'object'
+		) {
 			return (
 				<Skeleton.Input
 					style={{
