@@ -1,11 +1,11 @@
 import React from 'react'
 import NoteComponent from '../noteComponent/NoteComponent'
-import { Col, Row, Typography, Input, Menu, Dropdown, Button } from 'antd'
+import { Col, Row, Typography, Menu, Dropdown, Button, Tooltip } from 'antd'
 import {
-	FilterOutlined,
 	CaretUpOutlined,
 	CaretDownOutlined,
 	RightOutlined,
+	FileAddOutlined,
 } from '@ant-design/icons'
 import './NoteListComponent.css'
 
@@ -22,7 +22,6 @@ export default function NoteListComponent(props) {
 		handleToggleNote,
 		isLoadingToggleNote,
 	} = props
-	const { Search } = Input
 	const { Title } = Typography
 
 	const sortDateAsc = (a, b) => {
@@ -55,6 +54,8 @@ export default function NoteListComponent(props) {
 		)
 	}
 
+	// TODO: Create Function Add Note to open Modal Form to add Note
+
 	const menu = (
 		<Menu>
 			<Menu.Item key='1' onClick={() => setSortBy('Date')}>
@@ -68,7 +69,6 @@ export default function NoteListComponent(props) {
 
 	return (
 		<>
-			{/* ROW TOP NOTELIST */}
 			<Row className='row-notelist'>
 				<Col className='col-notelist-left' span={20}>
 					<Title level={5} className='title-section'>
@@ -78,11 +78,18 @@ export default function NoteListComponent(props) {
 						/>
 					</Title>
 				</Col>
-				<Col className='col-notelist-right' span={4}>
-					OK
+				<Col className='col-addnote-right' span={4}>
+					<Tooltip title='New Note'>
+						<Button
+							type='primary'
+							icon={
+								<FileAddOutlined style={{ fontSize: '1rem' }} />
+							}
+						/>
+					</Tooltip>
 				</Col>
 			</Row>
-			{/* ROW SORT NOTELIST */}
+
 			<Row>
 				<Col>
 					<Dropdown overlay={menu} placement='bottomCenter' arrow>
@@ -104,15 +111,18 @@ export default function NoteListComponent(props) {
 					</Button>
 				</Col>
 			</Row>
-			{/* ROW NOTES */}
-			<Row>
+
+			<Row className='row-notes'>
 				{notes.length >= 1
 					? []
 							.concat(notes)
 							.sort(selectSort)
 							.map((note) => {
 								return (
-									<Col key={note.note_id}>
+									<Col
+										span={5}
+										key={note.note_id}
+										className='col-note'>
 										<NoteComponent
 											note={note}
 											handleToggleNote={handleToggleNote}

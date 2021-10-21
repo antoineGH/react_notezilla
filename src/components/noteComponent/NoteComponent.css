@@ -1,0 +1,18 @@
+.note-title {
+	color: var(--home-primary-text);
+	font-size: 0.9rem !important;
+}
+
+.note-content {
+	color: var(--gray-secondary-content) !important;
+	font-size: 0.9rem;
+}
+
+.note-date {
+	color: var(--gray-secondary-content) !important;
+	font-size: 0.8rem;
+}
+
+.col-note-date {
+	margin-top: 1rem;
+}
