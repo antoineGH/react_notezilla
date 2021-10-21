@@ -4,7 +4,6 @@ import * as Yup from 'yup'
 import {
 	Row,
 	Col,
-	Spin,
 	Menu,
 	Dropdown,
 	Form,
@@ -14,7 +13,6 @@ import {
 	Tooltip,
 } from 'antd'
 import {
-	LoadingOutlined,
 	SaveOutlined,
 	ClearOutlined,
 	EllipsisOutlined,
@@ -31,11 +29,10 @@ export default function ScratchAddForm(props) {
 	} = props
 	const { Text } = Typography
 	const { TextArea } = Input
-	const antIcon = <LoadingOutlined style={{ fontSize: 16 }} spin />
 
 	const validationSchema = Yup.object({
-		scratch_title: Yup.string().min(3, 'Too Short').max(200, 'Too Long'),
-		scratch_content: Yup.string().min(3, 'Too Short').max(800, 'Too Long'),
+		scratch_title: Yup.string().max(200, 'Too Long'),
+		scratch_content: Yup.string().max(800, 'Too Long'),
 	})
 
 	const { handleSubmit, handleChange, handleBlur, values, touched, errors } =
@@ -78,7 +75,7 @@ export default function ScratchAddForm(props) {
 								id='scratch_title'
 								name='scratch_title'
 								type='text'
-								placeholder='Scratch Title'
+								placeholder='SCRATCH PAD'
 								className={
 									errors.scratch_title &&
 									touched.scratch_title &&
@@ -100,7 +97,10 @@ export default function ScratchAddForm(props) {
 							<Dropdown overlay={menu} placement='bottomRight'>
 								<Button
 									type='primary'
-									disabled={isLoadingAddScratch}
+									disabled={
+										isLoadingAddScratch ||
+										isLoadingDeleteScratch
+									}
 									icon={
 										<EllipsisOutlined
 											style={{ fontSize: '1.5rem' }}
@@ -119,7 +119,7 @@ export default function ScratchAddForm(props) {
 								id='scratch_content'
 								name='scratch_content'
 								type='text'
-								placeholder='Scratch Content'
+								placeholder='Start writing...'
 								className={
 									errors.scratch_content &&
 									touched.scratch_content &&
