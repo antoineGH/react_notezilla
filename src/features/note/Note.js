@@ -54,7 +54,7 @@ export default function Note() {
 			)}
 			{!isLoadingNotes ? (
 				<>
-					<NoteListComponent
+					{/* <NoteListComponent
 						notes={notes}
 						handleDeleteNote={handleDeleteNote}
 						handleToggleNote={handleToggleNote}
@@ -62,7 +62,7 @@ export default function Note() {
 						isLoadingToggleNote={isLoadingToggleNote}
 					/>
 					<AddNoteComponent />
-					<Scratch />
+					<Scratch /> */}
 				</>
 			) : (
 				<Col>

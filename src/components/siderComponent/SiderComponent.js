@@ -1,6 +1,4 @@
 import React from 'react'
-import { Layout } from 'antd'
-import './SiderComponent.css'
 import { logout } from '../../utils/authHook'
 import { useHistory } from 'react-router'
 import { useSelector } from 'react-redux'
@@ -9,14 +7,16 @@ import {
 	selectUserIsLoading,
 	selectUserLogged,
 } from '../../features/user/userSlice'
-import { Avatar, Typography, Menu, Dropdown, Skeleton, Col } from 'antd'
+import Search from '../../features/search/Search'
+import { Avatar, Typography, Menu, Dropdown, Skeleton, Col, Layout } from 'antd'
 import {
 	UserOutlined,
 	LogoutOutlined,
 	HomeOutlined,
 	LoginOutlined,
+	CaretDownOutlined,
 } from '@ant-design/icons'
-import Search from '../../features/search/Search'
+import './SiderComponent.css'
 
 export default function SiderComponent(props) {
 	const { logged } = props
@@ -35,23 +35,23 @@ export default function SiderComponent(props) {
 					onClick={() => history.push('/')}
 					className='submenu-navbar'
 					key='1'
-					icon={<HomeOutlined />}>
-					Home
+					icon={<HomeOutlined style={{ fontSize: '1rem' }} />}>
+					<Text strong>Home</Text>
 				</Menu.Item>
 				<Menu.Item
 					onClick={() => history.push('/user')}
 					className='submenu-navbar'
 					key='2'
-					icon={<UserOutlined />}>
-					Edit User
+					icon={<UserOutlined style={{ fontSize: '1rem' }} />}>
+					<Text strong>Edit User</Text>
 				</Menu.Item>
 				<Menu.Divider />
 				<Menu.Item
 					onClick={logout}
 					className='submenu-navbar'
 					key='3'
-					icon={<LogoutOutlined />}>
-					Logout
+					icon={<LogoutOutlined style={{ fontSize: '1rem' }} />}>
+					<Text strong>Logout</Text>
 				</Menu.Item>
 			</Menu>
 		)
@@ -64,16 +64,16 @@ export default function SiderComponent(props) {
 					onClick={() => history.push('/login')}
 					className='submenu-navbar'
 					key='1'
-					icon={<LoginOutlined />}>
-					Login
+					icon={<LoginOutlined style={{ fontSize: '1rem' }} />}>
+					<Text strong>Login</Text>
 				</Menu.Item>
 				<Menu.Divider />
 				<Menu.Item
 					onClick={() => history.push('/register')}
 					className='submenu-navbar'
 					key='2'
-					icon={<UserOutlined />}>
-					Register
+					icon={<UserOutlined style={{ fontSize: '1rem' }} />}>
+					<Text strong>Register</Text>
 				</Menu.Item>
 			</Menu>
 		)
@@ -126,17 +126,18 @@ export default function SiderComponent(props) {
 	}
 
 	return (
-		<Sider>
+		<Sider className='sider-main'>
 			<Dropdown overlay={logged ? menuAuth() : menuUnAuth()}>
 				<span className='container-avatar'>
-					<Text className='avatar-username' strong>
-						{logged ? renderUserInput() : 'Not Connected'}
-					</Text>
 					{logged ? (
 						renderUserAvatar()
 					) : (
 						<Avatar shape='square' icon={<UserOutlined />} />
 					)}
+					<Text className='avatar-username' strong>
+						{logged ? renderUserInput() : 'Not Connected'}{' '}
+						<CaretDownOutlined style={{ fontSize: '.6rem' }} />
+					</Text>
 				</span>
 			</Dropdown>
 			<Search logged={logged} />

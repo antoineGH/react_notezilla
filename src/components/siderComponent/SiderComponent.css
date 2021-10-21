@@ -1,6 +1,41 @@
-.ant-layout-sider-children {
-	width: 256;
+.sider-main > * {
+	position: static;
+	min-width: 205px;
+	max-width: 400px;
+	width: 240px;
 	min-height: 100vh;
-	color: white;
+	background-color: #1a1a1a;
 	margin-top: 1.5rem;
+}
+
+.container-avatar {
+	padding: 1rem 1rem 1rem 1rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	margin: auto;
+}
+
+.avatar-username > * {
+	color: #ccc;
+	font-weight: 400 !important;
+}
+
+.avatar-username {
+	padding: 0rem 1rem;
+	text-transform: capitalize;
+}
+
+.menu-navbar {
+	width: 280px;
+	position: absolute;
+	left: 0rem;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.submenu-navbar {
+	padding-left: 0rem;
 }

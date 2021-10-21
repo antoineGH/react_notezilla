@@ -1,1 +1,7 @@
 @import '~antd/dist/antd.css';
+
+:root {
+	--green: #00a82d;
+	--dark-green: #007620;
+	--search-input-text: #ccc;
+}

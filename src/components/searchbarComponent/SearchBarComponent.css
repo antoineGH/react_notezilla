@@ -1,0 +1,28 @@
+.search-component {
+	padding: 0.8rem;
+}
+
+.search-component span input {
+	background-color: #404040;
+	border: none;
+	height: 36px;
+	color: var(--search-input-text);
+}
+
+.search-component span input:focus,
+.search-component span input:focus {
+	border-color: #000000 !important;
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+.search-component span button {
+	background-color: var(--green);
+	border: none;
+	height: 36px;
+	border-radius: 0 !important;
+}
+
+.search-component span button:hover {
+	background-color: var(--dark-green);
+}

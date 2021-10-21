@@ -3,34 +3,3 @@
 	text-align: center;
 	padding: 0;
 }
-
-.container-avatar {
-	display: flex;
-	justify-self: flex-end;
-	justify-items: flex-end;
-	justify-content: flex-end;
-	align-content: center;
-	align-self: center;
-	align-items: center;
-}
-
-.avatar-username {
-	padding: 0rem 1rem;
-	text-transform: capitalize;
-}
-
-.ant-avatar {
-	margin-right: 1.5rem;
-}
-
-.menu-navbar {
-	width: 185px;
-	position: absolute;
-	right: 0px;
-	display: flex;
-	flex-direction: column;
-}
-
-.submenu-navbar {
-	padding-left: 2rem;
-}

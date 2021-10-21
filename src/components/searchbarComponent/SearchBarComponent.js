@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Input } from 'antd'
+import './SearchBarComponent.css'
+import { SearchOutlined } from '@ant-design/icons'
 
 export default function SearchBarComponent(props) {
 	const { handleSearch } = props
@@ -8,9 +10,11 @@ export default function SearchBarComponent(props) {
 
 	return (
 		<Search
-			placeholder='Search Todo'
+			className='search-component'
+			placeholder='Search'
 			type='text'
 			id='search'
+			icon={<SearchOutlined />}
 			onSearch={() => handleSearch(searchParam)}
 			onChange={(e) => setSearchParam(e.target.value)}
 			value={searchParam}
