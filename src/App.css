@@ -4,4 +4,15 @@
 	--green: #00a82d;
 	--dark-green: #007620;
 	--search-input-text: #ccc;
+	--secondary-button: #737373;
+	--special-transparent: hsla(0, 0%, 65.1%, 0.2);
+}
+
+.ant-layout-content div {
+	padding: 24;
+	min-height: 360;
+}
+
+.div-content {
+	padding: 0rem 0rem 1rem 3rem;
 }

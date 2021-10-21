@@ -1,0 +1,27 @@
+.container-content {
+	min-height: 100vh;
+	/* background-color: yellow !important; */
+	max-width: 1200px;
+	margin: auto;
+}
+
+.row-listnotes {
+	min-height: 30vh;
+	/* background-color: rgb(255, 0, 200) !important; */
+}
+
+.col-listnotes {
+	width: 100%;
+	/* background-color: rgb(17, 0, 255) !important; */
+}
+
+.row-scratchpad-add {
+	/* background-color: rgb(17, 0, 255) !important; */
+}
+
+.col-addnote {
+	width: 100%;
+}
+.col-scratchpad {
+	width: 100%;
+}

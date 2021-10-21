@@ -1,0 +1,63 @@
+.container-scratchpad {
+	background-color: rgb(255, 244, 186) !important;
+	border: 1px solid rgb(255, 237, 142) !important;
+	padding: 1rem;
+	height: 100%;
+	margin: auto 0.5rem;
+	box-shadow: 1 px 2 px 6 px var(--black-transparent);
+	border-radius: 8px !important;
+	box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+}
+
+.row-scratchpad-bottom,
+.row-scratchpad-top {
+	width: 100%;
+}
+
+.row-scratchpad-bottom {
+	height: 100% !important;
+	min-height: 20vh;
+}
+
+.col-scratchpad-content {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.col-scratchpadtop-right {
+	display: flex !important;
+	justify-content: flex-end !important;
+}
+
+.col-scratchpadtop-right button {
+	background-color: transparent;
+	border-color: transparent;
+	color: var(--secondary-button);
+	box-shadow: none;
+}
+
+.col-scratchpadtop-right button:hover {
+	border-color: transparent;
+	color: var(--secondary-button);
+	box-shadow: none;
+	background: var(--special-transparent);
+}
+
+.col-scratchpadtop-right button:after {
+	-webkit-animation: none !important;
+	-moz-animation: none !important;
+	-o-animation: none !important;
+	-ms-animation: none !important;
+	animation: none !important;
+}
+
+.col-scratchpadtop-right button:active,
+.col-scratchpadtop-right button:focus {
+	outline: none !important;
+	border-style: outset !important;
+	background-color: transparent;
+	border-color: transparent;
+	color: var(--secondary-button);
+	box-shadow: none;
+}

@@ -1,11 +1,23 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { Spin, Form, Input, Button, Typography } from 'antd'
+import {
+	Row,
+	Col,
+	Spin,
+	Menu,
+	Dropdown,
+	Form,
+	Input,
+	Button,
+	Typography,
+	Tooltip,
+} from 'antd'
 import {
 	LoadingOutlined,
-	PlusOutlined,
-	DeleteOutlined,
+	SaveOutlined,
+	ClearOutlined,
+	EllipsisOutlined,
 } from '@ant-design/icons'
 
 export default function ScratchAddForm(props) {
@@ -38,54 +50,107 @@ export default function ScratchAddForm(props) {
 			},
 		})
 
+	const menu = (
+		<Menu>
+			<Menu.Item>
+				<a onClick={handleSubmit} href='Save'>
+					<SaveOutlined style={{ fontSize: '.8rem' }} />
+					Save ScratchPad
+				</a>
+			</Menu.Item>
+			<Menu.Item>
+				<a onClick={handleDeleteScratch} href='Reset'>
+					<ClearOutlined style={{ fontSize: '.8rem' }} />
+					Clear ScratchPad
+				</a>
+			</Menu.Item>
+		</Menu>
+	)
+
 	return (
-		<>
+		<div className='container-scratchpad'>
 			<Form onSubmit={handleSubmit} layout='inline'>
-				<Form.Item className='form-item'>
-					<Input
-						id='scratch_title'
-						name='scratch_title'
-						type='text'
-						placeholder='Scratch Title'
-						className={
-							errors.scratch_title &&
-							touched.scratch_title &&
-							'error_field'
-						}
-						onBlur={handleBlur}
-						value={values.scratch_title}
-						onChange={handleChange}
-					/>
-				</Form.Item>
-				<Form.Item className='form-item'>
-					<Input
-						id='scratch_content'
-						name='scratch_content'
-						type='text'
-						placeholder='Scratch Content'
-						className={
-							errors.scratch_content &&
-							touched.scratch_content &&
-							'error_field'
-						}
-						onBlur={handleBlur}
-						value={values.scratch_content}
-						onChange={handleChange}
-					/>
-				</Form.Item>
-				<Form.Item className='form-item'>
-					<Button
-						type='primary'
-						onClick={handleSubmit}
-						icon={<PlusOutlined style={{ fontSize: '.8rem' }} />}
-						disabled={isLoadingAddScratch}>
-						Save
-						{isLoadingAddScratch && (
-							<Spin size='small' indicator={antIcon} />
-						)}
-					</Button>
-				</Form.Item>
+				<Row className='row-scratchpad-top'>
+					<Col span={18}>
+						<Form.Item className='form-item'>
+							<Input
+								id='scratch_title'
+								name='scratch_title'
+								type='text'
+								placeholder='Scratch Title'
+								className={
+									errors.scratch_title &&
+									touched.scratch_title &&
+									'error_field'
+								}
+								onBlur={handleBlur}
+								value={values.scratch_title}
+								onChange={handleChange}
+							/>
+							{errors.scratch_title && touched.scratch_title && (
+								<Text type='danger'>
+									{errors.scratch_title}
+								</Text>
+							)}
+						</Form.Item>
+					</Col>
+					<Col span={6} className='col-scratchpadtop-right'>
+						<Tooltip title='More Actions'>
+							<Dropdown overlay={menu} placement='bottomRight'>
+								<Button
+									type='primary'
+									disabled={isLoadingAddScratch}
+									icon={
+										<EllipsisOutlined
+											style={{ fontSize: '1.5rem' }}
+										/>
+									}
+								/>
+							</Dropdown>
+						</Tooltip>
+					</Col>
+				</Row>
+				<Row className='row-scratchpad-bottom'>
+					<Col className='col-scratchpad-content' span={24}>
+						<Form.Item className='form-item'>
+							<Input
+								id='scratch_content'
+								name='scratch_content'
+								type='text'
+								placeholder='Scratch Content'
+								className={
+									errors.scratch_content &&
+									touched.scratch_content &&
+									'error_field'
+								}
+								onBlur={handleBlur}
+								value={values.scratch_content}
+								onChange={handleChange}
+							/>
+							{errors.scratch_content &&
+								touched.scratch_content && (
+									<Text type='danger'>
+										{errors.scratch_content}
+									</Text>
+								)}
+						</Form.Item>
+					</Col>
+				</Row>
 			</Form>
+
+			{/* <Form.Item className='form-item'>
+				<Button
+					type='primary'
+					onClick={handleSubmit}
+					icon={<PlusOutlined style={{ fontSize: '.8rem' }} />}
+					disabled={isLoadingAddScratch}>
+					Save
+					{isLoadingAddScratch && (
+						<Spin size='small' indicator={antIcon} />
+					)}
+				</Button>
+			</Form.Item>
+
 			<Button
 				type='primary'
 				onClick={handleDeleteScratch}
@@ -97,14 +162,7 @@ export default function ScratchAddForm(props) {
 				)}
 			</Button>
 
-			<div className='add-errors'>
-				{errors.scratch_title && touched.scratch_title && (
-					<Text type='danger'>{errors.scratch_title}</Text>
-				)}
-				{errors.scratch_content && touched.scratch_content && (
-					<Text type='danger'>{errors.scratch_content}</Text>
-				)}
-			</div>
-		</>
+			*/}
+		</div>
 	)
 }

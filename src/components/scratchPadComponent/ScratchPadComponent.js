@@ -1,5 +1,6 @@
 import React from 'react'
 import ScratchAddForm from '../../forms/scratchAddForm/ScratchAddForm'
+import './ScratchPadComponent.css'
 
 export default function ScratchPadComponent(props) {
 	const {

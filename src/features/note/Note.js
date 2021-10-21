@@ -13,7 +13,8 @@ import {
 import NoteListComponent from '../../components/noteListComponent/NoteListComponent'
 import AddNoteComponent from '../../components/addNoteComponent/AddNoteComponent'
 import Scratch from '../../features/scratch/Scratch'
-import { Spin, Col, Button } from 'antd'
+import { Spin, Row, Col, Button } from 'antd'
+import './Note.css'
 
 export default function Note() {
 	const dispatch = useDispatch()
@@ -40,7 +41,7 @@ export default function Note() {
 	}
 
 	return (
-		<>
+		<div className='container-content'>
 			{hasErrorNotes && (
 				<Col>
 					<p>Error Fetching the API.</p>
@@ -54,21 +55,32 @@ export default function Note() {
 			)}
 			{!isLoadingNotes ? (
 				<>
-					{/* <NoteListComponent
-						notes={notes}
-						handleDeleteNote={handleDeleteNote}
-						handleToggleNote={handleToggleNote}
-						isLoadingDelete={isLoadingDeleteNote}
-						isLoadingToggleNote={isLoadingToggleNote}
-					/>
-					<AddNoteComponent />
-					<Scratch /> */}
+					<Row className='row-listnotes'>
+						<Col className='col-listnotes'>
+							<NoteListComponent
+								notes={notes}
+								handleDeleteNote={handleDeleteNote}
+								handleToggleNote={handleToggleNote}
+								isLoadingDelete={isLoadingDeleteNote}
+								isLoadingToggleNote={isLoadingToggleNote}
+							/>
+						</Col>
+					</Row>
+					<Row justify='space-between' className='row-scratchpad-add'>
+						<Col span={12} className='col-addnote'>
+							<AddNoteComponent />
+						</Col>
+						<Col span={12} className='col-scratchpad'>
+							<Scratch />
+						</Col>
+					</Row>
+					<Row></Row>
 				</>
 			) : (
 				<Col>
 					<p>No Notes</p>
 				</Col>
 			)}
-		</>
+		</div>
 	)
 }
