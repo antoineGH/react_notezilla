@@ -49,17 +49,17 @@ export default function ScratchAddForm(props) {
 		})
 
 	const menu = (
-		<Menu>
-			<Menu.Item>
+		<Menu className='menu-scratchpad'>
+			<Menu.Item className='submenu-scratchpad'>
 				<a onClick={handleSubmit} href='Save'>
 					<SaveOutlined style={{ fontSize: '.8rem' }} />
-					Save ScratchPad
+					{'   '}Save ScratchPad
 				</a>
 			</Menu.Item>
-			<Menu.Item>
+			<Menu.Item className='submenu-scratchpad'>
 				<a onClick={handleDeleteScratch} href='Reset'>
 					<ClearOutlined style={{ fontSize: '.8rem' }} />
-					Clear ScratchPad
+					{'   '}Clear ScratchPad
 				</a>
 			</Menu.Item>
 		</Menu>

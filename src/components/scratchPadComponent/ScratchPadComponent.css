@@ -103,3 +103,16 @@
 	color: var(--gray-secondary-content);
 	opacity: 1;
 }
+
+.menu-scratchpad {
+	width: 170px;
+	position: absolute;
+	left: 0rem;
+	display: flex;
+	flex-direction: column;
+	/* margin: 0.5rem !important; */
+}
+
+.submenu-scratchpad {
+	padding-left: 0rem;
+}
