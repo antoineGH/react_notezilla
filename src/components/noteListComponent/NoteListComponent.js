@@ -68,6 +68,7 @@ export default function NoteListComponent(props) {
 
 	return (
 		<>
+			{/* ROW TOP NOTELIST */}
 			<Row className='row-notelist'>
 				<Col className='col-notelist-left' span={20}>
 					<Title level={5} className='title-section'>
@@ -81,17 +82,15 @@ export default function NoteListComponent(props) {
 					OK
 				</Col>
 			</Row>
+			{/* ROW SORT NOTELIST */}
 			<Row>
 				<Col>
 					<Dropdown overlay={menu} placement='bottomCenter' arrow>
-						<Button>
-							<FilterOutlined />
-							Sort By {sortBy}
-						</Button>
+						<Button id='sort-type'>Sort By {sortBy}</Button>
 					</Dropdown>
 				</Col>
 				<Col>
-					<Button onClick={() => setSort(!sort)}>
+					<Button id='sort-toggle' onClick={() => setSort(!sort)}>
 						{sort ? (
 							<>
 								{sortStatus()} <CaretDownOutlined />
@@ -105,6 +104,7 @@ export default function NoteListComponent(props) {
 					</Button>
 				</Col>
 			</Row>
+			{/* ROW NOTES */}
 			<Row>
 				{notes.length >= 1
 					? []
