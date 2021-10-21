@@ -89,11 +89,6 @@
 	box-shadow: none;
 }
 
-#scratch_content::placeholder-shown {
-	background-color: pink;
-	color: pink;
-}
-
 #scratch_title::placeholder {
 	color: var(--gray-secondary-title);
 	opacity: 1;
@@ -110,9 +105,13 @@
 	left: 0rem;
 	display: flex;
 	flex-direction: column;
-	/* margin: 0.5rem !important; */
+	justify-content: center;
+	justify-items: center;
 }
 
 .submenu-scratchpad {
 	padding-left: 0rem;
+	flex-direction: column;
+	display: flex;
+	justify-self: flex-start;
 }
