@@ -21,12 +21,9 @@ export default function AddNoteComponent() {
 	}
 
 	return (
-		<>
-			AddNoteComponent
-			<NoteAddForm
-				handleAddNote={handleAddNote}
-				isLoadingAddNote={isLoadingAddNote}
-			/>
-		</>
+		<NoteAddForm
+			handleAddNote={handleAddNote}
+			isLoadingAddNote={isLoadingAddNote}
+		/>
 	)
 }

@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux'
 import { loadUser } from './features/user/userSlice'
 import { loadNotes } from './features/note/NoteSlice'
 import SiderComponent from './components/siderComponent/SiderComponent'
-import NavbarComponent from './components/navbarComponent/NavbarComponent'
 import AuthApp from './layouts/AuthApp'
 import UnAuthApp from './layouts/UnAuthApp'
 import FooterComponent from './components/footerComponent/FooterComponent'
@@ -30,7 +29,6 @@ function App() {
 				<Layout>
 					<SiderComponent logged={logged} />
 					<Layout>
-						<NavbarComponent logged={logged} />
 						<Content>
 							<div className='div-content'>
 								<Switch>
