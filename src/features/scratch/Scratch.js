@@ -23,23 +23,19 @@ export default function Scratch() {
 	const isLoadingDeleteScratch = useSelector(selectIsLoadingDeleteScratch)
 	const isLoadingAddScratch = useSelector(selectIsLoadingAddScratch)
 
-	console.log('scratch => ' + scratch)
-	console.log('type of scratch => ' + typeof scratch)
-	// console.log(Object.getOwnPropertyNames(scratch))
-	console.log('scratch_title => ' + scratch_title)
-	console.log('scratch_content => ' + scratch_content)
-
 	useEffect(() => {
 		dispatch(loadScratch())
 	}, [dispatch])
 
 	const handleAddScratch = (scratch_title, scratch_content, isCompleted) => {
-		console.log('add scratch')
 		dispatch(addScratch({ scratch_title, scratch_content, isCompleted }))
 	}
 
+	const handleScratchToNote = () => {
+		console.log('convert scratch')
+	}
+
 	const handleDeleteScratch = () => {
-		console.log('delete scratch')
 		dispatch(deleteScratch())
 	}
 
@@ -71,12 +67,13 @@ export default function Scratch() {
 		}
 		return (
 			<ScratchPadComponent
-				handleAddScratch={handleAddScratch}
 				scratch_title={scratch_title}
 				scratch_content={scratch_content}
 				isLoadingScratch={isLoadingScratch}
-				handleDeleteScratch={handleDeleteScratch}
 				isLoadingDeleteScratch={isLoadingDeleteScratch}
+				handleAddScratch={handleAddScratch}
+				handleDeleteScratch={handleDeleteScratch}
+				handleScratchToNote={handleScratchToNote}
 			/>
 		)
 	}

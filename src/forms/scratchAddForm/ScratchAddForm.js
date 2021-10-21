@@ -16,16 +16,18 @@ import {
 	SaveOutlined,
 	ClearOutlined,
 	EllipsisOutlined,
+	RedoOutlined,
 } from '@ant-design/icons'
 
 export default function ScratchAddForm(props) {
 	const {
-		isLoadingAddScratch,
-		isLoadingDeleteScratch,
-		handleAddScratch,
-		handleDeleteScratch,
 		scratch_title,
 		scratch_content,
+		isLoadingAddScratch,
+		isLoadingDeleteScratch,
+		handleScratchToNote,
+		handleAddScratch,
+		handleDeleteScratch,
 	} = props
 	const { Text } = Typography
 	const { TextArea } = Input
@@ -48,16 +50,32 @@ export default function ScratchAddForm(props) {
 			},
 		})
 
+	const onClickConvertNote = (e) => {
+		e.preventDefault()
+		handleScratchToNote()
+	}
+
+	const onClickDeleteScratch = (e) => {
+		e.preventDefault()
+		handleDeleteScratch()
+	}
+
 	const menu = (
 		<Menu className='menu-scratchpad'>
-			<Menu.Item className='submenu-scratchpad'>
+			<Menu.Item key='1' className='submenu-scratchpad'>
 				<a onClick={handleSubmit} href='Save'>
 					<SaveOutlined style={{ fontSize: '.8rem' }} />
 					{'   '}Save ScratchPad
 				</a>
 			</Menu.Item>
-			<Menu.Item className='submenu-scratchpad'>
-				<a onClick={handleDeleteScratch} href='Reset'>
+			<Menu.Item key='2' className='submenu-scratchpad'>
+				<a onClick={(e) => onClickConvertNote(e)} href='Note'>
+					<RedoOutlined style={{ fontSize: '.8rem' }} />
+					{'   '}Convert to Note
+				</a>
+			</Menu.Item>
+			<Menu.Item key='3' className='submenu-scratchpad'>
+				<a onClick={(e) => onClickDeleteScratch(e)} href='Reset'>
 					<ClearOutlined style={{ fontSize: '.8rem' }} />
 					{'   '}Clear ScratchPad
 				</a>

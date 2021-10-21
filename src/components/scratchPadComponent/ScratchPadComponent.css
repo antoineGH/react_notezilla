@@ -108,10 +108,3 @@
 	justify-content: center;
 	justify-items: center;
 }
-
-.submenu-scratchpad {
-	padding-left: 0rem;
-	flex-direction: column;
-	display: flex;
-	justify-self: flex-start;
-}

@@ -10,16 +10,18 @@ export default function ScratchPadComponent(props) {
 		handleAddScratch,
 		handleDeleteScratch,
 		isLoadingDeleteScratch,
+		handleScratchToNote,
 	} = props
 
 	return (
 		<ScratchAddForm
-			handleAddScratch={handleAddScratch}
 			scratch_title={scratch_title}
 			scratch_content={scratch_content}
 			isLoadingScratch={isLoadingScratch}
-			handleDeleteScratch={handleDeleteScratch}
 			isLoadingDeleteScratch={isLoadingDeleteScratch}
+			handleAddScratch={handleAddScratch}
+			handleDeleteScratch={handleDeleteScratch}
+			handleScratchToNote={handleScratchToNote}
 		/>
 	)
 }
