@@ -12,7 +12,11 @@
 
 .col-listnotes {
 	width: 100%;
-	/* background-color: rgb(17, 0, 255) !important; */
+	background-color: white !important;
+	border-radius: 8px;
+	margin: 1rem 0.5rem;
+	padding: 1rem;
+	box-shadow: rgb(0 0 0 / 15%) 2.4px 2.4px 3.2px;
 }
 
 .row-scratchpad-add {

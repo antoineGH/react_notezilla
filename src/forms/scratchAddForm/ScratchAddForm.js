@@ -56,6 +56,7 @@ export default function ScratchAddForm(props) {
 	}
 
 	const onClickConvertNote = (e) => {
+		e.preventDefault()
 		handleScratchToNote()
 	}
 

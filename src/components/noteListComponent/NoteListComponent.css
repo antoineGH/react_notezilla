@@ -1,0 +1,17 @@
+.title-section {
+	color: var(--home-primary-text);
+	font-size: 0.9rem !important;
+}
+.row-notelist {
+	margin: auto 0.5rem;
+}
+
+.col-notelist-left {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.col-notelist-right {
+	display: flex !important;
+	justify-content: flex-end;
+}

@@ -8,6 +8,7 @@
 	--special-transparent: hsla(0, 0%, 65.1%, 0.2);
 	--gray-secondary-title: #333;
 	--gray-secondary-content: #737373;
+	--home-primary-text: #333;
 }
 
 .ant-layout-content div {

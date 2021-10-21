@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
 	deleteNote,
@@ -24,6 +24,9 @@ export default function Note() {
 	const isLoadingDeleteNote = useSelector(selectIsLoadingDeleteNote)
 	const isLoadingToggleNote = useSelector(selectIsLoadingToggleNote)
 
+	const [sort, setSort] = useState(true)
+	const [sortBy, setSortBy] = useState('Date')
+
 	useEffect(() => {
 		dispatch(loadNotes())
 	}, [dispatch])
@@ -34,6 +37,13 @@ export default function Note() {
 
 	const handleToggleNote = (note_id, completed) => {
 		dispatch(toggleCheck({ note_id, completed }))
+	}
+
+	const sortStatus = () => {
+		if (sort && sortBy === 'Status') return 'Completed'
+		if (!sort && sortBy === 'Status') return 'Not Completed'
+		if (sort && sortBy === 'Date') return 'Newest'
+		return 'Oldest'
 	}
 
 	const handleTryAgain = () => {
@@ -63,6 +73,11 @@ export default function Note() {
 								handleToggleNote={handleToggleNote}
 								isLoadingDelete={isLoadingDeleteNote}
 								isLoadingToggleNote={isLoadingToggleNote}
+								sort={sort}
+								setSort={setSort}
+								sortBy={sortBy}
+								setSortBy={setSortBy}
+								sortStatus={sortStatus}
 							/>
 						</Col>
 					</Row>
