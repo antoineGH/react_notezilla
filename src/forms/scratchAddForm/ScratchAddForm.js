@@ -30,6 +30,7 @@ export default function ScratchAddForm(props) {
 		scratch_content,
 	} = props
 	const { Text } = Typography
+	const { TextArea } = Input
 	const antIcon = <LoadingOutlined style={{ fontSize: 16 }} spin />
 
 	const validationSchema = Yup.object({
@@ -113,7 +114,8 @@ export default function ScratchAddForm(props) {
 				<Row className='row-scratchpad-bottom'>
 					<Col className='col-scratchpad-content' span={24}>
 						<Form.Item className='form-item'>
-							<Input
+							<TextArea
+								rows={10}
 								id='scratch_content'
 								name='scratch_content'
 								type='text'
@@ -137,32 +139,6 @@ export default function ScratchAddForm(props) {
 					</Col>
 				</Row>
 			</Form>
-
-			{/* <Form.Item className='form-item'>
-				<Button
-					type='primary'
-					onClick={handleSubmit}
-					icon={<PlusOutlined style={{ fontSize: '.8rem' }} />}
-					disabled={isLoadingAddScratch}>
-					Save
-					{isLoadingAddScratch && (
-						<Spin size='small' indicator={antIcon} />
-					)}
-				</Button>
-			</Form.Item>
-
-			<Button
-				type='primary'
-				onClick={handleDeleteScratch}
-				icon={<DeleteOutlined style={{ fontSize: '.8rem' }} />}
-				disabled={isLoadingDeleteScratch}>
-				Clear ScratchPad
-				{isLoadingAddScratch && (
-					<Spin size='small' indicator={antIcon} />
-				)}
-			</Button>
-
-			*/}
 		</div>
 	)
 }

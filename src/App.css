@@ -6,6 +6,8 @@
 	--search-input-text: #ccc;
 	--secondary-button: #737373;
 	--special-transparent: hsla(0, 0%, 65.1%, 0.2);
+	--gray-secondary-title: #333;
+	--gray-secondary-content: #737373;
 }
 
 .ant-layout-content div {
