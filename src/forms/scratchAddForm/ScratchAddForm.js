@@ -50,8 +50,12 @@ export default function ScratchAddForm(props) {
 			},
 		})
 
-	const onClickConvertNote = (e) => {
+	const onClickSaveScratch = (e) => {
 		e.preventDefault()
+		handleSubmit()
+	}
+
+	const onClickConvertNote = (e) => {
 		handleScratchToNote()
 	}
 
@@ -63,7 +67,7 @@ export default function ScratchAddForm(props) {
 	const menu = (
 		<Menu className='menu-scratchpad'>
 			<Menu.Item key='1' className='submenu-scratchpad'>
-				<a onClick={handleSubmit} href='Save'>
+				<a onClick={(e) => onClickSaveScratch(e)} href='Save'>
 					<SaveOutlined style={{ fontSize: '.8rem' }} />
 					{'   '}Save ScratchPad
 				</a>
