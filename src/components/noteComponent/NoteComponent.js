@@ -1,6 +1,6 @@
 import React from 'react'
-import { Row, Col, Typography, Switch } from 'antd'
-
+import { Row, Col, Typography, Switch, Button } from 'antd'
+import { CloseOutlined } from '@ant-design/icons'
 import './NoteComponent.css'
 
 export default function NoteComponent(props) {
@@ -73,11 +73,20 @@ export default function NoteComponent(props) {
 	return (
 		<>
 			<Row className='row-note-top'>
-				<Col className='col-note-title'>
-					<Title level={5} className='note-title'>
-						{summaryTitle(note.note_title)}
-					</Title>
-				</Col>
+				<Row className='row-notesub-title'>
+					<Col className='col-notesub-title' span={20}>
+						<Title level={5} className='note-title'>
+							{summaryTitle(note.note_title)}
+						</Title>
+					</Col>
+					<Col span={4} className='col-notesub-delete'>
+						<Button
+							className='btn-closetodo'
+							// onClick={() => handleDeleteNote(note.note_id)}
+							loading={isLoadingDelete}
+							icon={<CloseOutlined />}></Button>
+					</Col>
+				</Row>
 				<Col className='col-note-content'>
 					<Text className='note-content'>
 						{summaryContent(note.note_content)}
