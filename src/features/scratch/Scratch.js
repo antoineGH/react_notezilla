@@ -41,11 +41,7 @@ export default function Scratch() {
 
 	const renderScratchForm = () => {
 		if (hasErrorScratch) {
-			return (
-				<Col>
-					<p>Error Fetching the API.</p>
-				</Col>
-			)
+			return ''
 		}
 		if (
 			isLoadingScratch ||

@@ -96,3 +96,17 @@
 		rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 	margin-bottom: 1rem;
 }
+
+.col-loading-render-note,
+.col-error-render-note {
+	display: flex !important;
+	justify-content: center !important;
+}
+
+.row-loading-note,
+.row-error-note {
+	display: flex !important;
+	flex-direction: column !important;
+	justify-content: center !important;
+	margin: 1rem;
+}

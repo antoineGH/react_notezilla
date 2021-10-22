@@ -19,3 +19,11 @@
 .div-content {
 	padding: 0rem 0rem 1rem 3rem;
 }
+
+.ant-switch-checked {
+	background-color: var(--green);
+}
+
+.ant-spin-dot-item {
+	background-color: var(--green);
+}

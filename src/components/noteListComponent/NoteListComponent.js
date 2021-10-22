@@ -1,6 +1,21 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import {
+	selectIsLoadingNotes,
+	selectHasErrorNotes,
+	loadNotes,
+} from '../../features/note/NoteSlice'
 import NoteComponent from '../noteComponent/NoteComponent'
-import { Col, Row, Typography, Menu, Dropdown, Button, Tooltip } from 'antd'
+import {
+	Col,
+	Row,
+	Typography,
+	Menu,
+	Dropdown,
+	Button,
+	Tooltip,
+	Spin,
+} from 'antd'
 import {
 	CaretUpOutlined,
 	CaretDownOutlined,
@@ -22,6 +37,9 @@ export default function NoteListComponent(props) {
 		handleToggleNote,
 		isLoadingToggleNote,
 	} = props
+	const isLoadingNotes = useSelector(selectIsLoadingNotes)
+	const hasErrorNotes = useSelector(selectHasErrorNotes)
+	const dispatch = useDispatch()
 	const { Title } = Typography
 
 	const sortDateAsc = (a, b) => {
@@ -52,6 +70,33 @@ export default function NoteListComponent(props) {
 				<p>No results from search</p>
 			</Col>
 		)
+	}
+
+	const renderErrorNote = () => {
+		return (
+			<Row className='row-error-note'>
+				<Col className='col-error-render-note'>
+					<p>Error retrieving your notes</p>
+				</Col>
+				<Col className='col-error-render-note'>
+					<Button onClick={handleTryAgain}>Try Again</Button>
+				</Col>
+			</Row>
+		)
+	}
+
+	const renderLoadingNote = () => {
+		return (
+			<Row className='row-loading-note'>
+				<Col className='col-loading-render-note'>
+					<Spin />
+				</Col>
+			</Row>
+		)
+	}
+
+	const handleTryAgain = () => {
+		dispatch(loadNotes())
 	}
 
 	// TODO: Create Function Add Note to open Modal Form to add Note
@@ -112,31 +157,42 @@ export default function NoteListComponent(props) {
 				</Col>
 			</Row>
 
-			<Row className='row-notes'>
-				{notes.length >= 1
-					? []
-							.concat(notes)
-							.sort(selectSort)
-							.map((note) => {
-								return (
-									<Col
-										span={5}
-										key={note.note_id}
-										className='col-note'>
-										<NoteComponent
-											note={note}
-											handleToggleNote={handleToggleNote}
-											isLoadingToggleNote={
-												isLoadingToggleNote
-											}
-											handleDeleteNote={handleDeleteNote}
-											isLoadingDelete={isLoadingDelete}
-										/>
-									</Col>
-								)
-							})
-					: renderEmptyNote()}
-			</Row>
+			{hasErrorNotes && renderErrorNote()}
+			{!isLoadingNotes ? (
+				<Row className='row-notes'>
+					{notes.length >= 1
+						? []
+								.concat(notes)
+								.sort(selectSort)
+								.map((note) => {
+									return (
+										<Col
+											span={5}
+											key={note.note_id}
+											className='col-note'>
+											<NoteComponent
+												note={note}
+												handleToggleNote={
+													handleToggleNote
+												}
+												isLoadingToggleNote={
+													isLoadingToggleNote
+												}
+												handleDeleteNote={
+													handleDeleteNote
+												}
+												isLoadingDelete={
+													isLoadingDelete
+												}
+											/>
+										</Col>
+									)
+								})
+						: !hasErrorNotes && renderEmptyNote()}
+				</Row>
+			) : (
+				renderLoadingNote()
+			)}
 		</>
 	)
 }
