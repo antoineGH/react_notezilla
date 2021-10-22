@@ -1,15 +1,15 @@
 import React from 'react'
-import { Row, Col, Typography } from 'antd'
+import { Row, Col, Typography, Switch } from 'antd'
 
 import './NoteComponent.css'
 
 export default function NoteComponent(props) {
 	const {
 		note,
-		// handleToggleNote,
-		// isLoadingToggleNote,
-		// handleDeleteNote,
-		// isLoadingDelete,
+		handleToggleNote,
+		isLoadingToggleNote,
+		handleDeleteNote,
+		isLoadingDelete,
 	} = props
 	const { Title, Text } = Typography
 
@@ -56,26 +56,51 @@ export default function NoteComponent(props) {
 		return formattedTime
 	}
 
+	const summaryTitle = (title) => {
+		if (title.length >= 20) {
+			return title.slice(0, 20) + '...'
+		}
+		return title
+	}
+
+	const summaryContent = (content) => {
+		if (content.length >= 400) {
+			return content.slice(0, 400) + '...'
+		}
+		return content
+	}
+
 	return (
 		<>
-			<Row>
-				<Col>
+			<Row className='row-note-top'>
+				<Col className='col-note-title'>
 					<Title level={5} className='note-title'>
-						{note.note_title}
+						{summaryTitle(note.note_title)}
 					</Title>
 				</Col>
-				<Col>
-					<Text className='note-content'>{note.note_content}</Text>
+				<Col className='col-note-content'>
+					<Text className='note-content'>
+						{summaryContent(note.note_content)}
+					</Text>
 				</Col>
 			</Row>
 			<Row>
-				{note.date_created && (
-					<Col className='col-note-date'>
-						<Text className='note-date'>
-							{getDate(note.date_created)}
-						</Text>
-					</Col>
-				)}
+				<Col span={12} className='col-note-date'>
+					<Text className='note-date'>
+						{getDate(note.date_created)}
+					</Text>
+				</Col>
+				<Col span={11} className='col-note-switch'>
+					<Switch
+						id='completed'
+						name='completed'
+						onChange={() =>
+							handleToggleNote(note.note_id, !note.completed)
+						}
+						defaultChecked={note.completed}
+						disabled={isLoadingToggleNote}
+					/>
+				</Col>
 			</Row>
 		</>
 	)

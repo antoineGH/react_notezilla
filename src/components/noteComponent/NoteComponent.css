@@ -16,3 +16,31 @@
 .col-note-date {
 	margin-top: 1rem;
 }
+
+.note-switch {
+	color: var(--gray-secondary-content) !important;
+	font-size: 0.8rem;
+}
+
+.col-note-switch {
+	margin-top: 1rem;
+	margin-right: 0.5rem;
+	display: flex !important;
+	justify-content: flex-end !important;
+}
+
+.row-note-top {
+	/* background-color: pink; */
+	height: 28vh !important;
+}
+
+.col-note-title {
+	height: 2rem;
+}
+.col-note-content {
+	display: flex !important;
+	align-items: flex-start !important;
+	align-self: flex-start !important;
+	align-content: flex-start !important;
+	height: 100%;
+}
