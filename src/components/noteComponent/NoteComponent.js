@@ -46,8 +46,15 @@ export default function NoteComponent(props) {
 		const day_dateNotFormatted = date_created.getDate()
 		const today_dateNotFormatted = date_now.getDate()
 		var delta = today_dateNotFormatted - day_dateNotFormatted
-
-		if (delta >= 2) {
+		console.log(day_date)
+		console.log(today_dateNotFormatted)
+		console.log(day_dateNotFormatted)
+		console.log(delta)
+		if (delta < 1) {
+			formattedTime = 'Earlier Today'
+		} else if (delta < 2) {
+			formattedTime = 'Yesterday'
+		} else if (delta < 3) {
 			formattedTime = `Last ${days[date_created.getDay()]}`
 		} else {
 			formattedTime = `${month} ${day_date}`
@@ -70,6 +77,8 @@ export default function NoteComponent(props) {
 		return content
 	}
 
+	console.log(note.note_title)
+
 	return (
 		<>
 			<Row className='row-note-top'>
@@ -82,7 +91,7 @@ export default function NoteComponent(props) {
 					<Col span={4} className='col-notesub-delete'>
 						<Button
 							className='btn-closetodo'
-							// onClick={() => handleDeleteNote(note.note_id)}
+							onClick={() => handleDeleteNote(note.note_id)}
 							loading={isLoadingDelete}
 							icon={<CloseOutlined />}></Button>
 					</Col>

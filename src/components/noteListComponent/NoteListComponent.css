@@ -110,3 +110,8 @@
 	justify-content: center !important;
 	margin: 1rem;
 }
+
+.ant-carousel .slick-next::before,
+.ant-carousel .slick-prev::before {
+	content: '' !important;
+}

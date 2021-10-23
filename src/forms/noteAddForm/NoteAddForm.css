@@ -1,0 +1,42 @@
+.container-addnote {
+	background-color: white !important;
+	border: 1px solid white !important;
+	padding: 1rem;
+	height: 100%;
+	margin: auto 0.5rem;
+	box-shadow: 1px 2px 6px var(--black-transparent);
+	border-radius: 8px !important;
+	box-shadow: rgb(0 0 0 / 15%) 2.4px 2.4px 3.2px;
+}
+
+.col-addnote-topleft {
+	display: flex !important;
+	justify-content: flex-start !important;
+}
+
+.col-addnote-topleft .form-item {
+	width: 100%;
+}
+.col-addnote-topright {
+	display: flex !important;
+	justify-content: center !important;
+}
+
+#note_title {
+	width: 100%;
+}
+
+#new-note {
+	background-color: var(--green);
+	border: none;
+	height: 36px;
+	width: 100%;
+	border-radius: 36px;
+}
+
+.button-add-form {
+	width: 50%;
+	display: flex !important;
+	justify-content: center !important;
+	margin: auto !important;
+}

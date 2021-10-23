@@ -5,6 +5,7 @@ import {
 	selectHasErrorNotes,
 	loadNotes,
 } from '../../features/note/NoteSlice'
+
 import NoteComponent from '../noteComponent/NoteComponent'
 import {
 	Col,
@@ -15,10 +16,12 @@ import {
 	Button,
 	Tooltip,
 	Spin,
+	Carousel,
 } from 'antd'
 import {
 	CaretUpOutlined,
 	CaretDownOutlined,
+	LeftOutlined,
 	RightOutlined,
 	FileAddOutlined,
 } from '@ant-design/icons'
@@ -100,6 +103,7 @@ export default function NoteListComponent(props) {
 	}
 
 	// TODO: Create Function Add Note to open Modal Form to add Note
+	// TODO: Implement Pagination with Arrows to browse Notes return from API
 
 	const menu = (
 		<Menu>
@@ -134,7 +138,6 @@ export default function NoteListComponent(props) {
 					</Tooltip>
 				</Col>
 			</Row>
-
 			<Row>
 				<Col>
 					<Dropdown overlay={menu} placement='bottomCenter' arrow>
@@ -156,40 +159,41 @@ export default function NoteListComponent(props) {
 					</Button>
 				</Col>
 			</Row>
-
 			{hasErrorNotes && renderErrorNote()}
 			{!isLoadingNotes ? (
-				<Row className='row-notes'>
-					{notes.length >= 1
-						? []
-								.concat(notes)
-								.sort(selectSort)
-								.map((note) => {
-									return (
-										<Col
-											span={5}
-											key={note.note_id}
-											className='col-note'>
-											<NoteComponent
-												note={note}
-												handleToggleNote={
-													handleToggleNote
-												}
-												isLoadingToggleNote={
-													isLoadingToggleNote
-												}
-												handleDeleteNote={
-													handleDeleteNote
-												}
-												isLoadingDelete={
-													isLoadingDelete
-												}
-											/>
-										</Col>
-									)
-								})
-						: !hasErrorNotes && renderEmptyNote()}
-				</Row>
+				<>
+					<Row className='row-notes'>
+						{notes.length >= 1
+							? []
+									.concat(notes)
+									.sort(selectSort)
+									.map((note) => {
+										return (
+											<Col
+												span={5}
+												key={note.note_id}
+												className='col-note'>
+												<NoteComponent
+													note={note}
+													handleToggleNote={
+														handleToggleNote
+													}
+													isLoadingToggleNote={
+														isLoadingToggleNote
+													}
+													handleDeleteNote={
+														handleDeleteNote
+													}
+													isLoadingDelete={
+														isLoadingDelete
+													}
+												/>
+											</Col>
+										)
+									})
+							: !hasErrorNotes && renderEmptyNote()}
+					</Row>
+				</>
 			) : (
 				renderLoadingNote()
 			)}

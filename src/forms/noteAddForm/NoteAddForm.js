@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { Spin, Form, Input, Button, Typography, Switch } from 'antd'
+import { Spin, Form, Input, Button, Typography, Switch, Row, Col } from 'antd'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
+import './NoteAddForm.css'
 
 export default function NoteAddForm(props) {
 	const { isLoadingAddNote, handleAddNote } = props
-	const { Text } = Typography
+	const { Text, Title } = Typography
+	const { TextArea } = Input
 	const antIcon = <LoadingOutlined style={{ fontSize: 16 }} spin />
 
 	const validationSchema = Yup.object({
@@ -34,62 +36,83 @@ export default function NoteAddForm(props) {
 		})
 	return (
 		<>
-			<Form onSubmit={handleSubmit} layout='inline'>
-				<Form.Item className='form-item'>
-					<Input
-						id='note_title'
-						name='note_title'
-						type='text'
-						placeholder='Note Title'
-						className={
-							errors.note_title &&
-							touched.note_title &&
-							'error_field'
-						}
-						onBlur={handleBlur}
-						value={values.note_title}
-						onChange={handleChange}
-					/>
-				</Form.Item>
-				<Form.Item className='form-item'>
-					<Input
-						id='note_content'
-						name='note_content'
-						type='text'
-						placeholder='Note Content'
-						className={
-							errors.note_content &&
-							touched.note_content &&
-							'error_field'
-						}
-						onBlur={handleBlur}
-						value={values.note_content}
-						onChange={handleChange}
-					/>
-				</Form.Item>
-				<Form.Item className='form-item'>
-					<Switch
-						id='completed'
-						name='completed'
-						type='text'
-						onChange={() => setIsCompleted(!isCompleted)}
-						checked={isCompleted}
-						loading={isLoadingAddNote}
-					/>
-				</Form.Item>
-				<Form.Item className='form-item'>
-					<Button
-						type='primary'
-						onClick={() => handleSubmit()}
-						icon={<PlusOutlined style={{ fontSize: '.8rem' }} />}
-						disabled={isLoadingAddNote}>
-						Add
-						{isLoadingAddNote && (
-							<Spin size='small' indicator={antIcon} />
-						)}
-					</Button>
-				</Form.Item>
-			</Form>
+			<div className='container-addnote'>
+				<Title level={5} className='title-section'>
+					ADD NOTES
+				</Title>
+				<Form onSubmit={handleSubmit}>
+					<Row className='row-addnote-top'>
+						<Col className='col-addnote-topleft' span={16}>
+							<Form.Item className='form-item'>
+								<Input
+									id='note_title'
+									name='note_title'
+									type='text'
+									placeholder='Note Title'
+									className={
+										errors.note_title &&
+										touched.note_title &&
+										'error_field'
+									}
+									onBlur={handleBlur}
+									value={values.note_title}
+									onChange={handleChange}
+								/>
+							</Form.Item>
+						</Col>
+						<Col className='col-addnote-topright' span={8}>
+							{' '}
+							<Form.Item className='form-item'>
+								<Switch
+									id='completed'
+									name='completed'
+									type='text'
+									onChange={() =>
+										setIsCompleted(!isCompleted)
+									}
+									checked={isCompleted}
+									loading={isLoadingAddNote}
+								/>
+							</Form.Item>
+						</Col>
+					</Row>
+					<Row></Row>
+
+					<Form.Item className='form-item'>
+						<TextArea
+							rows={6}
+							id='note_content'
+							name='note_content'
+							type='text'
+							placeholder='Note Content'
+							className={
+								errors.note_content &&
+								touched.note_content &&
+								'error_field'
+							}
+							onBlur={handleBlur}
+							value={values.note_content}
+							onChange={handleChange}
+						/>
+					</Form.Item>
+
+					<Form.Item className='form-item button-add-form'>
+						<Button
+							id='new-note'
+							type='primary'
+							onClick={() => handleSubmit()}
+							icon={
+								<PlusOutlined style={{ fontSize: '.8rem' }} />
+							}
+							disabled={isLoadingAddNote}>
+							New Note
+							{isLoadingAddNote && (
+								<Spin size='small' indicator={antIcon} />
+							)}
+						</Button>
+					</Form.Item>
+				</Form>
+			</div>
 
 			<div className='add-errors'>
 				{errors.note_title && touched.note_title && (

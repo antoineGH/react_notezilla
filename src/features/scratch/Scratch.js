@@ -10,7 +10,7 @@ import {
 	selectIsLoadingDeleteScratch,
 	selectIsLoadingAddScratch,
 } from '../scratch/scratchSlice'
-import { Col, Skeleton } from 'antd'
+import { Skeleton } from 'antd'
 import ScratchPadComponent from '../../components/scratchPadComponent/ScratchPadComponent'
 
 export default function Scratch() {
@@ -43,21 +43,12 @@ export default function Scratch() {
 		if (hasErrorScratch) {
 			return ''
 		}
-		if (
-			isLoadingScratch ||
-			isLoadingAddScratch ||
-			isLoadingDeleteScratch ||
-			typeof scratch !== 'object'
-		) {
+		if (isLoadingScratch || isLoadingAddScratch || isLoadingDeleteScratch) {
 			return (
 				<Skeleton.Input
-					style={{
-						width: 120,
-						height: 20,
-						marginTop: 22,
-					}}
-					active
-					size={'default'}
+					style={{ width: 584, height: 298 }}
+					active={true}
+					size='large'
 				/>
 			)
 		}

@@ -69,20 +69,23 @@ export default function ScratchAddForm(props) {
 		<Menu className='menu-scratchpad'>
 			<Menu.Item key='1' className='submenu-scratchpad'>
 				<a onClick={(e) => onClickSaveScratch(e)} href='Save'>
-					<SaveOutlined style={{ fontSize: '.8rem' }} />
-					{'   '}Save ScratchPad
+					<SaveOutlined style={{ fontSize: '1rem' }} />
+					{'   '}
+					<Text strong>Save ScratchPad</Text>
 				</a>
 			</Menu.Item>
 			<Menu.Item key='2' className='submenu-scratchpad'>
 				<a onClick={(e) => onClickConvertNote(e)} href='Note'>
-					<RedoOutlined style={{ fontSize: '.8rem' }} />
-					{'   '}Convert to Note
+					<RedoOutlined style={{ fontSize: '1rem' }} />
+					{'   '}
+					<Text strong>Convert to Note</Text>
 				</a>
 			</Menu.Item>
 			<Menu.Item key='3' className='submenu-scratchpad'>
 				<a onClick={(e) => onClickDeleteScratch(e)} href='Reset'>
-					<ClearOutlined style={{ fontSize: '.8rem' }} />
-					{'   '}Clear ScratchPad
+					<ClearOutlined style={{ fontSize: '1rem' }} />
+					{'   '}
+					<Text strong>Clear ScratchPad</Text>
 				</a>
 			</Menu.Item>
 		</Menu>
