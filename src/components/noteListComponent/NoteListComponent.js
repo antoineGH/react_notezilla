@@ -82,7 +82,9 @@ export default function NoteListComponent(props) {
 					<p>Error retrieving your notes</p>
 				</Col>
 				<Col className='col-error-render-note'>
-					<Button onClick={handleTryAgain}>Try Again</Button>
+					<Button onClick={handleTryAgain} id='try-again'>
+						Try Again
+					</Button>
 				</Col>
 			</Row>
 		)

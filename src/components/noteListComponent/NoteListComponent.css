@@ -125,3 +125,21 @@
 	display: flex;
 	justify-content: center;
 }
+
+#try-again {
+	background-color: var(--green);
+	border: none;
+	height: 36px;
+	margin: auto;
+	color: white;
+	border-radius: 36px;
+}
+
+#try-again:hover {
+	background-color: var(--dark-green);
+}
+
+#try-again:focus {
+	border-color: var(--green);
+	box-shadow: 0 0 0 2px rgb(6 20 2 / 9%);
+}
