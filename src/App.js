@@ -7,7 +7,6 @@ import { loadNotes } from './features/note/NoteSlice'
 import SiderComponent from './components/siderComponent/SiderComponent'
 import AuthApp from './layouts/AuthApp'
 import UnAuthApp from './layouts/UnAuthApp'
-import FooterComponent from './components/footerComponent/FooterComponent'
 import { Layout } from 'antd'
 import './App.css'
 
@@ -36,7 +35,6 @@ function App() {
 								</Switch>
 							</div>
 						</Content>
-						<FooterComponent />
 					</Layout>
 				</Layout>
 			</BrowserRouter>

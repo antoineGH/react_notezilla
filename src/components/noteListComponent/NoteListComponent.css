@@ -115,3 +115,10 @@
 .ant-carousel .slick-prev::before {
 	content: '' !important;
 }
+
+.row-empty-note {
+	width: 100%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+}

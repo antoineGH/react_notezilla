@@ -67,9 +67,11 @@ export default function NoteListComponent(props) {
 
 	const renderEmptyNote = () => {
 		return (
-			<Col className='col-noresult'>
-				<p>No results from search</p>
-			</Col>
+			<Row className='row-empty-note'>
+				<Col className='col-noresult'>
+					<p>No notes</p>
+				</Col>
+			</Row>
 		)
 	}
 
