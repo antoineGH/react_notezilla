@@ -15,7 +15,7 @@ import {
 	Dropdown,
 	Button,
 	Tooltip,
-	Spin,
+	Skeleton,
 } from 'antd'
 import {
 	CaretUpOutlined,
@@ -88,16 +88,6 @@ export default function NoteListComponent(props) {
 		)
 	}
 
-	const renderLoadingNote = () => {
-		return (
-			<Row className='row-loading-note'>
-				<Col className='col-loading-render-note'>
-					<Spin />
-				</Col>
-			</Row>
-		)
-	}
-
 	const handleTryAgain = () => {
 		dispatch(loadNotes())
 	}
@@ -160,43 +150,86 @@ export default function NoteListComponent(props) {
 				</Col>
 			</Row>
 			{hasErrorNotes && renderErrorNote()}
-			{!isLoadingNotes ? (
-				<>
-					<Row className='row-notes'>
-						{notes.length >= 1
-							? []
-									.concat(notes)
-									.sort(selectSort)
-									.map((note) => {
-										return (
-											<Col
-												span={5}
-												key={note.note_id}
-												className='col-note'>
-												<NoteComponent
-													note={note}
-													handleToggleNote={
-														handleToggleNote
-													}
-													isLoadingToggleNote={
-														isLoadingToggleNote
-													}
-													handleDeleteNote={
-														handleDeleteNote
-													}
-													isLoadingDelete={
-														isLoadingDelete
-													}
-												/>
-											</Col>
-										)
-									})
-							: !hasErrorNotes && renderEmptyNote()}
-					</Row>
-				</>
-			) : (
-				renderLoadingNote()
-			)}
+
+			<>
+				<Row className='row-notes'>
+					{isLoadingNotes && (
+						<>
+							<Col className='col-note' span={5}>
+								<Skeleton
+									active
+									paragraph={{ rows: 11 }}
+									style={{
+										width: 200,
+									}}></Skeleton>
+							</Col>
+							<Col className='col-note' span={5}>
+								<Skeleton
+									active
+									paragraph={{ rows: 11 }}
+									style={{
+										width: 200,
+									}}></Skeleton>
+							</Col>
+							<Col className='col-note' span={5}>
+								<Skeleton
+									active
+									paragraph={{ rows: 11 }}
+									style={{
+										width: 200,
+									}}></Skeleton>
+							</Col>
+							<Col className='col-note' span={5}>
+								<Skeleton
+									active
+									paragraph={{ rows: 11 }}
+									style={{
+										width: 200,
+									}}></Skeleton>
+							</Col>
+							<Col className='col-note' span={5}>
+								<Skeleton
+									active
+									paragraph={{ rows: 11 }}
+									style={{
+										width: 200,
+									}}></Skeleton>
+							</Col>
+						</>
+					)}
+
+					{notes.length >= 1
+						? []
+								.concat(notes)
+								.sort(selectSort)
+								.map((note) => {
+									return (
+										<Col
+											span={5}
+											key={note.note_id}
+											className='col-note'>
+											<NoteComponent
+												note={note}
+												handleToggleNote={
+													handleToggleNote
+												}
+												isLoadingToggleNote={
+													isLoadingToggleNote
+												}
+												handleDeleteNote={
+													handleDeleteNote
+												}
+												isLoadingDelete={
+													isLoadingDelete
+												}
+												isLoadingNotes={isLoadingNotes}
+											/>
+										</Col>
+									)
+								})
+						: !hasErrorNotes && renderEmptyNote()}
+				</Row>
+			</>
 		</>
 	)
 }

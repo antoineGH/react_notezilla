@@ -72,6 +72,7 @@ export default function NoteAddForm(props) {
 							{' '}
 							<Form.Item className='form-item'>
 								<Switch
+									tabIndex='-1'
 									id='completed'
 									name='completed'
 									type='text'

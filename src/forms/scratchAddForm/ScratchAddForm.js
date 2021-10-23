@@ -122,6 +122,7 @@ export default function ScratchAddForm(props) {
 						<Tooltip title='More Actions'>
 							<Dropdown overlay={menu} placement='bottomRight'>
 								<Button
+									tabIndex='-1'
 									type='primary'
 									disabled={
 										isLoadingAddScratch ||
