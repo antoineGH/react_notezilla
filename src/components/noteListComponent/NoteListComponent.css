@@ -86,7 +86,7 @@
 	flex-direction: row !important;
 	gap: 0.7rem !important;
 	margin-top: 0.5rem !important;
-	overflow-x: scroll !important;
+	overflow-x: auto !important;
 	white-space: nowrap !important;
 	flex-flow: initial !important;
 }
