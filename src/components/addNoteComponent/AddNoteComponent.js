@@ -13,7 +13,7 @@ export default function AddNoteComponent() {
 			openNotificationWithIcon(
 				'info',
 				'No Changes',
-				'Todo was not saved.'
+				'Note was not saved.'
 			)
 			return
 		}

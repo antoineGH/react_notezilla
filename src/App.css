@@ -27,3 +27,11 @@
 .ant-spin-dot-item {
 	background-color: var(--green);
 }
+
+.ant-input:hover {
+	border-color: var(--green);
+}
+.ant-input:focus {
+	border-color: var(--green);
+	box-shadow: 0 0 0 2px rgb(6 20 2 / 9%);
+}

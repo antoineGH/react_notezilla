@@ -16,12 +16,10 @@ import {
 	Button,
 	Tooltip,
 	Spin,
-	Carousel,
 } from 'antd'
 import {
 	CaretUpOutlined,
 	CaretDownOutlined,
-	LeftOutlined,
 	RightOutlined,
 	FileAddOutlined,
 } from '@ant-design/icons'

@@ -40,3 +40,7 @@
 	justify-content: center !important;
 	margin: auto !important;
 }
+
+.div-error-input {
+	min-height: 22px;
+}

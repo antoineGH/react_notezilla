@@ -58,6 +58,14 @@ export default function NoteAddForm(props) {
 									value={values.note_title}
 									onChange={handleChange}
 								/>
+								<div className='div-error-input'>
+									{errors.note_title &&
+										touched.note_title && (
+											<Text type='danger'>
+												{errors.note_title}
+											</Text>
+										)}
+								</div>
 							</Form.Item>
 						</Col>
 						<Col className='col-addnote-topright' span={8}>
@@ -93,7 +101,12 @@ export default function NoteAddForm(props) {
 							onBlur={handleBlur}
 							value={values.note_content}
 							onChange={handleChange}
-						/>
+						/>{' '}
+						<div className='div-error-input'>
+							{errors.note_content && touched.note_content && (
+								<Text type='danger'>{errors.note_content}</Text>
+							)}
+						</div>
 					</Form.Item>
 
 					<Form.Item className='form-item button-add-form'>
@@ -114,14 +127,7 @@ export default function NoteAddForm(props) {
 				</Form>
 			</div>
 
-			<div className='add-errors'>
-				{errors.note_title && touched.note_title && (
-					<Text type='danger'>{errors.note_title}</Text>
-				)}
-				{errors.note_content && touched.note_content && (
-					<Text type='danger'>{errors.note_content}</Text>
-				)}
-			</div>
+			<div className='add-errors'></div>
 		</>
 	)
 }
