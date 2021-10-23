@@ -9,6 +9,7 @@
 	--gray-secondary-title: #333;
 	--gray-secondary-content: #737373;
 	--home-primary-text: #333;
+	--gray-title: #f8f8f8;
 }
 
 .ant-layout-content div {
@@ -17,7 +18,7 @@
 }
 
 .div-content {
-	padding: 0rem 0rem 1rem 3rem;
+	padding: 0rem 0rem 1rem 2rem;
 }
 
 .ant-switch-checked {

@@ -8,6 +8,8 @@
 .row-listnotes {
 	/* min-height: 30vh; */
 	/* background-color: rgb(255, 0, 200) !important; */
+	position: relative;
+	top: -6rem;
 }
 
 .col-listnotes {
@@ -21,6 +23,8 @@
 
 .row-scratchpad-add {
 	/* background-color: rgb(17, 0, 255) !important; */
+	position: relative;
+	top: -6rem;
 }
 
 .col-addnote {
