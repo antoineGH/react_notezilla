@@ -32,30 +32,41 @@ export const loadNotes = createAsyncThunk('notes/getAllNotes', async () => {
 export const addNote = createAsyncThunk('notes/addNote', async (args) => {
 	const { note_title, note_content, isCompleted } = args
 	const note = { note_title, note_content, completed: isCompleted }
-	const data = await authFetch('http://127.0.0.1:5000/api/notes', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(note),
-	})
-	const json = await data.json()
-	if (json.note.hasOwnProperty('note_id')) {
-		openNotificationWithIcon(
-			'success',
-			'Note Added',
-			`Note '${toTitle(
-				json.note.note_title
-			)}' has been added to your account.`
-		)
-	} else {
+	try {
+		const data = await authFetch('http://127.0.0.1:5000/api/notes', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(note),
+		})
+		const json = await data.json()
+		if (json.note.hasOwnProperty('note_id')) {
+			openNotificationWithIcon(
+				'success',
+				'Note Added',
+				`Note '${toTitle(
+					json.note.note_title
+				)}' has been added to your account.`
+			)
+		} else {
+			openNotificationWithIcon(
+				'error',
+				'Note Not Added',
+				'Error Adding Note to your account.'
+			)
+		}
+		return new Promise((resolve, reject) => {
+			json.note.hasOwnProperty('note_id') ? resolve(json) : reject()
+		})
+	} catch (error) {
 		openNotificationWithIcon(
 			'error',
 			'Note Not Added',
 			'Error Adding Note to your account.'
 		)
+		return new Promise.reject()
 	}
-	return json
 })
 
 export const deleteNote = createAsyncThunk(

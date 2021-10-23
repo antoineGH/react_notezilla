@@ -43,6 +43,14 @@
 	box-shadow: 0 0 0 2px rgb(6 20 2 / 9%);
 }
 
+#new-note:disabled {
+	color: rgba(255, 255, 255, 0.623);
+}
+
+#new-note .ant-spin {
+	color: white !important;
+}
+
 .button-add-form {
 	width: 50%;
 	display: flex !important;
