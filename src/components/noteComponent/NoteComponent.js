@@ -46,10 +46,6 @@ export default function NoteComponent(props) {
 		const day_dateNotFormatted = date_created.getDate()
 		const today_dateNotFormatted = date_now.getDate()
 		var delta = today_dateNotFormatted - day_dateNotFormatted
-		console.log(day_date)
-		console.log(today_dateNotFormatted)
-		console.log(day_dateNotFormatted)
-		console.log(delta)
 		if (delta < 1) {
 			formattedTime = 'Earlier Today'
 		} else if (delta < 2) {
@@ -76,8 +72,6 @@ export default function NoteComponent(props) {
 		}
 		return content
 	}
-
-	console.log(note.note_title)
 
 	return (
 		<>

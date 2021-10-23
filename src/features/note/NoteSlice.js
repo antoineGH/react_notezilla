@@ -81,7 +81,6 @@ export const deleteNote = createAsyncThunk(
 				'Note has not been deleted'
 			)
 		}
-		console.log(json)
 		return { json, note_id }
 	}
 )
