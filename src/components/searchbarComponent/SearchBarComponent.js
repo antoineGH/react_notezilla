@@ -22,11 +22,7 @@ export default function SearchBarComponent(props) {
 	}, [])
 
 	const onSearch = (searchText) => {
-		setOptions(
-			!searchText
-				? resetOptions(notes)
-				: checkExists(searchText, value, options, notes)
-		)
+		setOptions(!searchText ? resetOptions(notes) : checkExists(searchText, value, options, notes))
 	}
 
 	const onSelect = (data) => {

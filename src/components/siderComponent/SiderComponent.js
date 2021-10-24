@@ -2,38 +2,20 @@ import React from 'react'
 import { logout } from '../../utils/authHook'
 import { useHistory } from 'react-router'
 import { useSelector } from 'react-redux'
-import {
-	selectUserHasError,
-	selectUserLogged,
-} from '../../features/user/userSlice'
+import { selectUserHasError, selectUserLogged } from '../../features/user/userSlice'
+import { renderUserInput, renderUserAvatar } from './utils'
 import Search from '../../features/search/Search'
-import {
-	Avatar,
-	Typography,
-	Menu,
-	Dropdown,
-	Skeleton,
-	Col,
-	Layout,
-	Row,
-} from 'antd'
-import {
-	UserOutlined,
-	LogoutOutlined,
-	HomeOutlined,
-	LoginOutlined,
-	CaretDownOutlined,
-} from '@ant-design/icons'
+import { Typography, Menu, Dropdown, Col, Layout, Row } from 'antd'
+import { UserOutlined, LogoutOutlined, HomeOutlined, LoginOutlined } from '@ant-design/icons'
 import './SiderComponent.css'
 
 export default function SiderComponent(props) {
 	const { logged } = props
+	const user = useSelector((state) => selectUserLogged(state, logged))
+	const hasErrorUser = useSelector(selectUserHasError)
 	const history = useHistory()
 	const { Sider } = Layout
 	const { Text } = Typography
-
-	const user = useSelector((state) => selectUserLogged(state, logged))
-	const hasErrorUser = useSelector(selectUserHasError)
 
 	const menuAuth = () => {
 		return (
@@ -85,62 +67,13 @@ export default function SiderComponent(props) {
 			</Menu>
 		)
 	}
-	const renderUserInput = () => {
-		if (logged) {
-			if (hasErrorUser) return ''
-			else if (user)
-				return (
-					<>
-						<Text className='avatar-username' strong>
-							{user['first_name']} {user['last_name']}
-						</Text>
-						<CaretDownOutlined
-							style={{ fontSize: '.8rem', color: 'var(--green)' }}
-						/>
-					</>
-				)
-			return (
-				<Skeleton.Input
-					style={{
-						width: 120,
-						height: 22,
-						marginLeft: '1rem',
-					}}
-					active
-					size={'default'}
-				/>
-			)
-		} else {
-			return (
-				<Text className='avatar-username' strong>
-					Not Connected
-				</Text>
-			)
-		}
-	}
-	const renderUserAvatar = () => {
-		if (logged) {
-			if (user) return <Avatar shape='square' icon={<UserOutlined />} />
-			return (
-				<Skeleton.Input
-					style={{
-						width: 32,
-						height: 32,
-					}}
-					active
-				/>
-			)
-		} else {
-			return <Avatar shape='square' icon={<UserOutlined />} />
-		}
-	}
 
 	return (
 		<Sider className='sider-main'>
 			<Dropdown overlay={logged ? menuAuth() : menuUnAuth()}>
 				<Row className='row-user-sider'>
-					<Col className='col-user-avatar'>{renderUserAvatar()}</Col>
-					<Col className='col-user-user'>{renderUserInput()}</Col>
+					<Col className='col-user-avatar'>{renderUserAvatar(logged, user)}</Col>
+					<Col className='col-user-user'>{renderUserInput(logged, hasErrorUser, user)}</Col>
 				</Row>
 			</Dropdown>
 			<Search logged={logged} />
