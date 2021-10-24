@@ -4,11 +4,19 @@ import { useHistory } from 'react-router'
 import { useSelector } from 'react-redux'
 import {
 	selectUserHasError,
-	selectUserIsLoading,
 	selectUserLogged,
 } from '../../features/user/userSlice'
 import Search from '../../features/search/Search'
-import { Avatar, Typography, Menu, Dropdown, Skeleton, Col, Layout } from 'antd'
+import {
+	Avatar,
+	Typography,
+	Menu,
+	Dropdown,
+	Skeleton,
+	Col,
+	Layout,
+	Row,
+} from 'antd'
 import {
 	UserOutlined,
 	LogoutOutlined,
@@ -25,7 +33,6 @@ export default function SiderComponent(props) {
 	const { Text } = Typography
 
 	const user = useSelector((state) => selectUserLogged(state, logged))
-	const isLoadingUser = useSelector(selectUserIsLoading)
 	const hasErrorUser = useSelector(selectUserHasError)
 
 	const menuAuth = () => {
@@ -78,67 +85,63 @@ export default function SiderComponent(props) {
 			</Menu>
 		)
 	}
-
 	const renderUserInput = () => {
-		if (hasErrorUser) {
-			return (
-				<Col>
-					<p>Error Fetching the API.</p>
-				</Col>
-			)
-		}
-		if (isLoadingUser) {
+		if (logged) {
+			if (hasErrorUser) return ''
+			else if (user)
+				return (
+					<>
+						<Text className='avatar-username' strong>
+							{user['first_name']} {user['last_name']}
+						</Text>
+						<CaretDownOutlined
+							style={{ fontSize: '.8rem', color: 'var(--green)' }}
+						/>
+					</>
+				)
 			return (
 				<Skeleton.Input
 					style={{
 						width: 120,
-						height: 20,
-						marginTop: 22,
+						height: 22,
+						marginLeft: '1rem',
 					}}
 					active
 					size={'default'}
 				/>
 			)
-		}
-		if (user) {
-			return `${user['first_name']} ${user['last_name']}`
+		} else {
+			return (
+				<Text className='avatar-username' strong>
+					Not Connected
+				</Text>
+			)
 		}
 	}
-
 	const renderUserAvatar = () => {
-		if (hasErrorUser) {
-		}
-		if (isLoadingUser) {
+		if (logged) {
+			if (user) return <Avatar shape='square' icon={<UserOutlined />} />
 			return (
 				<Skeleton.Input
 					style={{
 						width: 32,
 						height: 32,
-						marginTop: 16,
-						marginRight: 24,
 					}}
 					active
-					size={'default'}
 				/>
 			)
+		} else {
+			return <Avatar shape='square' icon={<UserOutlined />} />
 		}
-		return <Avatar shape='square' icon={<UserOutlined />} />
 	}
 
 	return (
 		<Sider className='sider-main'>
 			<Dropdown overlay={logged ? menuAuth() : menuUnAuth()}>
-				<span className='container-avatar'>
-					{logged ? (
-						renderUserAvatar()
-					) : (
-						<Avatar shape='square' icon={<UserOutlined />} />
-					)}
-					<Text className='avatar-username' strong>
-						{logged ? renderUserInput() : 'Not Connected'}{' '}
-						<CaretDownOutlined style={{ fontSize: '.6rem' }} />
-					</Text>
-				</span>
+				<Row className='row-user-sider'>
+					<Col className='col-user-avatar'>{renderUserAvatar()}</Col>
+					<Col className='col-user-user'>{renderUserInput()}</Col>
+				</Row>
 			</Dropdown>
 			<Search logged={logged} />
 		</Sider>
