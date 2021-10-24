@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { checkExists, resetOptions } from './utils'
 import { Input, AutoComplete } from 'antd'
 import './SearchBarComponent.css'
 import { SearchOutlined } from '@ant-design/icons'
@@ -6,45 +7,9 @@ import { SearchOutlined } from '@ant-design/icons'
 export default function SearchBarComponent(props) {
 	const { handleSearch, notes } = props
 	const [searchParam, setSearchParam] = useState('')
-	const { Search } = Input
-
 	const [value, setValue] = useState('')
 	const [options, setOptions] = useState([])
-
-	const checkExists = (str) => {
-		if (str.length < value.length) {
-			const resetOptions = []
-			notes.forEach((note) => {
-				resetOptions.push({ value: note.note_title })
-			})
-			const newValues = []
-			Object.values(resetOptions).forEach((value) => {
-				if (value.value.includes(str)) {
-					newValues.push({ value: value.value })
-				}
-			})
-			return newValues
-		}
-		if (options) {
-			const newValues = []
-			Object.values(options).forEach((value) => {
-				if (value.value.includes(str)) {
-					newValues.push({ value: value.value })
-				}
-			})
-			return newValues
-		} else {
-			return { value: [] }
-		}
-	}
-
-	const resetOptions = () => {
-		const options = []
-		notes.forEach((note) => {
-			options.push({ value: note.note_title })
-		})
-		return options
-	}
+	const { Search } = Input
 
 	useEffect(() => {
 		console.log('useEffect - Init Note as Option')
@@ -57,7 +22,7 @@ export default function SearchBarComponent(props) {
 	}, [])
 
 	const onSearch = (searchText) => {
-		setOptions(!searchText ? resetOptions() : checkExists(searchText))
+		setOptions(!searchText ? resetOptions(notes) : checkExists(searchText, value, options, notes))
 	}
 
 	const onSelect = (data) => {

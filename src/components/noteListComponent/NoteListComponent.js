@@ -1,28 +1,10 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {
-	selectIsLoadingNotes,
-	selectHasErrorNotes,
-	loadNotes,
-} from '../../features/note/NoteSlice'
-
+import { selectIsLoadingNotes, selectHasErrorNotes, loadNotes } from '../../features/note/NoteSlice'
 import NoteComponent from '../noteComponent/NoteComponent'
-import {
-	Col,
-	Row,
-	Typography,
-	Menu,
-	Dropdown,
-	Button,
-	Tooltip,
-	Skeleton,
-} from 'antd'
-import {
-	CaretUpOutlined,
-	CaretDownOutlined,
-	RightOutlined,
-	FileAddOutlined,
-} from '@ant-design/icons'
+import { selectSort } from './utils'
+import { Col, Row, Typography, Menu, Dropdown, Button, Tooltip, Skeleton } from 'antd'
+import { CaretUpOutlined, CaretDownOutlined, RightOutlined, FileAddOutlined } from '@ant-design/icons'
 import './NoteListComponent.css'
 
 export default function NoteListComponent(props) {
@@ -42,28 +24,6 @@ export default function NoteListComponent(props) {
 	const hasErrorNotes = useSelector(selectHasErrorNotes)
 	const dispatch = useDispatch()
 	const { Title } = Typography
-
-	const sortDateAsc = (a, b) => {
-		return a.note_id > b.note_id ? 1 : -1
-	}
-	const sortDateDesc = (a, b) => {
-		return a.note_id < b.note_id ? 1 : -1
-	}
-
-	const sortCompletedAsc = (a, b) => {
-		return a.completed === b.completed ? 0 : a.completed ? -1 : 1
-	}
-
-	const sortCompletedDesc = (a, b) => {
-		return a.completed === b.completed ? 0 : a.completed ? 1 : -1
-	}
-
-	const selectSort = (a, b) => {
-		if (sort && sortBy === 'Status') return sortCompletedAsc(a, b)
-		if (!sort && sortBy === 'Status') return sortCompletedDesc(a, b)
-		if (sort && sortBy === 'Date') return sortDateAsc(a, b)
-		return sortDateDesc(a, b)
-	}
 
 	const renderEmptyNote = () => {
 		return (
@@ -113,20 +73,12 @@ export default function NoteListComponent(props) {
 			<Row className='row-notelist'>
 				<Col className='col-notelist-left' span={20}>
 					<Title level={5} className='title-section'>
-						NOTES{' '}
-						<RightOutlined
-							style={{ fontSize: '.8rem', color: 'var(--green)' }}
-						/>
+						NOTES <RightOutlined style={{ fontSize: '.8rem', color: 'var(--green)' }} />
 					</Title>
 				</Col>
 				<Col className='col-addnote-right' span={4}>
 					<Tooltip title='New Note'>
-						<Button
-							type='primary'
-							icon={
-								<FileAddOutlined style={{ fontSize: '1rem' }} />
-							}
-						/>
+						<Button type='primary' icon={<FileAddOutlined style={{ fontSize: '1rem' }} />} />
 					</Tooltip>
 				</Col>
 			</Row>
@@ -206,24 +158,13 @@ export default function NoteListComponent(props) {
 								.sort(selectSort)
 								.map((note) => {
 									return (
-										<Col
-											span={5}
-											key={note.note_id}
-											className='col-note'>
+										<Col span={5} key={note.note_id} className='col-note'>
 											<NoteComponent
 												note={note}
-												handleToggleNote={
-													handleToggleNote
-												}
-												isLoadingToggleNote={
-													isLoadingToggleNote
-												}
-												handleDeleteNote={
-													handleDeleteNote
-												}
-												isLoadingDelete={
-													isLoadingDelete
-												}
+												handleToggleNote={handleToggleNote}
+												isLoadingToggleNote={isLoadingToggleNote}
+												handleDeleteNote={handleDeleteNote}
+												isLoadingDelete={isLoadingDelete}
 												isLoadingNotes={isLoadingNotes}
 											/>
 										</Col>
