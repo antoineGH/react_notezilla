@@ -53,6 +53,7 @@ export default function SearchBarComponent(props) {
 				return [...previousState, { value: note.note_title }]
 			})
 		})
+		// eslint-disable-next-line
 	}, [])
 
 	const onSearch = (searchText) => {
