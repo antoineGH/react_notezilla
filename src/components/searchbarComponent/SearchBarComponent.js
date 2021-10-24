@@ -12,7 +12,6 @@ export default function SearchBarComponent(props) {
 	const { Search } = Input
 
 	useEffect(() => {
-		console.log('useEffect - Init Note as Option')
 		notes.forEach((note) => {
 			setOptions((previousState) => {
 				return [...previousState, { value: note.note_title }]

@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectIsLoadingNotes, selectHasErrorNotes, loadNotes } from '../../features/note/NoteSlice'
 import NoteComponent from '../noteComponent/NoteComponent'
-import { selectSort } from './utils'
+import { sortDateAsc, sortDateDesc, sortCompletedAsc, sortCompletedDesc } from './utils'
 import { Col, Row, Typography, Menu, Dropdown, Button, Tooltip, Skeleton } from 'antd'
 import { CaretUpOutlined, CaretDownOutlined, RightOutlined, FileAddOutlined } from '@ant-design/icons'
 import './NoteListComponent.css'
@@ -48,6 +48,13 @@ export default function NoteListComponent(props) {
 				</Col>
 			</Row>
 		)
+	}
+
+	const selectSort = (a, b) => {
+		if (sort && sortBy === 'Status') return sortCompletedAsc(a, b)
+		if (!sort && sortBy === 'Status') return sortCompletedDesc(a, b)
+		if (sort && sortBy === 'Date') return sortDateAsc(a, b)
+		return sortDateDesc(a, b)
 	}
 
 	const handleTryAgain = () => {
