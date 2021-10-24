@@ -12,6 +12,19 @@ export default function SearchBarComponent(props) {
 	const [options, setOptions] = useState([])
 
 	const checkExists = (str) => {
+		if (str.length < value.length) {
+			const resetOptions = []
+			notes.forEach((note) => {
+				resetOptions.push({ value: note.note_title })
+			})
+			const newValues = []
+			Object.values(resetOptions).forEach((value) => {
+				if (value.value.includes(str)) {
+					newValues.push({ value: value.value })
+				}
+			})
+			return newValues
+		}
 		if (options) {
 			const newValues = []
 			Object.values(options).forEach((value) => {
@@ -43,7 +56,6 @@ export default function SearchBarComponent(props) {
 	}, [])
 
 	const onSearch = (searchText) => {
-		console.log('onSearch => ' + searchText)
 		setOptions(!searchText ? resetOptions() : checkExists(searchText))
 	}
 
