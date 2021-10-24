@@ -6,7 +6,7 @@ export const checkExists = (str, value, options, notes) => {
 		})
 		const newValues = []
 		Object.values(resetOptions).forEach((value) => {
-			if (value.value.includes(str)) {
+			if (value.value.toLowerCase().includes(str.toLowerCase())) {
 				newValues.push({ value: value.value })
 			}
 		})
@@ -15,7 +15,7 @@ export const checkExists = (str, value, options, notes) => {
 	if (options) {
 		const newValues = []
 		Object.values(options).forEach((value) => {
-			if (value.value.includes(str)) {
+			if (value.value.toLowerCase().includes(str.toLowerCase())) {
 				newValues.push({ value: value.value })
 			}
 		})
