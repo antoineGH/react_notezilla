@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { selectSearch } from '../../features/search/searchSlice'
 import { checkExists, resetOptions } from './utils'
-import { Input, AutoComplete, Row, Col, Button } from 'antd'
+import { AutoComplete, Row, Col, Button } from 'antd'
 import './SearchBarComponent.css'
-import { SearchOutlined } from '@ant-design/icons'
+import { SearchOutlined, CloseOutlined } from '@ant-design/icons'
 
 export default function SearchBarComponent(props) {
 	const { handleSearch, notes } = props
-	const [searchParam, setSearchParam] = useState('')
 	const [value, setValue] = useState('')
 	const [options, setOptions] = useState([])
-	const { Search } = Input
+	const searchParam = useSelector(selectSearch)
+	console.log(searchParam)
 
 	useEffect(() => {
 		notes.forEach((note) => {
@@ -33,30 +35,42 @@ export default function SearchBarComponent(props) {
 	}
 
 	return (
-		<Row className='row-search-component'>
-			<Col span={18}>
-				<AutoComplete
-					className='search-component'
-					id='search-component'
-					value={value}
-					options={options}
-					style={{
-						width: 200,
-					}}
-					onSelect={onSelect}
-					onSearch={onSearch}
-					onChange={onChange}
-					placeholder='Search'
-				/>
-			</Col>
-			<Col span={4}>
-				<Button
-					id='search-button'
-					type='primary'
-					onClick={() => handleSearch(value)}
-					icon={<SearchOutlined style={{ fontSize: '1rem' }} />}
-				/>
-			</Col>
-		</Row>
+		<>
+			<Row className='row-search-component'>
+				<Col span={18}>
+					<AutoComplete
+						className='search-component'
+						id='search-component'
+						value={value}
+						options={options}
+						style={{
+							width: 200,
+						}}
+						onSelect={onSelect}
+						onSearch={onSearch}
+						onChange={onChange}
+						placeholder='Search'
+					/>
+				</Col>
+				<Col span={4}>
+					<Button
+						id='search-button'
+						type='primary'
+						onClick={() => handleSearch(value)}
+						icon={<SearchOutlined style={{ fontSize: '1rem' }} />}
+					/>
+				</Col>
+			</Row>
+			{searchParam && (
+				<Row className='row-delete-search'>
+					<Col>
+						<Button id='button-delete-search' type='primary' onClick={() => handleSearch(value)}>
+							{searchParam}
+							<CloseOutlined />
+						</Button>
+					</Col>
+				</Row>
+			)}
+		</>
 	)
 }

@@ -59,3 +59,32 @@
 #search-button:disabled {
 	color: rgba(255, 255, 255, 0.623);
 }
+
+.row-delete-search {
+	display: flex;
+	justify-content: center;
+	margin-top: 0.5rem;
+}
+
+#button-delete-search {
+	font-size: 0.75rem;
+	border-radius: 36px;
+	height: 22px;
+	display: flex !important;
+	justify-content: center !important;
+	align-items: center !important;
+	background-color: var(--green);
+	border: none;
+}
+
+#button-delete-search:hover {
+	background-color: var(--dark-green);
+}
+
+#button-delete-search:after {
+	-webkit-animation: none !important;
+	-moz-animation: none !important;
+	-o-animation: none !important;
+	-ms-animation: none !important;
+	animation: none !important;
+}
