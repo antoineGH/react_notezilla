@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { checkExists, resetOptions } from './utils'
-import { Input, AutoComplete } from 'antd'
+import { Input, AutoComplete, Row, Col, Button } from 'antd'
 import './SearchBarComponent.css'
 import { SearchOutlined } from '@ant-design/icons'
 
@@ -25,7 +25,7 @@ export default function SearchBarComponent(props) {
 	}
 
 	const onSelect = (data) => {
-		console.log('onSelect', data)
+		handleSearch(data)
 	}
 
 	const onChange = (data) => {
@@ -33,30 +33,30 @@ export default function SearchBarComponent(props) {
 	}
 
 	return (
-		<>
-			<Search
-				className='search-component'
-				placeholder='Search'
-				type='text'
-				id='search'
-				icon={<SearchOutlined />}
-				onSearch={() => handleSearch(searchParam)}
-				onChange={(e) => setSearchParam(e.target.value)}
-				value={searchParam}
-				enterButton
-			/>
-
-			<AutoComplete
-				value={value}
-				options={options}
-				style={{
-					width: 200,
-				}}
-				onSelect={onSelect}
-				onSearch={onSearch}
-				onChange={onChange}
-				placeholder='control mode'
-			/>
-		</>
+		<Row className='row-search-component'>
+			<Col span={18}>
+				<AutoComplete
+					className='search-component'
+					id='search-component'
+					value={value}
+					options={options}
+					style={{
+						width: 200,
+					}}
+					onSelect={onSelect}
+					onSearch={onSearch}
+					onChange={onChange}
+					placeholder='Search'
+				/>
+			</Col>
+			<Col span={4}>
+				<Button
+					id='search-button'
+					type='primary'
+					onClick={() => handleSearch(value)}
+					icon={<SearchOutlined style={{ fontSize: '1rem' }} />}
+				/>
+			</Col>
+		</Row>
 	)
 }

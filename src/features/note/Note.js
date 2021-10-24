@@ -8,6 +8,7 @@ import {
 	selectNotes,
 	toggleCheck,
 } from './NoteSlice'
+import { selectSearch } from '../search/searchSlice'
 import NoteListComponent from '../../components/noteListComponent/NoteListComponent'
 import AddNoteComponent from '../../components/addNoteComponent/AddNoteComponent'
 import Scratch from '../../features/scratch/Scratch'
@@ -17,6 +18,7 @@ import './Note.css'
 export default function Note() {
 	const dispatch = useDispatch()
 	const notes = useSelector(selectNotes)
+	const searchParam = useSelector(selectSearch)
 	const isLoadingDeleteNote = useSelector(selectIsLoadingDeleteNote)
 	const isLoadingToggleNote = useSelector(selectIsLoadingToggleNote)
 
@@ -42,13 +44,23 @@ export default function Note() {
 		return 'Oldest'
 	}
 
+	const search = () => {
+		const notesSearch = notes.filter((note) => {
+			return (
+				note.note_title.toLowerCase().includes(searchParam.toLowerCase()) ||
+				note.note_content.toLowerCase().includes(searchParam.toLowerCase())
+			)
+		})
+		return notesSearch
+	}
+
 	return (
 		<div className='container-content'>
 			<>
 				<Row className='row-listnotes'>
 					<Col className='col-listnotes'>
 						<NoteListComponent
-							notes={notes}
+							notes={searchParam ? search() : notes}
 							handleDeleteNote={handleDeleteNote}
 							handleToggleNote={handleToggleNote}
 							isLoadingDelete={isLoadingDeleteNote}

@@ -10,14 +10,9 @@ export default function Search(props) {
 	const notes = useSelector(selectNotes)
 
 	const handleSearch = (searchParam) => {
+		console.log('handle search => ' + searchParam)
 		dispatch(setSearch(searchParam))
 	}
 
-	return (
-		<>
-			{logged && notes.length >= 1 ? (
-				<SearchBarComponent notes={notes} handleSearch={handleSearch} />
-			) : null}
-		</>
-	)
+	return <>{logged && notes.length >= 1 ? <SearchBarComponent notes={notes} handleSearch={handleSearch} /> : null}</>
 }
