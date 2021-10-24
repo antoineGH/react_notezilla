@@ -14,5 +14,15 @@ export default function Search(props) {
 		dispatch(setSearch(searchParam))
 	}
 
-	return <>{logged && notes.length >= 1 ? <SearchBarComponent notes={notes} handleSearch={handleSearch} /> : null}</>
+	const handleResetSearch = () => {
+		dispatch(setSearch(''))
+	}
+
+	return (
+		<>
+			{logged && notes.length >= 1 ? (
+				<SearchBarComponent notes={notes} handleSearch={handleSearch} handleResetSearch={handleResetSearch} />
+			) : null}
+		</>
+	)
 }

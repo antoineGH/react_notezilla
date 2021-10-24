@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { selectSearch } from '../../features/search/searchSlice'
+import { selectSearch, setSearch } from '../../features/search/searchSlice'
 import { checkExists, resetOptions } from './utils'
 import { AutoComplete, Row, Col, Button } from 'antd'
 import './SearchBarComponent.css'
 import { SearchOutlined, CloseOutlined } from '@ant-design/icons'
 
 export default function SearchBarComponent(props) {
-	const { handleSearch, notes } = props
+	const { handleSearch, handleResetSearch, notes } = props
+	const dispatch = useDispatch()
 	const [value, setValue] = useState('')
 	const [options, setOptions] = useState([])
 	const searchParam = useSelector(selectSearch)
-	console.log(searchParam)
 
 	useEffect(() => {
 		notes.forEach((note) => {
@@ -21,6 +21,12 @@ export default function SearchBarComponent(props) {
 		})
 		// eslint-disable-next-line
 	}, [])
+
+	useEffect(() => {
+		if (value.length === 0) {
+			dispatch(setSearch(''))
+		}
+	}, [value, dispatch])
 
 	const onSearch = (searchText) => {
 		setOptions(!searchText ? resetOptions(notes) : checkExists(searchText, value, options, notes))
@@ -64,7 +70,7 @@ export default function SearchBarComponent(props) {
 			{searchParam && (
 				<Row className='row-delete-search'>
 					<Col>
-						<Button id='button-delete-search' type='primary' onClick={() => handleSearch(value)}>
+						<Button id='button-delete-search' type='primary' onClick={handleResetSearch}>
 							{searchParam}
 							<CloseOutlined />
 						</Button>
