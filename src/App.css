@@ -36,3 +36,10 @@
 	border-color: var(--green);
 	box-shadow: 0 0 0 2px rgb(6 20 2 / 9%);
 }
+
+.ant-btn-link {
+	color: var(--green);
+}
+.ant-btn-link:hover {
+	color: var(--dark-green);
+}

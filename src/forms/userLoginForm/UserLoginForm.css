@@ -5,8 +5,38 @@ h1 {
 .container-form {
 	max-width: 400px;
 	margin: auto;
+	margin-top: 4rem !important;
 	display: flex;
-	flex-direction: column;
+	flex-direction: column !important;
+	width: 100%;
+}
+
+.col-login-title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 2rem;
+}
+
+.col-login-input {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	width: 80%;
+	height: 5rem;
+}
+
+.col-login-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	width: 100%;
+	margin-bottom: 1rem;
+}
+
+.form-item-login {
 	width: 100%;
 }
 
@@ -34,4 +64,26 @@ h1 {
 	pointer-events: none;
 	background: rgba(0, 0, 255, 0);
 	padding-left: 0.4rem;
+}
+
+#btn-login {
+	font-size: 14px;
+	border-radius: 36px;
+	display: flex !important;
+	justify-content: center !important;
+	align-items: center !important;
+	background-color: var(--green);
+	border: none;
+}
+
+#btn-login:hover {
+	background-color: var(--dark-green);
+}
+
+#btn-login:after {
+	-webkit-animation: none !important;
+	-moz-animation: none !important;
+	-o-animation: none !important;
+	-ms-animation: none !important;
+	animation: none !important;
 }
