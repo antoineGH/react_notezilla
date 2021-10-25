@@ -43,3 +43,20 @@
 .ant-btn-link:hover {
 	color: var(--dark-green);
 }
+
+#email:focus,
+#password:focus,
+#confirm_password:focus,
+#first_name:focus,
+#last_name:focus {
+	border-color: #000000;
+	box-shadow: 0 0 0 2px rgb(6 20 2 / 9%);
+}
+
+#email:hover,
+#password:hover,
+#confirm_password:hover,
+#first_name:hover,
+#last_name:hover {
+	border-color: #000000;
+}

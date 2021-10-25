@@ -116,9 +116,6 @@ export default function UserLoginForm() {
 					</Col>
 				</Row>
 			</Form>
-			<div className='container-form'></div>
-
-			<div className='container-register'></div>
 		</Row>
 	)
 }
