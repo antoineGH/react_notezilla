@@ -25,16 +25,8 @@ export default function User() {
 	const isLoadingUpdateUser = useSelector(selectUpdateUserIsLoading)
 
 	const handleUpdateAccount = (firstName, lastName, password) => {
-		if (
-			firstName === user.first_name &&
-			lastName === user.last_name &&
-			!password
-		) {
-			openNotificationWithIcon(
-				'info',
-				'No Changes',
-				'No modifications made on your account.'
-			)
+		if (firstName === user.first_name && lastName === user.last_name && !password) {
+			openNotificationWithIcon('info', 'No Changes', 'No modifications made on your account.')
 			return
 		}
 		firstName = firstName.toLowerCase()
@@ -59,13 +51,7 @@ export default function User() {
 				<Card
 					className='profile-picture-card'
 					style={{ width: 350 }}
-					cover={
-						<Avatar
-							shape='square'
-							size={86}
-							icon={<UserOutlined />}
-						/>
-					}>
+					cover={<Avatar shape='square' size={86} icon={<UserOutlined />} />}>
 					<hr />
 					<Skeleton loading={isLoadingUser} active></Skeleton>
 				</Card>

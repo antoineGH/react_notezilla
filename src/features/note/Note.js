@@ -81,7 +81,6 @@ export default function Note() {
 						<Scratch />
 					</Col>
 				</Row>
-				<Row></Row>
 			</>
 		</div>
 	)

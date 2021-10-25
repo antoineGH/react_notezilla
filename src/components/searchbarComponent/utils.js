@@ -1,5 +1,3 @@
-import uniqBy from 'lodash/uniqBy'
-
 export const resetOptions = (notes) => {
 	const options = []
 	notes.forEach((note) => {
