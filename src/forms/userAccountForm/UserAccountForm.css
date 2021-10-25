@@ -82,3 +82,28 @@
 #udpate-user div {
 	color: white !important;
 }
+
+.ant-modal {
+	left: 110px;
+}
+
+.ant-modal-footer .ant-btn-primary {
+	font-size: 14px !important;
+	border-radius: 36px !important;
+	background-color: var(--green) !important;
+	border: none !important;
+}
+
+.ant-modal-footer .ant-btn {
+	font-size: 14px !important;
+	border-radius: 36px !important;
+}
+
+.ant-modal-footer .ant-btn:nth-child(1):hover {
+	background-color: rgb(252, 252, 252) !important;
+	color: black !important;
+	border-color: rgba(0, 0, 0, 0.39) !important;
+}
+.ant-modal-footer .ant-btn:nth-child(2):hover {
+	background-color: var(--dark-green) !important;
+}

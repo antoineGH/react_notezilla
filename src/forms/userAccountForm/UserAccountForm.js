@@ -188,6 +188,7 @@ export default function UserAccountForm(props) {
 				</Form>
 			</Card>
 			<Modal
+				id='modal-delete-account'
 				title='Delete Account'
 				visible={isModalVisible}
 				onOk={handleOk}
