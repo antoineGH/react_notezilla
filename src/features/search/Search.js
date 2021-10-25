@@ -10,7 +10,6 @@ export default function Search(props) {
 	const notes = useSelector(selectNotes)
 
 	const handleSearch = (searchParam) => {
-		console.log('handle search => ' + searchParam)
 		dispatch(setSearch(searchParam))
 	}
 

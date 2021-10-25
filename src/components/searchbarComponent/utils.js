@@ -1,29 +1,4 @@
-export const checkExists = (str, value, options, notes) => {
-	if (str.length < value.length) {
-		const resetOptions = []
-		notes.forEach((note) => {
-			resetOptions.push({ value: note.note_title })
-		})
-		const newValues = []
-		Object.values(resetOptions).forEach((value) => {
-			if (value.value.toLowerCase().includes(str.toLowerCase())) {
-				newValues.push({ value: value.value })
-			}
-		})
-		return newValues
-	}
-	if (options) {
-		const newValues = []
-		Object.values(options).forEach((value) => {
-			if (value.value.toLowerCase().includes(str.toLowerCase())) {
-				newValues.push({ value: value.value })
-			}
-		})
-		return newValues
-	} else {
-		return { value: [] }
-	}
-}
+import uniqBy from 'lodash/uniqBy'
 
 export const resetOptions = (notes) => {
 	const options = []

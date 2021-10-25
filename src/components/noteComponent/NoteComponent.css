@@ -6,6 +6,8 @@
 .note-content {
 	color: var(--gray-secondary-content) !important;
 	font-size: 0.9rem;
+	overflow-wrap: break-word;
+	white-space: normal;
 }
 
 .note-date {

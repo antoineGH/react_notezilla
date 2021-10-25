@@ -1,7 +1,8 @@
+import uniqBy from 'lodash/uniqBy'
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectSearch, setSearch } from '../../features/search/searchSlice'
-import { checkExists, resetOptions } from './utils'
+import { resetOptions } from './utils'
 import { AutoComplete, Row, Col, Button } from 'antd'
 import './SearchBarComponent.css'
 import { SearchOutlined, CloseOutlined } from '@ant-design/icons'
@@ -16,7 +17,7 @@ export default function SearchBarComponent(props) {
 	useEffect(() => {
 		notes.forEach((note) => {
 			setOptions((previousState) => {
-				return [...previousState, { value: note.note_title }]
+				return uniqBy([...previousState, { value: note.note_title }], 'value')
 			})
 		})
 		// eslint-disable-next-line
@@ -29,7 +30,7 @@ export default function SearchBarComponent(props) {
 	}, [value, dispatch])
 
 	const onSearch = (searchText) => {
-		setOptions(!searchText ? resetOptions(notes) : checkExists(searchText, value, options, notes))
+		setOptions(!searchText ? resetOptions(notes) : checkExists(searchText))
 	}
 
 	const onSelect = (data) => {
@@ -38,6 +39,38 @@ export default function SearchBarComponent(props) {
 
 	const onChange = (data) => {
 		setValue(data)
+	}
+
+	const checkExists = (str) => {
+		if (str.length < value.length) {
+			const resetOptions = []
+			notes.forEach((note) => {
+				resetOptions.push({ value: note.note_title })
+			})
+			const newValues = []
+			Object.values(resetOptions).forEach((value) => {
+				if (value.value.toLowerCase().includes(str.toLowerCase())) {
+					newValues.push({ value: value.value })
+				}
+			})
+			return uniqBy(newValues, Object.entries.value)
+		}
+		if (options) {
+			const newValues = []
+			Object.values(options).forEach((value) => {
+				if (value.value.toLowerCase().includes(str.toLowerCase())) {
+					newValues.push({ value: value.value })
+				}
+			})
+			return uniqBy(newValues, Object.entries.value)
+		} else {
+			return { value: [] }
+		}
+	}
+
+	const clickResetSearch = () => {
+		// handleResetSearch()
+		setValue('')
 	}
 
 	return (
@@ -70,7 +103,7 @@ export default function SearchBarComponent(props) {
 			{searchParam && (
 				<Row className='row-delete-search'>
 					<Col>
-						<Button id='button-delete-search' type='primary' onClick={handleResetSearch}>
+						<Button id='button-delete-search' type='primary' onClick={clickResetSearch}>
 							{searchParam}
 							<CloseOutlined />
 						</Button>
