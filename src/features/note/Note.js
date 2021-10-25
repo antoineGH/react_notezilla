@@ -22,7 +22,7 @@ export default function Note() {
 	const isLoadingDeleteNote = useSelector(selectIsLoadingDeleteNote)
 	const isLoadingToggleNote = useSelector(selectIsLoadingToggleNote)
 
-	const [sort, setSort] = useState(true)
+	const [sort, setSort] = useState(false)
 	const [sortBy, setSortBy] = useState('Date')
 
 	useEffect(() => {
@@ -40,8 +40,8 @@ export default function Note() {
 	const sortStatus = () => {
 		if (sort && sortBy === 'Status') return 'Completed'
 		if (!sort && sortBy === 'Status') return 'Not Completed'
-		if (sort && sortBy === 'Date') return 'Newest'
-		return 'Oldest'
+		if (sort && sortBy === 'Date') return 'Oldest'
+		return 'Newest'
 	}
 
 	const search = () => {

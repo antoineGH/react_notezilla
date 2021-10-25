@@ -99,12 +99,11 @@ export default function NoteListComponent(props) {
 					<Button id='sort-toggle' onClick={() => setSort(!sort)}>
 						{sort ? (
 							<>
-								{sortStatus()} <CaretDownOutlined />
+								{sortStatus()} <CaretUpOutlined />
 							</>
 						) : (
 							<>
-								{sortStatus()}
-								<CaretUpOutlined />
+								{sortStatus()} <CaretDownOutlined />
 							</>
 						)}
 					</Button>
