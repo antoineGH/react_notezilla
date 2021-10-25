@@ -69,7 +69,7 @@ export default function SearchBarComponent(props) {
 	}
 
 	const clickResetSearch = () => {
-		// handleResetSearch()
+		handleResetSearch()
 		setValue('')
 	}
 
