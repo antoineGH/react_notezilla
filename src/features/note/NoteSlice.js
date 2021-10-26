@@ -44,77 +44,47 @@ export const addNote = createAsyncThunk('notes/addNote', async (args) => {
 		if (json.note.hasOwnProperty('note_id')) {
 			openNotificationWithIcon(
 				'success',
-				'Note Added',
-				`Note '${toTitle(
-					json.note.note_title
-				)}' has been added to your account.`
+				'Note Saved',
+				`Note '${toTitle(json.note.note_title)}' has been saved to your account.`
 			)
 		} else {
-			openNotificationWithIcon(
-				'error',
-				'Note Not Added',
-				'Error Adding Note to your account.'
-			)
+			openNotificationWithIcon('error', 'Note Not Added', 'Error Adding Note to your account.')
 		}
 		return new Promise((resolve, reject) => {
 			json.note.hasOwnProperty('note_id') ? resolve(json) : reject()
 		})
 	} catch (error) {
-		openNotificationWithIcon(
-			'error',
-			'Note Not Added',
-			'Error Adding Note to your account.'
-		)
+		openNotificationWithIcon('error', 'Note Not Added', 'Error Adding Note to your account.')
 		return new Promise.reject()
 	}
 })
 
-export const deleteNote = createAsyncThunk(
-	'notes/deleteNote',
-	async (note_id) => {
-		const data = await authFetch(
-			`http://127.0.0.1:5000/api/note/${note_id}`,
-			{
-				method: 'DELETE',
-			}
-		)
-		const json = await data.json()
-		if (json) {
-			openNotificationWithIcon(
-				'success',
-				'Note Deleted',
-				'Note has been deleted'
-			)
-		} else {
-			openNotificationWithIcon(
-				'error',
-				'Error',
-				'Note has not been deleted'
-			)
-		}
-		return { json, note_id }
+export const deleteNote = createAsyncThunk('notes/deleteNote', async (note_id) => {
+	const data = await authFetch(`http://127.0.0.1:5000/api/note/${note_id}`, {
+		method: 'DELETE',
+	})
+	const json = await data.json()
+	if (json) {
+		openNotificationWithIcon('success', 'Note Deleted', 'Note has been deleted')
+	} else {
+		openNotificationWithIcon('error', 'Error', 'Note has not been deleted')
 	}
-)
+	return { json, note_id }
+})
 
-export const toggleCheck = createAsyncThunk(
-	'notes/toggleCheck',
-	async (args) => {
-		const { note_id, completed } = args
-		const note = { completed }
-		const data = await authFetch(
-			`http://127.0.0.1:5000/api/note/${note_id}`,
-			{
-				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(note),
-			}
-		)
-		const json = await data.json()
-		return json
-	}
-)
+export const toggleCheck = createAsyncThunk('notes/toggleCheck', async (args) => {
+	const { note_id, completed } = args
+	const note = { completed }
+	const data = await authFetch(`http://127.0.0.1:5000/api/note/${note_id}`, {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(note),
+	})
+	const json = await data.json()
+	return json
+})
 
 export const noteSlice = createSlice({
 	name: 'notes',
@@ -156,11 +126,8 @@ export const noteSlice = createSlice({
 			state.hasErrorToggleNote = false
 		},
 		[toggleCheck.fulfilled]: (state, action) => {
-			const indexObject = state.value.findIndex(
-				(note) => note.note_id === action.payload.note.note_id
-			)
-			state.value[indexObject].completed =
-				!state.value[indexObject].completed
+			const indexObject = state.value.findIndex((note) => note.note_id === action.payload.note.note_id)
+			state.value[indexObject].completed = !state.value[indexObject].completed
 			state.isLoadingToggleNote = false
 			state.hasErrorToggleNote = false
 		},
@@ -193,8 +160,6 @@ export const selectIsLoadingNotes = (state) => state.notes.isLoadingNotes
 export const selectHasErrorNotes = (state) => state.notes.hasErrorNotes
 export const selectIsLoadingAddNote = (state) => state.notes.isLoadingAddNote
 export const selecthasErrorAddNote = (state) => state.notes.hasErrorAddNote
-export const selectIsLoadingDeleteNote = (state) =>
-	state.notes.isLoadingDeleteNote
-export const selectIsLoadingToggleNote = (state) =>
-	state.notes.isLoadingToggleNote
+export const selectIsLoadingDeleteNote = (state) => state.notes.isLoadingDeleteNote
+export const selectIsLoadingToggleNote = (state) => state.notes.isLoadingToggleNote
 export default noteSlice.reducer

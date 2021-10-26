@@ -12,6 +12,12 @@
 	font-size: 0.9rem;
 }
 
+#last_note_title,
+#last_note_content:focus {
+	outline: 0;
+	box-shadow: none;
+}
+
 .save-note {
 	width: 5rem !important;
 }
