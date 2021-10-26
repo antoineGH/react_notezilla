@@ -14,7 +14,6 @@ export default function NavbarComponent() {
 	return (
 		<>
 			<Header id='header'>
-				<div id='color-overlay'></div>
 				<Row className='row-navbar-top'>
 					<Col span={12} className='col-navbar-left'>
 						<Title level={4} id='text-greet'>
