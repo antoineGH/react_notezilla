@@ -164,7 +164,7 @@ export default function NoteListComponent(props) {
 								.sort(selectSort)
 								.map((note) => {
 									return (
-										<Col span={5} key={note.note_id} className='col-note'>
+										<Col span={3} key={note.note_id} className='col-note'>
 											<NoteComponent
 												note={note}
 												handleToggleNote={handleToggleNote}

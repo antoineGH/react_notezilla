@@ -1,8 +1,8 @@
 .container-content {
 	min-height: 100vh;
 	/* background-color: yellow !important; */
-	max-width: 1200px;
-	margin: auto;
+	/* max-width: 1200px; */
+	margin: auto 1.5rem;
 }
 
 .row-listnotes {
