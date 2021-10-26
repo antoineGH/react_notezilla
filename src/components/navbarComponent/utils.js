@@ -1,4 +1,5 @@
 import { Skeleton } from 'antd'
+import toTitle from '../../utils/toTitle'
 
 export const renderGreetUser = (isLoadingUser, user) => {
 	if (isLoadingUser) {
@@ -14,7 +15,7 @@ export const renderGreetUser = (isLoadingUser, user) => {
 			/>
 		)
 	} else if (user) {
-		return `${greetingMessage()}, ${user['first_name']}!`
+		return `${greetingMessage()}, ${toTitle(user['first_name'])}!`
 	}
 	return greetingMessage()
 }
@@ -34,15 +35,7 @@ export const getDate = () => {
 		'November',
 		'December',
 	]
-	const days = [
-		'Sunday',
-		'Monday',
-		'Tuesday',
-		'Wednesday',
-		'Thursday',
-		'Friday',
-		'Saturday',
-	]
+	const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 	const date_now = new Date(Date.now())
 	let day = date_now.getDay()
@@ -57,11 +50,6 @@ export const getDate = () => {
 export const greetingMessage = () => {
 	const date_now = new Date(Date.now())
 	const hours = date_now.getHours()
-	const message =
-		hours < 12
-			? 'Good Morning'
-			: hours < 18
-			? 'Good Afternoon'
-			: 'Good Evening'
+	const message = hours < 12 ? 'Good Morning' : hours < 18 ? 'Good Afternoon' : 'Good Evening'
 	return message
 }
