@@ -11,6 +11,7 @@ import {
 import { selectSearch } from '../search/searchSlice'
 import NoteListComponent from '../../components/noteListComponent/NoteListComponent'
 import AddNoteComponent from '../../components/addNoteComponent/AddNoteComponent'
+import LastNoteComponent from '../../components/lastNoteComponent/LastNoteComponent'
 import Scratch from '../../features/scratch/Scratch'
 import { Row, Col } from 'antd'
 import './Note.css'
@@ -74,11 +75,14 @@ export default function Note() {
 					</Col>
 				</Row>
 				<Row justify='space-between' className='row-scratchpad-add'>
-					<Col span={12} className='col-addnote'>
+					<Col span={8} className='col-addnote'>
 						<AddNoteComponent />
 					</Col>
-					<Col span={12} className='col-scratchpad'>
+					<Col span={8} className='col-scratchpad'>
 						<Scratch />
+					</Col>
+					<Col span={8} className='col-scratchpad'>
+						<LastNoteComponent notes={notes} />
 					</Col>
 				</Row>
 			</>

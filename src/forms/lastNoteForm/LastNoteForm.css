@@ -1,0 +1,26 @@
+#last_note_title {
+	border: none;
+	color: var(--gray-secondary-title);
+	font-weight: 600;
+	font-size: 1rem;
+	text-transform: uppercase;
+}
+
+#last_note_content {
+	border: none;
+	color: var(--gray-secondary-content);
+	font-size: 0.9rem;
+}
+
+.save-note {
+	width: 5rem !important;
+}
+
+.col-flex-right {
+	justify-content: flex-end !important;
+	margin-right: 1rem !important;
+}
+
+.row-lastnote-top {
+	height: 40px;
+}

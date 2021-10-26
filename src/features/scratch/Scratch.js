@@ -45,11 +45,7 @@ export default function Scratch() {
 		}
 		if (isLoadingScratch || isLoadingAddScratch || isLoadingDeleteScratch) {
 			return (
-				<Skeleton.Input
-					style={{ width: 584, height: 298 }}
-					active={true}
-					size='large'
-				/>
+				<Skeleton.Input style={{ width: 738, height: 364, borderRadius: '8px' }} active={true} size='large' />
 			)
 		}
 		return (
