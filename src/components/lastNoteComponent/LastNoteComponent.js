@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import LastNoteForm from '../../forms/lastNoteForm/LastNoteForm'
 import { useSelector, useDispatch } from 'react-redux'
 import {
@@ -10,21 +10,28 @@ import {
 import { openNotificationWithIcon } from '../../utils/notification'
 import { Skeleton } from 'antd'
 import './LastNoteComponent.css'
+import { last } from 'lodash-es'
+
+const getLastNote = (notes) => {
+	return notes
+		.map(function (note) {
+			return note
+		})
+		.sort()
+		.reverse()[0]
+}
 
 export default function LastNoteComponent(props) {
 	const { notes } = props
-
+	const [lastNote, setLastNote] = useState(getLastNote(notes))
 	const isLoadingNotes = useSelector(selectIsLoadingNotes)
 	const hasErrorNotes = useSelector(selectHasErrorNotes)
 	const isLoadingAddNote = useSelector(selectIsLoadingAddNote)
 	const dispatch = useDispatch()
 
-	// TODO: Sort Notes by Date to get latest
-	const last_note = notes[0]
-	const last_note_title = last_note?.note_title
-	const last_note_content = last_note?.note_content
-	const last_note_completed = last_note?.completed
-	const last_note_date = last_note?.date_created
+	useEffect(() => {
+		setLastNote(getLastNote(notes))
+	}, [notes])
 
 	const handleSaveNote = (note_title, note_content, isCompleted) => {
 		if (!note_title || !note_content) {
@@ -38,17 +45,15 @@ export default function LastNoteComponent(props) {
 		if (hasErrorNotes) {
 			return ''
 		}
-		if (isLoadingNotes) {
+		if (isLoadingNotes || !lastNote) {
 			return (
 				<Skeleton.Input style={{ width: 738, height: 364, borderRadius: '8px' }} active={true} size='large' />
 			)
 		}
+
 		return (
 			<LastNoteForm
-				last_note_title={last_note_title}
-				last_note_content={last_note_content}
-				last_note_completed={last_note_completed}
-				last_note_date={last_note_date}
+				lastNote={lastNote}
 				isLoadingNotes={isLoadingNotes}
 				isLoadingAddNote={isLoadingAddNote}
 				handleSaveNote={handleSaveNote}

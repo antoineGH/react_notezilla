@@ -7,15 +7,7 @@ import { LoadingOutlined } from '@ant-design/icons'
 import './LastNoteForm.css'
 
 export default function LastNoteForm(props) {
-	const {
-		last_note_title,
-		last_note_content,
-		last_note_completed,
-		last_note_date,
-
-		isLoadingAddNote,
-		handleSaveNote,
-	} = props
+	const { lastNote, isLoadingAddNote, handleSaveNote } = props
 	const { Text } = Typography
 	const { TextArea } = Input
 	const antIcon = <LoadingOutlined style={{ fontSize: 16 }} spin />
@@ -25,12 +17,13 @@ export default function LastNoteForm(props) {
 		last_note_content: Yup.string().min(2, 'Too Short').max(800, 'Too Long'),
 	})
 
-	const [isCompleted, setIsCompleted] = useState(last_note_completed)
+	const [isCompleted, setIsCompleted] = useState(lastNote?.completed)
 
 	const { handleSubmit, handleChange, handleBlur, values, touched, errors } = useFormik({
+		enableReinitialize: true,
 		initialValues: {
-			last_note_title: last_note_title,
-			last_note_content: last_note_content,
+			last_note_title: lastNote?.note_title,
+			last_note_content: lastNote?.note_content,
 		},
 		validationSchema,
 		onSubmit(values) {
@@ -96,7 +89,7 @@ export default function LastNoteForm(props) {
 
 					<Row>
 						<Col span={11} className='col-note-date' style={{ marginLeft: '1rem' }}>
-							<Text className='note-date'>{getDate(last_note_date)}</Text>
+							<Text className='note-date'>{getDate(lastNote.date_created)}</Text>
 						</Col>
 						<Col span={11} className='col-note-switch' style={{ marginRight: '1rem' }}>
 							<Switch
