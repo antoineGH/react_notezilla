@@ -61,9 +61,6 @@ export default function NoteListComponent(props) {
 		dispatch(loadNotes())
 	}
 
-	// TODO: Create Function Add Note to open Modal Form to add Note
-	// TODO: Implement Pagination with Arrows to browse Notes return from API
-
 	const menu = (
 		<Menu>
 			<Menu.Item key='1' onClick={() => setSortBy('Date')}>

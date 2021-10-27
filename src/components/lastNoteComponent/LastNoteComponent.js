@@ -10,7 +10,6 @@ import {
 import { openNotificationWithIcon } from '../../utils/notification'
 import { Skeleton } from 'antd'
 import './LastNoteComponent.css'
-import { last } from 'lodash-es'
 
 const getLastNote = (notes) => {
 	return notes

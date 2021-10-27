@@ -20,8 +20,7 @@ export default function SearchBarComponent(props) {
 				return uniqBy([...previousState, { value: note.note_title }], 'value')
 			})
 		})
-		// eslint-disable-next-line
-	}, [])
+	}, [notes])
 
 	useEffect(() => {
 		if (value.length === 0) {
