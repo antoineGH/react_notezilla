@@ -3,7 +3,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { getDate } from '../../components/noteComponent/utils'
 import { Row, Col, Form, Input, Button, Typography, Switch, Spin } from 'antd'
-import { PlusOutlined, LoadingOutlined } from '@ant-design/icons'
+import { LoadingOutlined } from '@ant-design/icons'
 import './LastNoteForm.css'
 
 export default function LastNoteForm(props) {
@@ -12,11 +12,11 @@ export default function LastNoteForm(props) {
 		last_note_content,
 		last_note_completed,
 		last_note_date,
-		isLoadingNotes,
+
 		isLoadingAddNote,
 		handleSaveNote,
 	} = props
-	const { Text, Title } = Typography
+	const { Text } = Typography
 	const { TextArea } = Input
 	const antIcon = <LoadingOutlined style={{ fontSize: 16 }} spin />
 

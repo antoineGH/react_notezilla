@@ -115,7 +115,7 @@ export default function NoteListComponent(props) {
 				<Row className='row-notes'>
 					{isLoadingNotes && (
 						<>
-							<Col className='col-note' span={5}>
+							<Col className='col-note' span={3}>
 								<Skeleton
 									active
 									paragraph={{ rows: 11 }}
@@ -123,7 +123,7 @@ export default function NoteListComponent(props) {
 										width: 200,
 									}}></Skeleton>
 							</Col>
-							<Col className='col-note' span={5}>
+							<Col className='col-note' span={3}>
 								<Skeleton
 									active
 									paragraph={{ rows: 11 }}
@@ -131,7 +131,7 @@ export default function NoteListComponent(props) {
 										width: 200,
 									}}></Skeleton>
 							</Col>
-							<Col className='col-note' span={5}>
+							<Col className='col-note' span={3}>
 								<Skeleton
 									active
 									paragraph={{ rows: 11 }}
@@ -139,7 +139,7 @@ export default function NoteListComponent(props) {
 										width: 200,
 									}}></Skeleton>
 							</Col>
-							<Col className='col-note' span={5}>
+							<Col className='col-note' span={3}>
 								<Skeleton
 									active
 									paragraph={{ rows: 11 }}
@@ -147,7 +147,7 @@ export default function NoteListComponent(props) {
 										width: 200,
 									}}></Skeleton>
 							</Col>
-							<Col className='col-note' span={5}>
+							<Col className='col-note' span={3}>
 								<Skeleton
 									active
 									paragraph={{ rows: 11 }}
