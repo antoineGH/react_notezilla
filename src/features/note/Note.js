@@ -75,13 +75,13 @@ export default function Note() {
 					</Col>
 				</Row>
 				<Row justify='space-between' className='row-scratchpad-add'>
-					<Col span={8} className='col-addnote'>
+					<Col xs={24} lg={12} xl={8} className='col-addnote'>
 						<AddNoteComponent />
 					</Col>
-					<Col span={8} className='col-scratchpad'>
+					<Col xs={24} lg={12} xl={8} className='col-scratchpad'>
 						<Scratch />
 					</Col>
-					<Col span={8} className='col-scratchpad'>
+					<Col xs={24} lg={12} xl={8} className='col-scratchpad'>
 						<LastNoteComponent notes={notes} />
 					</Col>
 				</Row>

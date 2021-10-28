@@ -161,7 +161,14 @@ export default function NoteListComponent(props) {
 								.sort(selectSort)
 								.map((note) => {
 									return (
-										<Col span={3} key={note.note_id} className='col-note'>
+										<Col
+											xs={24}
+											md={12}
+											lg={8}
+											xl={6}
+											xxl={4}
+											key={note.note_id}
+											className='col-note'>
 											<NoteComponent
 												note={note}
 												handleToggleNote={handleToggleNote}

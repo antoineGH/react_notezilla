@@ -30,6 +30,7 @@ function App() {
 	return (
 		<div className='App'>
 			<BrowserRouter>
+				<CheckBreakPoint />
 				<Layout>
 					<SiderComponent logged={logged} />
 					<Layout>
@@ -40,7 +41,6 @@ function App() {
 						</Content>
 					</Layout>
 				</Layout>
-				<CheckBreakPoint />
 			</BrowserRouter>
 		</div>
 	)

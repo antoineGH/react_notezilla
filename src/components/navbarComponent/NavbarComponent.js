@@ -15,12 +15,12 @@ export default function NavbarComponent() {
 		<>
 			<Header id='header'>
 				<Row className='row-navbar-top'>
-					<Col span={12} className='col-navbar-left'>
+					<Col sm={24} md={12} className='col-navbar-left'>
 						<Title level={4} id='text-greet'>
 							{renderGreetUser(isLoadingUser, user)}
 						</Title>
 					</Col>
-					<Col span={12} className='col-navbar-right'>
+					<Col sm={24} md={12} className='col-navbar-right'>
 						<Text strong id='text-date'>
 							{getDate()}
 						</Text>

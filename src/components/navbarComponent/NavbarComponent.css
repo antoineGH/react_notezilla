@@ -52,3 +52,24 @@
 	overflow: hidden !important;
 	z-index: 10;
 }
+
+@media (max-width: 768px) {
+	.col-navbar-left {
+		margin-top: 1rem;
+		display: flex !important;
+		justify-content: center;
+		align-self: center !important;
+	}
+	.col-navbar-right {
+		margin-top: 0rem;
+		display: flex !important;
+		justify-content: center;
+		align-self: flex-start !important;
+		align-items: flex-start !important;
+		align-content: flex-start !important;
+	}
+
+	.col-navbar-right span {
+		line-height: 1.2rem !important;
+	}
+}

@@ -34,3 +34,15 @@
 .col-scratchpad {
 	width: 100%;
 }
+
+@media (max-width: 1200px) {
+	.col-scratchpad:nth-child(3) {
+		margin-top: 1rem;
+	}
+}
+
+@media (max-width: 992px) {
+	.col-scratchpad {
+		margin-top: 1rem;
+	}
+}
