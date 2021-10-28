@@ -29,9 +29,7 @@ export default function AddNoteComponent() {
 			return ''
 		}
 		if (isLoadingNotes) {
-			return (
-				<Skeleton.Input style={{ width: 738, height: 364, borderRadius: '8px' }} active={true} size='large' />
-			)
+			return <Skeleton.Input active={true} size='large' />
 		}
 		return <NoteAddForm handleAddNote={handleAddNote} isLoadingAddNote={isLoadingAddNote} />
 	}

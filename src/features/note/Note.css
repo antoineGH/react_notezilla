@@ -23,7 +23,6 @@
 }
 
 .row-scratchpad-add {
-	/* background-color: rgb(17, 0, 255) !important; */
 	position: relative;
 	top: -6rem;
 }
@@ -33,6 +32,15 @@
 }
 .col-scratchpad {
 	width: 100%;
+}
+
+.col-addnote div span,
+.col-addnote div,
+.col-scratchpad div span,
+.col-scratchpad div {
+	width: 100% !important;
+	height: 100% !important;
+	border-radius: 8px;
 }
 
 @media (max-width: 1200px) {

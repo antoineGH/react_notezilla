@@ -44,9 +44,7 @@ export default function Scratch() {
 			return ''
 		}
 		if (isLoadingScratch || isLoadingAddScratch || isLoadingDeleteScratch) {
-			return (
-				<Skeleton.Input style={{ width: 738, height: 364, borderRadius: '8px' }} active={true} size='large' />
-			)
+			return <Skeleton.Input active={true} size='large' />
 		}
 		return (
 			<ScratchPadComponent
