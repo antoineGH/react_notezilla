@@ -10,6 +10,9 @@ import UnAuthApp from './layouts/UnAuthApp'
 import { Layout } from 'antd'
 import './App.css'
 
+// TEST
+import CheckBreakPoint from './utils/CheckBreakPoint'
+
 function App() {
 	const [logged] = useAuth()
 	const { Content } = Layout
@@ -22,6 +25,8 @@ function App() {
 		}
 	}, [dispatch, logged])
 
+	CheckBreakPoint()
+
 	return (
 		<div className='App'>
 			<BrowserRouter>
@@ -30,13 +35,12 @@ function App() {
 					<Layout>
 						<Content>
 							<div className='div-content'>
-								<Switch>
-									{logged ? <AuthApp /> : <UnAuthApp />}
-								</Switch>
+								<Switch>{logged ? <AuthApp /> : <UnAuthApp />}</Switch>
 							</div>
 						</Content>
 					</Layout>
 				</Layout>
+				<CheckBreakPoint />
 			</BrowserRouter>
 		</div>
 	)
