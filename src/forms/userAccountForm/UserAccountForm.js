@@ -56,7 +56,7 @@ export default function UserAccountForm(props) {
 	}
 
 	return (
-		<Row className='row-container-user'>
+		<>
 			<Card
 				className='profile-picture-card'
 				style={{ maxWidth: 550 }}
@@ -187,6 +187,7 @@ export default function UserAccountForm(props) {
 					</Row>
 				</Form>
 			</Card>
+
 			<Modal
 				id='modal-delete-account'
 				title='Delete Account'
@@ -196,6 +197,6 @@ export default function UserAccountForm(props) {
 				okText='Delete'>
 				Are you sure to delete account ?
 			</Modal>
-		</Row>
+		</>
 	)
 }

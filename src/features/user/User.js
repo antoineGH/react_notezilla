@@ -10,7 +10,7 @@ import {
 } from './userSlice'
 import UserAccountForm from '../../forms/userAccountForm/UserAccountForm'
 import { openNotificationWithIcon } from '../../utils/notification'
-import { Col, Card, Skeleton, Avatar } from 'antd'
+import { Row, Col, Card, Skeleton, Avatar } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 
 export default function User() {
@@ -42,28 +42,38 @@ export default function User() {
 		<>
 			{/* Handle Has Error Loading User */}
 			{hasErrorUser && (
-				<Col>
-					<p>Error Fetching the API.</p>
-				</Col>
+				<Row className='row-container-user'>
+					<Col className='col-container-user'>
+						<p>Error Fetching the API.</p>
+					</Col>
+				</Row>
 			)}
 			{/* Handle Loading User State */}
 			{isLoadingUser && (
-				<Card
-					className='profile-picture-card'
-					style={{ width: 350 }}
-					cover={<Avatar shape='square' size={86} icon={<UserOutlined />} />}>
-					<hr />
-					<Skeleton loading={isLoadingUser} active></Skeleton>
-				</Card>
+				<Row className='row-container-user'>
+					<Col className='col-container-user'>
+						<Card
+							className='profile-picture-card'
+							style={{ maxWidth: 550 }}
+							cover={<Avatar shape='square' size={86} icon={<UserOutlined />} />}>
+							<hr />
+							<Skeleton loading={isLoadingUser} active></Skeleton>
+						</Card>
+					</Col>
+				</Row>
 			)}
 			{/* Render Form when User Loaded */}
 			{!isLoadingUser && user !== undefined && (
-				<UserAccountForm
-					user={user}
-					handleUpdateAccount={handleUpdateAccount}
-					handleDeleteAccount={handleDeleteAccount}
-					isDisabled={isLoadingUpdateUser}
-				/>
+				<Row className='row-container-user'>
+					<Col className='col-container-user'>
+						<UserAccountForm
+							user={user}
+							handleUpdateAccount={handleUpdateAccount}
+							handleDeleteAccount={handleDeleteAccount}
+							isDisabled={isLoadingUpdateUser}
+						/>
+					</Col>
+				</Row>
 			)}
 		</>
 	)

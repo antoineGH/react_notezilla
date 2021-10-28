@@ -108,3 +108,10 @@
 .ant-modal-footer .ant-btn:nth-child(2):hover {
 	background-color: var(--dark-green) !important;
 }
+
+.col-container-user {
+	width: 100%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+}
