@@ -73,7 +73,7 @@ export default function SiderComponent(props) {
 			<Dropdown overlay={logged ? menuAuth() : menuUnAuth()}>
 				<Row className='row-user-sider'>
 					<Col className='col-user-avatar'>{renderUserAvatar(logged, user)}</Col>
-					<Col className='col-user-user'>{renderUserInput(logged, hasErrorUser, user)}</Col>
+					<Col className='col-user-user'>{renderUserInput(logged, hasErrorUser, user, false)}</Col>
 				</Row>
 			</Dropdown>
 			<Search logged={logged} />
