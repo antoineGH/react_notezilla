@@ -1,21 +1,19 @@
-import React from 'react'
-import { logout } from '../../utils/authHook'
+import React, { useState } from 'react'
+import { Drawer, Button } from 'antd'
+import { MenuOutlined } from '@ant-design/icons'
+import './NavBar.css'
+import logo from './../../logo.svg'
 import { useHistory } from 'react-router'
-import { useSelector } from 'react-redux'
-import { selectUserHasError, selectUserLogged } from '../../features/user/userSlice'
-import { renderUserInput, renderUserAvatar } from './utils'
-import Search from '../../features/search/Search'
-import { Typography, Menu, Dropdown, Col, Layout, Row } from 'antd'
+import { logout } from '../../utils/authHook'
+import { Typography, Menu } from 'antd'
 import { UserOutlined, LogoutOutlined, HomeOutlined, LoginOutlined } from '@ant-design/icons'
-import './SiderComponent.css'
+import './TopBarComponent.css'
 
-export default function SiderComponent(props) {
+export default function TopBarComponent(props) {
 	const { logged } = props
-	const user = useSelector((state) => selectUserLogged(state, logged))
-	const hasErrorUser = useSelector(selectUserHasError)
-	const history = useHistory()
-	const { Sider } = Layout
+	const [visible, setVisible] = useState(false)
 	const { Text } = Typography
+	const history = useHistory()
 
 	const menuAuth = () => {
 		return (
@@ -69,14 +67,19 @@ export default function SiderComponent(props) {
 	}
 
 	return (
-		<Sider className='sider-main' breakpoint={'lg'} collapsedWidth={0} trigger={null}>
-			<Dropdown overlay={logged ? menuAuth() : menuUnAuth()}>
-				<Row className='row-user-sider'>
-					<Col className='col-user-avatar'>{renderUserAvatar(logged, user)}</Col>
-					<Col className='col-user-user'>{renderUserInput(logged, hasErrorUser, user)}</Col>
-				</Row>
-			</Dropdown>
-			<Search logged={logged} />
-		</Sider>
+		<nav className='navbar'>
+			<Button className='menu' type='primary' icon={<MenuOutlined />} onClick={() => setVisible(true)} />
+			<Drawer
+				title='Topics'
+				placement='left'
+				onClick={() => setVisible(false)}
+				onClose={() => setVisible(false)}
+				visible={visible}>
+				{logged ? menuAuth() : menuUnAuth()}
+			</Drawer>
+			<a href='/'>
+				<img src={logo} className='logo' alt='logo' />
+			</a>
+		</nav>
 	)
 }
