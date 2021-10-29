@@ -57,7 +57,7 @@
 	.col-navbar-left {
 		margin-top: 1rem;
 		display: flex !important;
-		justify-content: center;
+		justify-content: center !important;
 		align-self: center !important;
 	}
 	.col-navbar-right {
@@ -71,5 +71,12 @@
 
 	.col-navbar-right span {
 		line-height: 1.2rem !important;
+	}
+}
+
+@media (max-width: 992px) {
+	#header:after {
+		left: 0px;
+		top: 65px;
 	}
 }

@@ -1,8 +1,5 @@
 .sider-main > * {
 	position: static;
-	min-width: 205px;
-	max-width: 400px;
-	width: 240px;
 	min-height: 100vh;
 	background-color: #1a1a1a;
 	margin-top: 1.5rem;
@@ -49,7 +46,11 @@
 	align-items: center;
 }
 
-.col-user-avatar {
-}
-.col-user-name {
+@media (min-width: 992px) {
+	.sider-main > * {
+		width: 240px;
+	}
+	.topbarcomponent {
+		display: none;
+	}
 }

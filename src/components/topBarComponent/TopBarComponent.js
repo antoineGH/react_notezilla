@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { Drawer, Button } from 'antd'
 import { MenuOutlined } from '@ant-design/icons'
-import './NavBar.css'
-import logo from './../../logo.svg'
 import { useHistory } from 'react-router'
 import { logout } from '../../utils/authHook'
 import { Typography, Menu } from 'antd'
@@ -77,9 +75,6 @@ export default function TopBarComponent(props) {
 				visible={visible}>
 				{logged ? menuAuth() : menuUnAuth()}
 			</Drawer>
-			<a href='/'>
-				<img src={logo} className='logo' alt='logo' />
-			</a>
 		</nav>
 	)
 }

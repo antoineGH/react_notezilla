@@ -60,3 +60,9 @@
 #last_name:hover {
 	border-color: #000000;
 }
+
+@media (max-width: 992px) {
+	.div-content {
+		padding: 0rem;
+	}
+}
