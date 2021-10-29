@@ -4,7 +4,7 @@ import { Grid, Tag } from 'antd'
 export default function CheckBreakPoint() {
 	const { useBreakpoint } = Grid
 	const screens = useBreakpoint()
-	console.log(screens)
+
 	return (
 		<>
 			{Object.entries(screens)
