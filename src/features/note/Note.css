@@ -1,13 +1,10 @@
 .container-content {
 	min-height: 100vh;
-	/* background-color: yellow !important; */
-	/* max-width: 1200px; */
+
 	margin: auto 1.5rem;
 }
 
 .row-listnotes {
-	/* min-height: 30vh; */
-	/* background-color: rgb(255, 0, 200) !important; */
 	position: relative;
 	top: -6rem;
 }
@@ -34,13 +31,15 @@
 	width: 100%;
 }
 
-.col-addnote div span,
-.col-addnote div,
-.col-scratchpad div span,
-.col-scratchpad div {
+.col-addnote .ant-skeleton span,
+.col-scratchpad .ant-skeleton span,
+.col-addnote .ant-skeleton,
+.col-scratchpad .ant-skeleton {
+	background-color: pink !important;
 	width: 100% !important;
 	height: 100% !important;
 	border-radius: 8px;
+	min-height: 360px !important;
 }
 
 @media (max-width: 1200px) {
@@ -54,3 +53,5 @@
 		margin-top: 1rem;
 	}
 }
+
+/* TODO: CORRECT DISPLAY ISSUE LOWER MENU / ADD SPACING BETWEEN 3 COLS / UPDATE DESIGN BUTTON AND SWITCH BUTTON; */

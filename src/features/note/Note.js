@@ -82,6 +82,7 @@ export default function Note() {
 						<Scratch />
 					</Col>
 					<Col xs={24} lg={12} xl={8} className='col-scratchpad'>
+						{/* <Col xs={24} lg={12} xl={8} className='col-scratchpad' style={{ margin: 'auto .5rem' }}> */}
 						<LastNoteComponent notes={notes} />
 					</Col>
 				</Row>

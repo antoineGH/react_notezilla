@@ -51,7 +51,9 @@ export default function LastNoteComponent(props) {
 
 		if (isLoadingNotes || !lastNote) {
 			return (
-				<Skeleton.Input style={{ width: 738, height: 364, borderRadius: '8px' }} active={true} size='large' />
+				<div style={{ margin: 'auto .5rem' }}>
+					<Skeleton.Input active={true} size='large' />
+				</div>
 			)
 		}
 
