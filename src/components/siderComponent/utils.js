@@ -2,7 +2,7 @@ import { Avatar, Typography, Skeleton } from 'antd'
 import { UserOutlined, CaretDownOutlined } from '@ant-design/icons'
 import './SiderComponent.css'
 
-export const renderUserInput = (logged, hasErrorUser, user) => {
+export const renderUserInput = (logged, hasErrorUser, user, mobile) => {
 	const { Text } = Typography
 	if (logged) {
 		if (hasErrorUser) return ''
@@ -12,7 +12,7 @@ export const renderUserInput = (logged, hasErrorUser, user) => {
 					<Text className='avatar-username' strong>
 						{user['first_name']} {user['last_name']}
 					</Text>
-					<CaretDownOutlined style={{ fontSize: '.8rem', color: 'var(--green)' }} />
+					{!mobile && <CaretDownOutlined style={{ fontSize: '.8rem', color: 'var(--green)' }} />}
 				</>
 			)
 		return (

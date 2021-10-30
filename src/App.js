@@ -5,17 +5,19 @@ import { useDispatch } from 'react-redux'
 import { loadUser } from './features/user/userSlice'
 import { loadNotes } from './features/note/NoteSlice'
 import SiderComponent from './components/siderComponent/SiderComponent'
+import TopBarComponent from './components/topBarComponent/TopBarComponent'
 import AuthApp from './layouts/AuthApp'
 import UnAuthApp from './layouts/UnAuthApp'
-import { Layout } from 'antd'
+import { Layout, Grid } from 'antd'
+import get from 'lodash/get'
 import './App.css'
-
-// TEST
-import CheckBreakPoint from './utils/CheckBreakPoint'
 
 function App() {
 	const [logged] = useAuth()
 	const { Content } = Layout
+	const { useBreakpoint } = Grid
+	const screens = useBreakpoint()
+	const lg = get(screens, 'lg')
 
 	const dispatch = useDispatch()
 	useEffect(() => {
@@ -25,12 +27,10 @@ function App() {
 		}
 	}, [dispatch, logged])
 
-	CheckBreakPoint()
-
 	return (
 		<div className='App'>
 			<BrowserRouter>
-				<CheckBreakPoint />
+				{!lg && <TopBarComponent className='topbarcomponent' logged={logged} />}
 				<Layout>
 					<SiderComponent logged={logged} />
 					<Layout>
