@@ -6,6 +6,7 @@ import {
 	selectHasErrorNotes,
 	selectIsLoadingAddNote,
 	addNote,
+	updateNote,
 } from '../../features/note/NoteSlice'
 import { openNotificationWithIcon } from '../../utils/notification'
 import { Skeleton } from 'antd'
@@ -40,6 +41,14 @@ export default function LastNoteComponent(props) {
 		dispatch(addNote({ note_title, note_content, isCompleted }))
 	}
 
+	const handleUpdateNote = (note_id, note_title, note_content, completed) => {
+		console.log(note_id)
+		console.log(note_title)
+		console.log(note_content)
+		console.log(completed)
+		dispatch(updateNote({ note_id, note_title, note_content, completed }))
+	}
+
 	const renderLastNote = () => {
 		if (hasErrorNotes) {
 			return ''
@@ -63,6 +72,7 @@ export default function LastNoteComponent(props) {
 				isLoadingNotes={isLoadingNotes}
 				isLoadingAddNote={isLoadingAddNote}
 				handleSaveNote={handleSaveNote}
+				handleUpdateNote={handleUpdateNote}
 			/>
 		)
 	}

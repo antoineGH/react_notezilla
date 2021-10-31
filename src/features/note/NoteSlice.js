@@ -14,6 +14,8 @@ const initialValue = {
 	hasErrorAddNote: false,
 	isLoadingToggleNote: false,
 	hasErrorToggleNote: false,
+	isLoadingUpdateNote: false,
+	hasErrorUpdateNote: false,
 	isLoadingDeleteNote: false,
 	hasErrorDeleteNote: false,
 }
@@ -86,6 +88,21 @@ export const toggleCheck = createAsyncThunk('notes/toggleCheck', async (args) =>
 	return json
 })
 
+export const updateNote = createAsyncThunk('notes/udpateNote', async (args) => {
+	const { note_id, note_title, note_content, completed } = args
+	const note = { note_title, note_content, completed }
+	console.log(note)
+	const data = await authFetch(`http://127.0.0.1:5000/api/note/${note_id}`, {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(note),
+	})
+	const json = await data.json()
+	return json
+})
+
 export const noteSlice = createSlice({
 	name: 'notes',
 	initialState: initialValue,
@@ -134,6 +151,20 @@ export const noteSlice = createSlice({
 		[toggleCheck.rejected]: (state) => {
 			state.isLoadingToggleNote = false
 			state.hasErrorToggleNote = true
+		},
+		[updateNote.pending]: (state) => {
+			state.isLoadingUpdateNote = true
+			state.hasErrorUpdateNote = false
+		},
+		[updateNote.fulfilled]: (state, action) => {
+			// const indexObject = state.value.findIndex((note) => note.note_id === action.payload.note.note_id)
+			// state.value[indexObject].completed = !state.value[indexObject].completed
+			state.isLoadingUpdateNote = false
+			state.hasErrorUpdateNote = false
+		},
+		[updateNote.rejected]: (state) => {
+			state.isLoadingUpdateNote = false
+			state.hasErrorUpdateNote = true
 		},
 		[deleteNote.pending]: (state) => {
 			state.isLoadingDeleteNote = true

@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo, useRef } from 'react'
+import debounce from 'lodash/debounce'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { getDate } from '../../components/noteComponent/utils'
@@ -7,10 +8,11 @@ import { LoadingOutlined } from '@ant-design/icons'
 import './LastNoteForm.css'
 
 export default function LastNoteForm(props) {
-	const { lastNote, isLoadingAddNote, handleSaveNote } = props
+	const { lastNote, isLoadingAddNote, handleSaveNote, handleUpdateNote } = props
 	const { Text } = Typography
 	const { TextArea } = Input
 	const antIcon = <LoadingOutlined style={{ fontSize: 16 }} spin />
+	const note_id = lastNote?.note_id
 
 	const validationSchema = Yup.object({
 		last_note_title: Yup.string().min(2, 'Too Short').max(200, 'Too Long'),
@@ -18,6 +20,9 @@ export default function LastNoteForm(props) {
 	})
 
 	const [isCompleted, setIsCompleted] = useState(lastNote?.completed)
+	const title = useRef()
+	const content = useRef()
+	const completed = useRef()
 
 	const { handleSubmit, handleChange, handleBlur, values, touched, errors } = useFormik({
 		enableReinitialize: true,
@@ -32,14 +37,30 @@ export default function LastNoteForm(props) {
 		},
 	})
 
+	const debounceHandleUpdateNote = useMemo(
+		() =>
+			debounce(
+				() =>
+					handleUpdateNote(
+						note_id,
+						title.current.props.value,
+						content.current.resizableTextArea.props.value,
+						completed.current.ariaChecked
+					),
+				1200
+			),
+		[] // eslint-disable-line
+	)
+
 	return (
 		<>
 			<div className='container-addnote'>
-				<Form onSubmit={handleSubmit}>
+				<Form onSubmit={handleSubmit} onChange={debounceHandleUpdateNote}>
 					<Row className='row-lastnote-top'>
 						<Col className='col-addnote-topleft' span={16}>
 							<Form.Item className='form-item'>
 								<Input
+									ref={title}
 									id='last_note_title'
 									name='last_note_title'
 									type='text'
@@ -70,6 +91,7 @@ export default function LastNoteForm(props) {
 					</Row>
 					<Form.Item className='form-item'>
 						<TextArea
+							ref={content}
 							rows={9}
 							id='last_note_content'
 							name='last_note_content'
@@ -93,6 +115,7 @@ export default function LastNoteForm(props) {
 						</Col>
 						<Col span={11} className='col-note-switch' style={{ marginRight: '1rem' }}>
 							<Switch
+								ref={completed}
 								tabIndex='-1'
 								id='completed'
 								name='completed'
