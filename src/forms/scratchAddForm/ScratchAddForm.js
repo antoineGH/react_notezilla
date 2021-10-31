@@ -32,6 +32,15 @@ export default function ScratchAddForm(props) {
 		}
 	}, [isLoadingAddScratch])
 
+	useEffect(
+		() => {
+			return () => {
+				debounceHandleAddScratch.cancel()
+			}
+		},
+		[] // eslint-disable-line
+	)
+
 	const validationSchema = Yup.object({
 		scratch_title: Yup.string().max(200, 'Too Long'),
 		scratch_content: Yup.string().max(800, 'Too Long'),
