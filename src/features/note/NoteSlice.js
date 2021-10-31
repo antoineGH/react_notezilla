@@ -99,6 +99,7 @@ export const updateNote = createAsyncThunk('notes/udpateNote', async (args) => {
 		body: JSON.stringify(note),
 	})
 	const json = await data.json()
+	console.log(json)
 	return json
 })
 
@@ -156,8 +157,8 @@ export const noteSlice = createSlice({
 			state.hasErrorUpdateNote = false
 		},
 		[updateNote.fulfilled]: (state, action) => {
-			// const indexObject = state.value.findIndex((note) => note.note_id === action.payload.note.note_id)
-			// state.value[indexObject].completed = !state.value[indexObject].completed
+			const indexObject = state.value.findIndex((note) => note.note_id === action.payload.note.note_id)
+			state.value[indexObject] = action.payload.note
 			state.isLoadingUpdateNote = false
 			state.hasErrorUpdateNote = false
 		},

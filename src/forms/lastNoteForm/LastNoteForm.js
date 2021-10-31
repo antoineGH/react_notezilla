@@ -3,15 +3,14 @@ import debounce from 'lodash/debounce'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { getDate } from '../../components/noteComponent/utils'
-import { Row, Col, Form, Input, Button, Typography, Switch, Spin, Tooltip } from 'antd'
-import { LoadingOutlined, SyncOutlined } from '@ant-design/icons'
+import { Row, Col, Form, Input, Typography, Switch, Tooltip } from 'antd'
+import { SyncOutlined } from '@ant-design/icons'
 import './LastNoteForm.css'
 
 export default function LastNoteForm(props) {
 	const { lastNote, isLoadingAddNote, handleSaveNote, handleUpdateNote, isLoadingUdpateNote } = props
 	const { Text } = Typography
 	const { TextArea } = Input
-	const antIcon = <LoadingOutlined style={{ fontSize: 16 }} spin />
 	const note_id = lastNote?.note_id
 
 	const validationSchema = Yup.object({
