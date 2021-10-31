@@ -46,6 +46,10 @@
 	align-items: center;
 }
 
+.col-user-user {
+	cursor: pointer;
+}
+
 @media (min-width: 992px) {
 	.sider-main > * {
 		width: 240px;

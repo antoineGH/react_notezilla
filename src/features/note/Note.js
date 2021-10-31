@@ -59,7 +59,7 @@ export default function Note() {
 		<div className='container-content'>
 			<>
 				<Row className='row-listnotes'>
-					<Col className='col-listnotes'>
+					<Col span={24} className='col-listnotes'>
 						<NoteListComponent
 							notes={searchParam ? search() : notes}
 							handleDeleteNote={handleDeleteNote}
@@ -82,7 +82,6 @@ export default function Note() {
 						<Scratch />
 					</Col>
 					<Col xs={24} lg={12} xl={8} className='col-scratchpad'>
-						{/* <Col xs={24} lg={12} xl={8} className='col-scratchpad' style={{ margin: 'auto .5rem' }}> */}
 						<LastNoteComponent notes={notes} />
 					</Col>
 				</Row>

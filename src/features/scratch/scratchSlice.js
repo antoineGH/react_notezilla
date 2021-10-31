@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { authFetch } from '../../utils/authHook'
 import { openNotificationWithIcon } from '../../utils/notification'
-import toTitle from '../../utils/toTitle'
 
 // Slice Reducer
 ////////////////////////////////
@@ -27,65 +26,39 @@ export const loadScratch = createAsyncThunk('scratch/getScratch', async () => {
 	return json
 })
 
-export const addScratch = createAsyncThunk(
-	'scratch/addScratch',
-	async (args) => {
-		const { scratch_title, scratch_content, isCompleted } = args
-		const scratch = {
-			scratch_title,
-			scratch_content,
-			completed: isCompleted,
-		}
-		const data = await authFetch('http://127.0.0.1:5000/api/scratch', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(scratch),
-		})
-		const json = await data.json()
-		if (json.scratch.hasOwnProperty('scratch_id')) {
-			openNotificationWithIcon(
-				'success',
-				'Scratch Saved',
-				`Scratch '${toTitle(
-					json.scratch.scratch_title
-				)}' has been saved.`
-			)
-		} else {
-			openNotificationWithIcon(
-				'error',
-				'Scratch Not Saved',
-				'Error Saving your scratch.'
-			)
-		}
-		return json
+export const addScratch = createAsyncThunk('scratch/addScratch', async (args) => {
+	const { scratch_title, scratch_content, isCompleted } = args
+	const scratch = {
+		scratch_title,
+		scratch_content,
+		completed: isCompleted,
 	}
-)
+	const data = await authFetch('http://127.0.0.1:5000/api/scratch', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(scratch),
+	})
+	const json = await data.json()
+	if (!json.scratch.hasOwnProperty('scratch_id')) {
+		openNotificationWithIcon('error', 'Scratch Not Saved', 'Error Saving your scratch.')
+	}
+	return json
+})
 
-export const deleteScratch = createAsyncThunk(
-	'scratch/deleteScratch',
-	async () => {
-		const data = await authFetch('http://127.0.0.1:5000/api/scratch', {
-			method: 'DELETE',
-		})
-		const json = await data.json()
-		if (json) {
-			openNotificationWithIcon(
-				'success',
-				'Note Deleted',
-				'ScratchPad has been cleared'
-			)
-		} else {
-			openNotificationWithIcon(
-				'error',
-				'Error',
-				'ScratchPad has not been cleared'
-			)
-		}
-		return json
+export const deleteScratch = createAsyncThunk('scratch/deleteScratch', async () => {
+	const data = await authFetch('http://127.0.0.1:5000/api/scratch', {
+		method: 'DELETE',
+	})
+	const json = await data.json()
+	if (json) {
+		openNotificationWithIcon('success', 'Note Deleted', 'ScratchPad has been cleared')
+	} else {
+		openNotificationWithIcon('error', 'Error', 'ScratchPad has not been cleared')
 	}
-)
+	return json
+})
 
 export const scratchSlice = createSlice({
 	name: 'scratch',
@@ -144,13 +117,9 @@ export const scratchSlice = createSlice({
 export const selectScratch = (state) => state.scratch.value[0]
 export const selectisLoadingScratch = (state) => state.scratch.isLoadingScratch
 export const selecthasErrorScratch = (state) => state.scratch.hasErrorScratch
-export const selectIsLoadingAddScratch = (state) =>
-	state.scratch.isLoadingAddScratch
-export const selectHasErrorAddScratch = (state) =>
-	state.scratch.hasErrorAddScratch
-export const selectIsLoadingDeleteScratch = (state) =>
-	state.scratch.isLoadingDeleteScratch
-export const selectHasErrorDeleteScratch = (state) =>
-	state.scratch.isLoadingDeleteScratch
+export const selectIsLoadingAddScratch = (state) => state.scratch.isLoadingAddScratch
+export const selectHasErrorAddScratch = (state) => state.scratch.hasErrorAddScratch
+export const selectIsLoadingDeleteScratch = (state) => state.scratch.isLoadingDeleteScratch
+export const selectHasErrorDeleteScratch = (state) => state.scratch.isLoadingDeleteScratch
 
 export default scratchSlice.reducer

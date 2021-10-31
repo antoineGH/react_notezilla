@@ -43,7 +43,7 @@ export default function Scratch() {
 		if (hasErrorScratch) {
 			return ''
 		}
-		if (isLoadingScratch || isLoadingAddScratch || isLoadingDeleteScratch) {
+		if (isLoadingScratch || isLoadingDeleteScratch) {
 			return (
 				<div style={{ margin: 'auto .5rem' }}>
 					<Skeleton.Input active={true} size='large' />
@@ -55,6 +55,7 @@ export default function Scratch() {
 				scratch_title={scratch_title}
 				scratch_content={scratch_content}
 				isLoadingScratch={isLoadingScratch}
+				isLoadingAddScratch={isLoadingAddScratch}
 				isLoadingDeleteScratch={isLoadingDeleteScratch}
 				handleAddScratch={handleAddScratch}
 				handleDeleteScratch={handleDeleteScratch}

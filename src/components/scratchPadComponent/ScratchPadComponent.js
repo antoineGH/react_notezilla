@@ -9,6 +9,7 @@ export default function ScratchPadComponent(props) {
 		isLoadingScratch,
 		handleAddScratch,
 		handleDeleteScratch,
+		isLoadingAddScratch,
 		isLoadingDeleteScratch,
 		handleScratchToNote,
 	} = props
@@ -20,6 +21,7 @@ export default function ScratchPadComponent(props) {
 			isLoadingScratch={isLoadingScratch}
 			isLoadingDeleteScratch={isLoadingDeleteScratch}
 			handleAddScratch={handleAddScratch}
+			isLoadingAddScratch={isLoadingAddScratch}
 			handleDeleteScratch={handleDeleteScratch}
 			handleScratchToNote={handleScratchToNote}
 		/>

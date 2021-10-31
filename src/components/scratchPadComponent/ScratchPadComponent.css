@@ -108,3 +108,9 @@
 	justify-content: center;
 	justify-items: center;
 }
+
+@media (max-width: 992px) {
+	.container-scratchpad {
+		margin: unset;
+	}
+}

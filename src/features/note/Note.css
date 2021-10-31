@@ -35,7 +35,6 @@
 .col-scratchpad .ant-skeleton span,
 .col-addnote .ant-skeleton,
 .col-scratchpad .ant-skeleton {
-	background-color: pink !important;
 	width: 100% !important;
 	height: 100% !important;
 	border-radius: 8px;
@@ -52,6 +51,9 @@
 	.col-scratchpad {
 		margin-top: 1rem;
 	}
+	.row-listnotes {
+		margin: auto !important;
+		display: flex;
+		justify-content: center;
+	}
 }
-
-/* TODO: CORRECT DISPLAY ISSUE LOWER MENU / ADD SPACING BETWEEN 3 COLS / UPDATE DESIGN BUTTON AND SWITCH BUTTON; */
