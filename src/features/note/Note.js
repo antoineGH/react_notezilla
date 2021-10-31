@@ -5,6 +5,7 @@ import {
 	loadNotes,
 	selectIsLoadingDeleteNote,
 	selectIsLoadingToggleNote,
+	selectIsLoadingUpdateNote,
 	selectNotes,
 	toggleCheck,
 } from './NoteSlice'
@@ -21,6 +22,7 @@ export default function Note() {
 	const notes = useSelector(selectNotes)
 	const searchParam = useSelector(selectSearch)
 	const isLoadingDeleteNote = useSelector(selectIsLoadingDeleteNote)
+	const isLoadingUdpateNote = useSelector(selectIsLoadingUpdateNote)
 	const isLoadingToggleNote = useSelector(selectIsLoadingToggleNote)
 
 	const [sort, setSort] = useState(false)
@@ -82,7 +84,7 @@ export default function Note() {
 						<Scratch />
 					</Col>
 					<Col xs={24} lg={12} xl={8} className='col-scratchpad'>
-						<LastNoteComponent notes={notes} />
+						<LastNoteComponent notes={notes} isLoadingUdpateNote={isLoadingUdpateNote} />
 					</Col>
 				</Row>
 			</>

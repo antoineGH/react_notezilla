@@ -91,7 +91,6 @@ export const toggleCheck = createAsyncThunk('notes/toggleCheck', async (args) =>
 export const updateNote = createAsyncThunk('notes/udpateNote', async (args) => {
 	const { note_id, note_title, note_content, completed } = args
 	const note = { note_title, note_content, completed }
-	console.log(note)
 	const data = await authFetch(`http://127.0.0.1:5000/api/note/${note_id}`, {
 		method: 'PUT',
 		headers: {
@@ -191,6 +190,8 @@ export const selectIsLoadingNotes = (state) => state.notes.isLoadingNotes
 export const selectHasErrorNotes = (state) => state.notes.hasErrorNotes
 export const selectIsLoadingAddNote = (state) => state.notes.isLoadingAddNote
 export const selecthasErrorAddNote = (state) => state.notes.hasErrorAddNote
+export const selectIsLoadingUpdateNote = (state) => state.notes.isLoadingUpdateNote
+export const selecthasErrorUpdateNote = (state) => state.notes.hasErrorUpdateNote
 export const selectIsLoadingDeleteNote = (state) => state.notes.isLoadingDeleteNote
 export const selectIsLoadingToggleNote = (state) => state.notes.isLoadingToggleNote
 export default noteSlice.reducer

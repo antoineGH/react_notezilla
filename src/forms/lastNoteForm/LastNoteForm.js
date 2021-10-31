@@ -1,14 +1,14 @@
-import React, { useState, useMemo, useRef } from 'react'
+import React, { useState, useEffect, useMemo, useRef } from 'react'
 import debounce from 'lodash/debounce'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { getDate } from '../../components/noteComponent/utils'
-import { Row, Col, Form, Input, Button, Typography, Switch, Spin } from 'antd'
-import { LoadingOutlined } from '@ant-design/icons'
+import { Row, Col, Form, Input, Button, Typography, Switch, Spin, Tooltip } from 'antd'
+import { LoadingOutlined, SyncOutlined } from '@ant-design/icons'
 import './LastNoteForm.css'
 
 export default function LastNoteForm(props) {
-	const { lastNote, isLoadingAddNote, handleSaveNote, handleUpdateNote } = props
+	const { lastNote, isLoadingAddNote, handleSaveNote, handleUpdateNote, isLoadingUdpateNote } = props
 	const { Text } = Typography
 	const { TextArea } = Input
 	const antIcon = <LoadingOutlined style={{ fontSize: 16 }} spin />
@@ -20,9 +20,19 @@ export default function LastNoteForm(props) {
 	})
 
 	const [isCompleted, setIsCompleted] = useState(lastNote?.completed)
+	const [sync, setSync] = useState(false)
 	const title = useRef()
 	const content = useRef()
 	const completed = useRef()
+
+	useEffect(() => {
+		if (isLoadingUdpateNote) {
+			setSync(true)
+			setTimeout(() => {
+				setSync(false)
+			}, 1000)
+		}
+	}, [isLoadingUdpateNote])
 
 	const { handleSubmit, handleChange, handleBlur, values, touched, errors } = useFormik({
 		enableReinitialize: true,
@@ -57,63 +67,52 @@ export default function LastNoteForm(props) {
 			<div className='container-addnote'>
 				<Form onSubmit={handleSubmit} onChange={debounceHandleUpdateNote}>
 					<Row className='row-lastnote-top'>
-						<Col className='col-addnote-topleft' span={16}>
-							<Form.Item className='form-item'>
-								<Input
-									ref={title}
-									id='last_note_title'
-									name='last_note_title'
-									type='text'
-									placeholder='Note Title'
-									className={errors.last_note_title && touched.last_note_title && 'error_field'}
-									onBlur={handleBlur}
-									value={values.last_note_title}
-									onChange={handleChange}
-								/>
-								<div className='div-error-input'>
-									{errors.last_note_title && touched.last_note_title && (
-										<Text type='danger'>{errors.last_note_title}</Text>
-									)}
-								</div>
-							</Form.Item>
+						<Col className='col-addnote-topleft' span={21}>
+							<Input
+								ref={title}
+								id='last_note_title'
+								name='last_note_title'
+								type='text'
+								placeholder='Note Title'
+								className={errors.last_note_title && touched.last_note_title && 'error_field'}
+								onBlur={handleBlur}
+								value={values.last_note_title}
+								onChange={handleChange}
+							/>
+							<div className='div-error-input'>
+								{errors.last_note_title && touched.last_note_title && (
+									<Text type='danger'>{errors.last_note_title}</Text>
+								)}
+							</div>
 						</Col>
-						<Col className='col-addnote-topright col-flex-right' span={7}>
-							<Button
-								id='new-note'
-								className='save-note'
-								type='primary'
-								onClick={() => handleSubmit()}
-								disabled={isLoadingAddNote}>
-								Save
-								{isLoadingAddNote && <Spin size='small' indicator={antIcon} />}
-							</Button>
+						<Col className='col-addnote-topright col-flex-right' span={2}>
+							<Tooltip title='Auto Save'>
+								<SyncOutlined spin={sync} style={{ fontSize: '1rem', color: 'rgb(115, 115, 115)' }} />
+							</Tooltip>
 						</Col>
 					</Row>
-					<Form.Item className='form-item'>
-						<TextArea
-							ref={content}
-							rows={9}
-							id='last_note_content'
-							name='last_note_content'
-							type='text'
-							placeholder='Note Content'
-							className={errors.last_note_content && touched.last_note_content && 'error_field'}
-							onBlur={handleBlur}
-							value={values.last_note_content}
-							onChange={handleChange}
-						/>{' '}
-						<div className='div-error-input'>
-							{errors.last_note_content && touched.last_note_content && (
-								<Text type='danger'>{errors.last_note_content}</Text>
-							)}
-						</div>
-					</Form.Item>
-
+					<TextArea
+						ref={content}
+						rows={9}
+						id='last_note_content'
+						name='last_note_content'
+						type='text'
+						placeholder='Note Content'
+						className={errors.last_note_content && touched.last_note_content && 'error_field'}
+						onBlur={handleBlur}
+						value={values.last_note_content}
+						onChange={handleChange}
+					/>{' '}
+					<div className='div-error-input'>
+						{errors.last_note_content && touched.last_note_content && (
+							<Text type='danger'>{errors.last_note_content}</Text>
+						)}
+					</div>
 					<Row>
 						<Col span={11} className='col-note-date' style={{ marginLeft: '1rem' }}>
 							<Text className='note-date'>{getDate(lastNote.date_created)}</Text>
 						</Col>
-						<Col span={11} className='col-note-switch' style={{ marginRight: '1rem' }}>
+						<Col span={10} className='col-note-switch' style={{ marginRight: '1rem' }}>
 							<Switch
 								ref={completed}
 								tabIndex='-1'

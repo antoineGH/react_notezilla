@@ -22,7 +22,7 @@ const getLastNote = (notes) => {
 }
 
 export default function LastNoteComponent(props) {
-	const { notes } = props
+	const { notes, isLoadingUdpateNote } = props
 	const [lastNote, setLastNote] = useState(getLastNote(notes))
 	const isLoadingNotes = useSelector(selectIsLoadingNotes)
 	const hasErrorNotes = useSelector(selectHasErrorNotes)
@@ -42,10 +42,6 @@ export default function LastNoteComponent(props) {
 	}
 
 	const handleUpdateNote = (note_id, note_title, note_content, completed) => {
-		console.log(note_id)
-		console.log(note_title)
-		console.log(note_content)
-		console.log(completed)
 		dispatch(updateNote({ note_id, note_title, note_content, completed }))
 	}
 
@@ -71,6 +67,7 @@ export default function LastNoteComponent(props) {
 				lastNote={lastNote}
 				isLoadingNotes={isLoadingNotes}
 				isLoadingAddNote={isLoadingAddNote}
+				isLoadingUdpateNote={isLoadingUdpateNote}
 				handleSaveNote={handleSaveNote}
 				handleUpdateNote={handleUpdateNote}
 			/>

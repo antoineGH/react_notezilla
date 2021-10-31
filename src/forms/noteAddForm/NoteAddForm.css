@@ -22,6 +22,10 @@
 	justify-content: center !important;
 }
 
+.row-lastnote-top .col-addnote-topright {
+	align-items: center !important;
+}
+
 #note_title {
 	width: 100%;
 }
