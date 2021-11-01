@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { Spin, Form, Input, Button, Typography, Switch, Row, Col } from 'antd'
-import { LoadingOutlined, PlusOutlined, RightOutlined } from '@ant-design/icons'
+import { LoadingOutlined, RightOutlined } from '@ant-design/icons'
 import './NoteAddForm.css'
 
 export default function NoteAddForm(props) {
