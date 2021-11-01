@@ -1,32 +1,33 @@
 #last_note_title {
-	border: none;
-	color: var(--gray-secondary-title);
-	font-weight: 600;
-	font-size: 1rem;
-	text-transform: uppercase;
+  border: none;
+  color: var(--gray-secondary-title);
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
 }
 
 #last_note_content {
-	border: none;
-	color: var(--gray-secondary-content);
-	font-size: 0.9rem;
+  border: none;
+  color: var(--gray-secondary-content);
+  font-size: 0.9rem;
 }
 
 #last_note_title,
 #last_note_content:focus {
-	outline: 0;
-	box-shadow: none;
+  outline: 0;
+  box-shadow: none;
 }
 
 .save-note {
-	width: 5rem !important;
+  width: 5rem !important;
 }
 
 .col-flex-right {
-	justify-content: flex-end !important;
-	margin-right: 1rem !important;
+  justify-content: flex-end !important;
+  margin-right: 1rem !important;
+  height: 2.5rem;
 }
 
 .row-lastnote-top {
-	height: 40px;
+  height: 40px;
 }
