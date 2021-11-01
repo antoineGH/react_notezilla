@@ -12,21 +12,11 @@ import {
   sortCompletedAsc,
   sortCompletedDesc,
 } from './utils'
-import {
-  Col,
-  Row,
-  Typography,
-  Menu,
-  Dropdown,
-  Button,
-  Tooltip,
-  Skeleton,
-} from 'antd'
+import { Col, Row, Typography, Menu, Dropdown, Button, Skeleton } from 'antd'
 import {
   CaretUpOutlined,
   CaretDownOutlined,
   RightOutlined,
-  FileAddOutlined,
 } from '@ant-design/icons'
 import './NoteListComponent.css'
 
