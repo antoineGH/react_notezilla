@@ -1,116 +1,123 @@
 .container-scratchpad {
-	background-color: rgb(255, 244, 186) !important;
-	border: 1px solid rgb(255, 237, 142) !important;
-	padding: 1rem;
-	height: 100%;
-	margin: auto 0.5rem;
-	box-shadow: 1px 2px 6px var(--black-transparent);
-	border-radius: 8px !important;
-	box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+  background-color: rgb(255, 244, 186) !important;
+  border: 1px solid rgb(255, 237, 142) !important;
+  padding: 1rem;
+  height: 100%;
+  margin: auto 0.5rem;
+  box-shadow: 1px 2px 6px var(--black-transparent);
+  border-radius: 8px !important;
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
 }
 
 .row-scratchpad-bottom,
 .row-scratchpad-top {
-	width: 100%;
+  width: 100%;
 }
 
 .row-scratchpad-bottom {
-	height: 100% !important;
-	min-height: 20vh;
-	margin-top: 0.2rem;
+  height: 100% !important;
+  min-height: 20vh;
+  margin-top: 0.2rem;
 }
 
 .col-scratchpad-content {
-	height: 100%;
-	margin: 0;
-	padding: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .col-scratchpadtop-right {
-	display: flex !important;
-	justify-content: flex-end !important;
+  display: flex !important;
+  justify-content: flex-end !important;
 }
 
 .col-scratchpadtop-right button {
-	background-color: transparent;
-	border-color: transparent;
-	color: var(--secondary-button);
-	box-shadow: none;
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--secondary-button);
+  box-shadow: none;
 }
 
 .col-scratchpadtop-right button:hover {
-	border-color: transparent;
-	color: var(--secondary-button);
-	box-shadow: none;
-	background: var(--special-transparent);
+  border-color: transparent;
+  color: var(--secondary-button);
+  box-shadow: none;
+  background: var(--special-transparent);
 }
 
 .col-scratchpadtop-right button:after {
-	-webkit-animation: none !important;
-	-moz-animation: none !important;
-	-o-animation: none !important;
-	-ms-animation: none !important;
-	animation: none !important;
+  -webkit-animation: none !important;
+  -moz-animation: none !important;
+  -o-animation: none !important;
+  -ms-animation: none !important;
+  animation: none !important;
 }
 
 .col-scratchpadtop-right button:active,
 .col-scratchpadtop-right button:focus {
-	outline: none !important;
-	border-style: outset !important;
-	background-color: transparent;
-	border-color: transparent;
-	color: var(--secondary-button);
-	box-shadow: none;
+  outline: none !important;
+  border-style: outset !important;
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--secondary-button);
+  box-shadow: none;
 }
 
 #scratch_title {
-	background-color: #fff4ba;
-	border: none;
-	color: var(--gray-secondary-title);
-	font-weight: 600;
-	font-size: 1rem;
-	text-transform: uppercase;
+  background-color: #fff4ba;
+  border: none;
+  color: var(--gray-secondary-title);
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
 }
 
 #scratch_title:focus {
-	outline: 0;
-	box-shadow: none;
+  outline: 0;
+  box-shadow: none;
 }
 
 #scratch_content {
-	background-color: #fff4ba;
-	border: none;
-	color: var(--gray-secondary-content);
-	font-size: 0.9rem;
+  background-color: #fff4ba;
+  border: none;
+  color: var(--gray-secondary-content);
+  font-size: 0.9rem;
 }
 
 #scratch_content:focus {
-	outline: 0;
-	box-shadow: none;
+  outline: 0;
+  box-shadow: none;
 }
 
 #scratch_title::placeholder {
-	color: var(--gray-secondary-title);
-	opacity: 1;
+  color: var(--gray-secondary-title);
+  opacity: 1;
 }
 
 #scratch_content::placeholder {
-	color: var(--gray-secondary-content);
-	opacity: 1;
+  color: var(--gray-secondary-content);
+  opacity: 1;
 }
 
 .menu-scratchpad {
-	width: 270px;
-	position: absolute;
-	left: 0rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	justify-items: center;
+  position: absolute;
+  left: 0rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  border-radius: 4px !important;
+}
+
+.submenu-scratchpad {
+  padding: 0.7rem 2.5rem !important;
+  padding-right: 3.8rem !important;
+  display: flex !important;
+  justify-content: center !important;
 }
 
 @media (max-width: 992px) {
-	.container-scratchpad {
-		margin: unset;
-	}
+  .container-scratchpad {
+    margin: unset;
+  }
 }

@@ -17,7 +17,6 @@ import {
   SaveOutlined,
   ClearOutlined,
   EllipsisOutlined,
-  RedoOutlined,
   SyncOutlined,
 } from '@ant-design/icons'
 
@@ -27,7 +26,6 @@ export default function ScratchAddForm(props) {
     scratch_content,
     isLoadingAddScratch,
     isLoadingDeleteScratch,
-    handleScratchToNote,
     handleAddScratch,
     handleDeleteScratch,
   } = props
@@ -94,11 +92,6 @@ export default function ScratchAddForm(props) {
     handleSubmit()
   }
 
-  const onClickConvertNote = e => {
-    e.preventDefault()
-    handleScratchToNote()
-  }
-
   const onClickDeleteScratch = e => {
     e.preventDefault()
     handleDeleteScratch()
@@ -107,24 +100,44 @@ export default function ScratchAddForm(props) {
   const menu = (
     <Menu className="menu-scratchpad">
       <Menu.Item key="1" className="submenu-scratchpad">
-        <a onClick={e => onClickSaveScratch(e)} href="Save">
-          <SaveOutlined style={{ fontSize: '1rem' }} />
-          {'   '}
-          <Text strong>Save ScratchPad</Text>
+        <a
+          onClick={e => onClickSaveScratch(e)}
+          href="Save"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <Row>
+            <Col span={6}>
+              <SaveOutlined style={{ fontSize: '1.2rem' }} />
+            </Col>
+            <Col span={12}>
+              <Text>Save ScratchPad</Text>
+            </Col>
+          </Row>
         </a>
       </Menu.Item>
-      <Menu.Item key="2" className="submenu-scratchpad">
-        <a onClick={e => onClickConvertNote(e)} href="Note">
-          <RedoOutlined style={{ fontSize: '1rem' }} />
-          {'   '}
-          <Text strong>Convert to Note</Text>
-        </a>
-      </Menu.Item>
+
       <Menu.Item key="3" className="submenu-scratchpad">
-        <a onClick={e => onClickDeleteScratch(e)} href="Reset">
-          <ClearOutlined style={{ fontSize: '1rem' }} />
-          {'   '}
-          <Text strong>Clear ScratchPad</Text>
+        <a
+          onClick={e => onClickDeleteScratch(e)}
+          href="Reset"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <Row>
+            <Col span={6}>
+              <ClearOutlined style={{ fontSize: '1.2rem' }} />
+            </Col>
+            <Col span={12}>
+              <Text>Clear ScratchPad</Text>
+            </Col>
+          </Row>
         </a>
       </Menu.Item>
     </Menu>
