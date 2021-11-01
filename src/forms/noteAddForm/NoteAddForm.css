@@ -1,73 +1,73 @@
 .container-addnote {
-	background-color: white !important;
-	border: 1px solid white !important;
-	padding: 1rem;
-	height: 100%;
-	box-shadow: 1px 2px 6px var(--black-transparent);
-	border-radius: 8px !important;
-	box-shadow: rgb(0 0 0 / 15%) 2.4px 2.4px 3.2px;
-	margin: auto 0.5rem;
+  background-color: white !important;
+  border: 1px solid white !important;
+  padding: 1rem;
+  height: 100%;
+  box-shadow: 1px 2px 6px var(--black-transparent);
+  border-radius: 8px !important;
+  box-shadow: rgb(0 0 0 / 15%) 2.4px 2.4px 3.2px;
+  margin: auto 0.5rem;
 }
 
 .col-addnote-topleft {
-	display: flex !important;
-	justify-content: flex-start !important;
+  display: flex !important;
+  justify-content: flex-start !important;
 }
 
 .col-addnote-topleft .form-item {
-	width: 100%;
+  width: 100%;
 }
 .col-addnote-topright {
-	display: flex !important;
-	justify-content: center !important;
+  display: flex !important;
+  justify-content: center !important;
 }
 
 .row-lastnote-top .col-addnote-topright {
-	align-items: center !important;
+  align-items: center !important;
 }
 
 #note_title {
-	width: 100%;
+  width: 100%;
 }
 
 #new-note {
-	background-color: var(--green);
-	border: none;
-	height: 36px;
-	width: 100%;
-	border-radius: 36px;
+  background-color: var(--green);
+  border: none;
+  height: 36px;
+  width: 100%;
+  border-radius: 36px;
 }
 
 #new-note:hover {
-	background-color: var(--dark-green);
+  background-color: var(--dark-green);
 }
 
 #new-note:focus {
-	border-color: var(--green);
-	box-shadow: 0 0 0 2px rgb(6 20 2 / 9%);
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px rgb(6 20 2 / 9%);
 }
 
 #new-note:disabled {
-	color: rgba(255, 255, 255, 0.623);
+  color: rgba(255, 255, 255, 0.623);
 }
 
 #new-note .ant-spin {
-	color: white !important;
+  color: white !important;
 }
 
 .button-add-form {
-	width: 50%;
-	display: flex !important;
-	justify-content: center !important;
-	margin: auto !important;
+  width: 50%;
+  display: flex !important;
+  justify-content: center !important;
+  margin: auto !important;
 }
 
 .div-error-input {
-	min-height: 22px;
+  min-height: 22px;
 }
 
 @media (max-width: 992px) {
-	.container-addnote {
-		margin: unset;
-	}
+  .container-addnote {
+    margin: unset;
+  }
 }

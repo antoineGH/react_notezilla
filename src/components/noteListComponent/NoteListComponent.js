@@ -92,7 +92,11 @@ export default function NoteListComponent(props) {
           <Title level={5} className="title-section">
             NOTES{' '}
             <RightOutlined
-              style={{ fontSize: '.8rem', color: 'var(--green)' }}
+              style={{
+                fontSize: '1rem',
+                color: 'var(--green)',
+                paddingLeft: '.3rem',
+              }}
             />
           </Title>
         </Col>

@@ -4,7 +4,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { getDate } from '../../components/noteComponent/utils'
 import { Row, Col, Form, Input, Typography, Switch, Tooltip } from 'antd'
-import { SyncOutlined } from '@ant-design/icons'
+import { SyncOutlined, RightOutlined } from '@ant-design/icons'
 import './LastNoteForm.css'
 
 export default function LastNoteForm(props) {
@@ -15,7 +15,7 @@ export default function LastNoteForm(props) {
     handleUpdateNote,
     isLoadingUdpateNote,
   } = props
-  const { Text } = Typography
+  const { Text, Title } = Typography
   const { TextArea } = Input
   const note_id = lastNote?.note_id
 
@@ -74,6 +74,35 @@ export default function LastNoteForm(props) {
         <Form onSubmit={handleSubmit} onChange={debounceHandleUpdateNote}>
           <Row className="row-lastnote-top">
             <Col xs={21} sm={22} md={22} lg={21} xl={21} xxl={22}>
+              <Title level={5} className="title-section">
+                MOST RECENT NOTE{' '}
+                <RightOutlined
+                  style={{
+                    fontSize: '1rem',
+                    color: 'var(--green)',
+                    paddingLeft: '.3rem',
+                  }}
+                />
+              </Title>
+            </Col>
+            <Col
+              xs={{ offset: 1 }}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                height: '2.5rem',
+              }}
+            >
+              <Tooltip title="Auto Save">
+                <SyncOutlined
+                  spin={sync}
+                  style={{ fontSize: '1rem', color: 'rgb(115, 115, 115)' }}
+                />
+              </Tooltip>
+            </Col>
+          </Row>
+          <Row className="row-lastnote-top">
+            <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
               <Input
                 ref={title}
                 id="last_note_title"
@@ -94,21 +123,6 @@ export default function LastNoteForm(props) {
                   <Text type="danger">{errors.last_note_title}</Text>
                 )}
               </div>
-            </Col>
-            <Col
-              xs={{ offset: 1 }}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                height: '2.5rem',
-              }}
-            >
-              <Tooltip title="Auto Save">
-                <SyncOutlined
-                  spin={sync}
-                  style={{ fontSize: '1rem', color: 'rgb(115, 115, 115)' }}
-                />
-              </Tooltip>
             </Col>
           </Row>
           <TextArea

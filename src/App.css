@@ -1,47 +1,48 @@
 @import '~antd/dist/antd.css';
 
 :root {
-	--green: #00a82d;
-	--dark-green: #007620;
-	--search-input-text: #ccc;
-	--secondary-button: #737373;
-	--special-transparent: hsla(0, 0%, 65.1%, 0.2);
-	--gray-secondary-title: #333;
-	--gray-secondary-content: #737373;
-	--home-primary-text: #333;
-	--gray-title: #f8f8f8;
+  --green: #00a82d;
+  --dark-green: #007620;
+  --search-input-text: #ccc;
+  --secondary-button: #737373;
+  --special-transparent: hsla(0, 0%, 65.1%, 0.2);
+  --gray-secondary-title: #333;
+  --gray-secondary-content: #737373;
+  --gray-secondary-content-lighter: #949494;
+  --home-primary-text: #333;
+  --gray-title: #f8f8f8;
 }
 
 .ant-layout-content div {
-	padding: 24;
-	min-height: 360;
+  padding: 24;
+  min-height: 360;
 }
 
 .div-content {
-	padding: 0rem 0rem 1rem 2rem;
+  padding: 0rem 0rem 1rem 2rem;
 }
 
 .ant-switch-checked {
-	background-color: var(--green);
+  background-color: var(--green);
 }
 
 .ant-spin-dot-item {
-	background-color: var(--green);
+  background-color: var(--green);
 }
 
 .ant-input:hover {
-	border-color: var(--green);
+  border-color: var(--gray-secondary-content-lighter);
 }
 .ant-input:focus {
-	border-color: var(--green);
-	box-shadow: 0 0 0 2px rgb(6 20 2 / 9%);
+  border-color: var(--gray-secondary-content);
+  box-shadow: 0 0 0 2px rgb(6 20 2 / 9%);
 }
 
 .ant-btn-link {
-	color: var(--green);
+  color: var(--green);
 }
 .ant-btn-link:hover {
-	color: var(--dark-green);
+  color: var(--dark-green);
 }
 
 #email:focus,
@@ -49,8 +50,8 @@
 #confirm_password:focus,
 #first_name:focus,
 #last_name:focus {
-	border-color: #000000;
-	box-shadow: 0 0 0 2px rgb(6 20 2 / 9%);
+  border-color: #000000;
+  box-shadow: 0 0 0 2px rgb(6 20 2 / 9%);
 }
 
 #email:hover,
@@ -58,11 +59,11 @@
 #confirm_password:hover,
 #first_name:hover,
 #last_name:hover {
-	border-color: #000000;
+  border-color: #000000;
 }
 
 @media (max-width: 992px) {
-	.div-content {
-		padding: 0rem;
-	}
+  .div-content {
+    padding: 0rem;
+  }
 }
