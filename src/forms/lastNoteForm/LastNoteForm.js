@@ -126,6 +126,7 @@ export default function LastNoteForm(props) {
             </Col>
           </Row>
           <TextArea
+            style={{ resize: 'none' }}
             ref={content}
             rows={9}
             id="last_note_content"

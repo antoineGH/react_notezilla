@@ -89,6 +89,7 @@ export default function NoteAddForm(props) {
 
           <Form.Item className="form-item">
             <TextArea
+              style={{ resize: 'none' }}
               rows={6}
               id="note_content"
               name="note_content"
