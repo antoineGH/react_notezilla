@@ -1,85 +1,86 @@
 .note-title {
-	color: var(--home-primary-text);
-	font-size: 0.9rem !important;
+  color: var(--home-primary-text);
+  font-size: 0.9rem !important;
+  text-transform: uppercase;
 }
 
 .note-content {
-	color: var(--gray-secondary-content) !important;
-	font-size: 0.9rem;
-	overflow-wrap: break-word;
-	white-space: normal;
+  color: var(--gray-secondary-content) !important;
+  font-size: 0.9rem;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .note-date {
-	color: var(--gray-secondary-content) !important;
-	font-size: 0.8rem;
+  color: var(--gray-secondary-content) !important;
+  font-size: 0.8rem;
 }
 
 .col-note-date {
-	margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .note-switch {
-	color: var(--gray-secondary-content) !important;
-	font-size: 0.8rem;
+  color: var(--gray-secondary-content) !important;
+  font-size: 0.8rem;
 }
 
 .col-note-switch {
-	margin-top: 1rem;
-	margin-right: 0.5rem;
-	display: flex !important;
-	justify-content: flex-end !important;
+  margin-top: 1rem;
+  margin-right: 0.5rem;
+  display: flex !important;
+  justify-content: flex-end !important;
 }
 
 .row-note-top {
-	height: 28vh !important;
-	width: 100%;
+  height: 28vh !important;
+  width: 100%;
 }
 
 .col-note-title {
-	height: 2rem;
+  height: 2rem;
 }
 .col-note-content {
-	display: flex !important;
-	align-items: flex-start !important;
-	align-self: flex-start !important;
-	align-content: flex-start !important;
-	height: 100%;
+  display: flex !important;
+  align-items: flex-start !important;
+  align-self: flex-start !important;
+  align-content: flex-start !important;
+  height: 100%;
 }
 
 .row-notesub-title {
-	width: 100%;
+  width: 100%;
 }
 
 .col-notesub-title {
-	display: flex !important;
-	justify-content: flex-start !important;
+  display: flex !important;
+  justify-content: flex-start !important;
 }
 
 .col-notesub-delete {
-	display: flex !important;
-	justify-content: flex-end !important;
+  display: flex !important;
+  justify-content: flex-end !important;
 }
 
 .col-notesub-delete .ant-btn-icon-only {
-	width: 24px;
-	height: 24px;
-	border: none;
+  width: 24px;
+  height: 24px;
+  border: none;
 }
 .col-notesub-delete .ant-btn-icon-only:hover {
-	color: var(--dark-green);
-	border-color: #40a9ff;
+  color: var(--dark-green);
+  border-color: #40a9ff;
 }
 
 .col-notesub-delete .ant-btn-icon-only:after {
-	-webkit-animation: none !important;
-	-moz-animation: none !important;
-	-o-animation: none !important;
-	-ms-animation: none !important;
-	animation: none !important;
+  -webkit-animation: none !important;
+  -moz-animation: none !important;
+  -o-animation: none !important;
+  -ms-animation: none !important;
+  animation: none !important;
 }
 
 .col-notesub-delete .ant-btn-icon-only:active,
 .col-notesub-delete .ant-btn-icon-only:focus {
-	color: rgba(0, 0, 0, 0.85);
+  color: rgba(0, 0, 0, 0.85);
 }
