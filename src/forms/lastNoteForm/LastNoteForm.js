@@ -157,11 +157,7 @@ export default function LastNoteForm(props) {
                 {getDate(lastNote.date_created)}
               </Text>
             </Col>
-            <Col
-              offset={4}
-              className="col-note-switch"
-              // style={{ marginRight: '1rem' }}
-            >
+            <Col offset={4} className="col-note-switch">
               <Switch
                 ref={completed}
                 tabIndex="-1"

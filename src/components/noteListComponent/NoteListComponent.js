@@ -5,13 +5,13 @@ import {
   selectHasErrorNotes,
   loadNotes,
 } from '../../features/note/NoteSlice'
-import NoteComponent from '../noteComponent/NoteComponent'
 import {
   sortDateAsc,
   sortDateDesc,
   sortCompletedAsc,
   sortCompletedDesc,
 } from './utils'
+import NoteForm from '../../forms/noteForm/NoteForm'
 import { Col, Row, Typography, Menu, Dropdown, Button, Skeleton } from 'antd'
 import {
   CaretUpOutlined,
@@ -28,10 +28,10 @@ export default function NoteListComponent(props) {
     setSortBy,
     sortStatus,
     sortBy,
+    handleUpdateNote,
+    isLoadingUdpateNote,
     handleDeleteNote,
     isLoadingDelete,
-    handleToggleNote,
-    isLoadingToggleNote,
   } = props
   const isLoadingNotes = useSelector(selectIsLoadingNotes)
   const hasErrorNotes = useSelector(selectHasErrorNotes)
@@ -163,10 +163,10 @@ export default function NoteListComponent(props) {
                       key={note.note_id}
                       className="col-note"
                     >
-                      <NoteComponent
+                      <NoteForm
                         note={note}
-                        handleToggleNote={handleToggleNote}
-                        isLoadingToggleNote={isLoadingToggleNote}
+                        handleUpdateNote={handleUpdateNote}
+                        isLoadingUdpateNote={isLoadingUdpateNote}
                         handleDeleteNote={handleDeleteNote}
                         isLoadingDelete={isLoadingDelete}
                         isLoadingNotes={isLoadingNotes}
