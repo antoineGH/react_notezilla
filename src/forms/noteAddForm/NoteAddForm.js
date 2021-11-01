@@ -114,7 +114,6 @@ export default function NoteAddForm(props) {
               id="new-note"
               type="primary"
               onClick={() => handleSubmit()}
-              icon={<PlusOutlined style={{ fontSize: '.8rem' }} />}
               disabled={isLoadingAddNote}
             >
               New Note

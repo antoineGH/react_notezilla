@@ -149,7 +149,7 @@ export default function LastNoteForm(props) {
           </div>
           <Row>
             <Col
-              span={11}
+              span={17}
               className="col-note-date"
               style={{ marginLeft: '1rem' }}
             >
@@ -158,9 +158,9 @@ export default function LastNoteForm(props) {
               </Text>
             </Col>
             <Col
-              span={10}
+              offset={4}
               className="col-note-switch"
-              style={{ marginRight: '1rem' }}
+              // style={{ marginRight: '1rem' }}
             >
               <Switch
                 ref={completed}
