@@ -67,6 +67,11 @@ export default function NoteForm(props) {
       },
     })
 
+  const handleToggleSwitch = () => {
+    setIsCompleted(!isCompleted)
+    debounceHandleUpdateNote()
+  }
+
   const debounceHandleUpdateNote = useMemo(
     () =>
       debounce(
@@ -168,7 +173,7 @@ export default function NoteForm(props) {
                 ref={completed}
                 id="completed"
                 name="completed"
-                onChange={() => setIsCompleted(!isCompleted)}
+                onChange={handleToggleSwitch}
                 defaultChecked={note.completed}
                 disabled={isLoadingToggleNote}
               />
