@@ -14,6 +14,7 @@ export default function LastNoteForm(props) {
     handleSaveNote,
     handleUpdateNote,
     isLoadingUdpateNote,
+    noteIdUpdated,
   } = props
   const { Text, Title } = Typography
   const { TextArea } = Input
@@ -31,13 +32,13 @@ export default function LastNoteForm(props) {
   const completed = useRef()
 
   useEffect(() => {
-    if (isLoadingUdpateNote) {
+    if (isLoadingUdpateNote && noteIdUpdated === lastNote.note_id) {
       setSync(true)
       setTimeout(() => {
         setSync(false)
       }, 1000)
     }
-  }, [isLoadingUdpateNote])
+  }, [isLoadingUdpateNote, noteIdUpdated, lastNote.note_id])
 
   const { handleSubmit, handleChange, handleBlur, values, touched, errors } =
     useFormik({

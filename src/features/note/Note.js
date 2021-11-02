@@ -6,6 +6,7 @@ import {
   selectIsLoadingDeleteNote,
   selectIsLoadingUpdateNote,
   selectNotes,
+  selectNoteIdUpdated,
 } from './NoteSlice'
 import { selectSearch } from '../search/searchSlice'
 import { updateNote } from '../note/NoteSlice'
@@ -22,6 +23,7 @@ export default function Note() {
   const searchParam = useSelector(selectSearch)
   const isLoadingDeleteNote = useSelector(selectIsLoadingDeleteNote)
   const isLoadingUdpateNote = useSelector(selectIsLoadingUpdateNote)
+  const noteIdUpdated = useSelector(selectNoteIdUpdated)
 
   const [sort, setSort] = useState(false)
   const [sortBy, setSortBy] = useState('Date')
@@ -71,6 +73,7 @@ export default function Note() {
               sortBy={sortBy}
               setSortBy={setSortBy}
               sortStatus={sortStatus}
+              noteIdUpdated={noteIdUpdated}
             />
           </Col>
         </Row>
@@ -85,6 +88,7 @@ export default function Note() {
             <LastNoteComponent
               notes={notes}
               isLoadingUdpateNote={isLoadingUdpateNote}
+              noteIdUpdated={noteIdUpdated}
             />
           </Col>
         </Row>

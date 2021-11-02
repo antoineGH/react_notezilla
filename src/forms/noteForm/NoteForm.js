@@ -26,6 +26,7 @@ export default function NoteForm(props) {
     handleUpdateNote,
     handleDeleteNote,
     isLoadingDelete,
+    noteIdUpdated,
   } = props
 
   const { Text } = Typography
@@ -44,13 +45,13 @@ export default function NoteForm(props) {
   const completed = useRef()
 
   useEffect(() => {
-    if (isLoadingUdpateNote) {
+    if (isLoadingUdpateNote && noteIdUpdated === note.note_id) {
       setSync(true)
       setTimeout(() => {
         setSync(false)
       }, 1000)
     }
-  }, [isLoadingUdpateNote])
+  }, [isLoadingUdpateNote, noteIdUpdated, note.note_id])
 
   const { handleSubmit, handleChange, handleBlur, values, touched, errors } =
     useFormik({

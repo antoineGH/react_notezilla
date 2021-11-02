@@ -32,9 +32,11 @@ export default function NoteListComponent(props) {
     isLoadingUdpateNote,
     handleDeleteNote,
     isLoadingDelete,
+    noteIdUpdated,
   } = props
   const isLoadingNotes = useSelector(selectIsLoadingNotes)
   const hasErrorNotes = useSelector(selectHasErrorNotes)
+
   const dispatch = useDispatch()
   const { Title } = Typography
 
@@ -159,6 +161,7 @@ export default function NoteListComponent(props) {
                         handleDeleteNote={handleDeleteNote}
                         isLoadingDelete={isLoadingDelete}
                         isLoadingNotes={isLoadingNotes}
+                        noteIdUpdated={noteIdUpdated}
                       />
                     </Col>
                   )

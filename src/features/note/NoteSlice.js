@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { authFetch } from '../../utils/authHook'
 import { openNotificationWithIcon } from '../../utils/notification'
 import toTitle from '../../utils/toTitle'
+import get from 'lodash/get'
 
 // Slice Reducer
 ////////////////////////////////
@@ -15,6 +16,7 @@ const initialValue = {
   isLoadingToggleNote: false,
   hasErrorToggleNote: false,
   isLoadingUpdateNote: false,
+  noteIdUpdated: 0,
   hasErrorUpdateNote: false,
   isLoadingDeleteNote: false,
   hasErrorDeleteNote: false,
@@ -116,6 +118,7 @@ export const updateNote = createAsyncThunk('notes/udpateNote', async args => {
     body: JSON.stringify(note),
   })
   const json = await data.json()
+  console.log(json)
   return json
 })
 
@@ -170,7 +173,8 @@ export const noteSlice = createSlice({
       state.isLoadingToggleNote = false
       state.hasErrorToggleNote = true
     },
-    [updateNote.pending]: state => {
+    [updateNote.pending]: (state, action) => {
+      state.noteIdUpdated = get(action.meta.arg, 'note_id', 1)
       state.isLoadingUpdateNote = true
       state.hasErrorUpdateNote = false
     },
@@ -213,6 +217,7 @@ export const selectIsLoadingAddNote = state => state.notes.isLoadingAddNote
 export const selecthasErrorAddNote = state => state.notes.hasErrorAddNote
 export const selectIsLoadingUpdateNote = state =>
   state.notes.isLoadingUpdateNote
+export const selectNoteIdUpdated = state => state.notes.noteIdUpdated
 export const selecthasErrorUpdateNote = state => state.notes.hasErrorUpdateNote
 export const selectIsLoadingDeleteNote = state =>
   state.notes.isLoadingDeleteNote
