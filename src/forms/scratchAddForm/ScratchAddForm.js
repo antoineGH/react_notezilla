@@ -154,6 +154,7 @@ export default function ScratchAddForm(props) {
           <Col xs={21} sm={21} md={21} lg={20} xl={20} xxl={21}>
             <Form.Item className="form-item">
               <Input
+                bordered={false}
                 ref={title}
                 id="scratch_title"
                 name="scratch_title"
@@ -196,6 +197,7 @@ export default function ScratchAddForm(props) {
           <Col className="col-scratchpad-content" span={24}>
             <Form.Item className="form-item">
               <TextArea
+                bordered={false}
                 style={{ resize: 'none' }}
                 ref={content}
                 rows={10}

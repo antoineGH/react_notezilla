@@ -1,5 +1,4 @@
 #last_note_title {
-  border: none;
   color: var(--gray-secondary-title);
   font-weight: 600;
   font-size: 1rem;
@@ -7,7 +6,6 @@
 }
 
 #last_note_content {
-  border: none;
   color: var(--gray-secondary-content);
   font-size: 0.9rem;
 }
@@ -15,7 +13,6 @@
 #last_note_title,
 #last_note_content:focus {
   outline: 0;
-  box-shadow: none;
 }
 
 .save-note {

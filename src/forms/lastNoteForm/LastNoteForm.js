@@ -104,6 +104,7 @@ export default function LastNoteForm(props) {
           <Row className="row-lastnote-top">
             <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
               <Input
+                bordered={false}
                 ref={title}
                 id="last_note_title"
                 name="last_note_title"
@@ -126,6 +127,7 @@ export default function LastNoteForm(props) {
             </Col>
           </Row>
           <TextArea
+            bordered={false}
             style={{ resize: 'none' }}
             ref={content}
             rows={9}

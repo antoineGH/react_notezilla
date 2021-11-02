@@ -74,19 +74,16 @@
 
 #scratch_title:focus {
   outline: 0;
-  box-shadow: none;
 }
 
 #scratch_content {
   background-color: #fff4ba;
-  border: none;
   color: var(--gray-secondary-content);
   font-size: 0.9rem;
 }
 
 #scratch_content:focus {
   outline: 0;
-  box-shadow: none;
 }
 
 #scratch_title::placeholder {

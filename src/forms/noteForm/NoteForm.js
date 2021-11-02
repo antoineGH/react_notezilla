@@ -122,13 +122,16 @@ export default function NoteForm(props) {
               </Tooltip>
             </Col>
             <Col offset={1} className="col-notesub-delete">
-              <Button
-                className="btn-closetodo"
-                style={{ border: 'none' }}
-                onClick={() => handleDeleteNote(note.note_id)}
-                loading={isLoadingDelete}
-                icon={<CloseOutlined />}
-              ></Button>
+              <Tooltip title="Delete Note">
+                <Button
+                  id="btn-cross"
+                  className="btn-closetodo"
+                  style={{ border: 'none' }}
+                  onClick={() => handleDeleteNote(note.note_id)}
+                  loading={isLoadingDelete}
+                  icon={<CloseOutlined />}
+                ></Button>
+              </Tooltip>
             </Col>
           </Row>
           <Col span={24} className="col-note-content">

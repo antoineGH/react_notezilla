@@ -5,3 +5,7 @@
   font-size: 0.9rem;
   text-transform: uppercase;
 }
+
+#btn-cross:hover {
+  color: var(--green);
+}
