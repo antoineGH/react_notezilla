@@ -151,7 +151,7 @@ export default function ScratchAddForm(props) {
         onChange={debounceHandleAddScratch}
       >
         <Row className="row-scratchpad-top">
-          <Col xs={21} sm={21} md={21} lg={20} xl={20} xxl={21}>
+          <Col xs={20} sm={21} md={21} lg={20} xl={20} xxl={21}>
             <Form.Item className="form-item">
               <Input
                 bordered={false}

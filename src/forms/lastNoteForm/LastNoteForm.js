@@ -151,7 +151,12 @@ export default function LastNoteForm(props) {
           </div>
           <Row>
             <Col
-              span={17}
+              xs={{ span: 14 }}
+              sm={{ span: 18 }}
+              md={{ span: 19 }}
+              lg={{ span: 16 }}
+              xl={{ span: 16 }}
+              xxl={{ span: 18 }}
               className="col-note-date"
               style={{ marginLeft: '1rem' }}
             >
@@ -159,7 +164,15 @@ export default function LastNoteForm(props) {
                 {getDate(lastNote.date_created)}
               </Text>
             </Col>
-            <Col offset={4} className="col-note-switch">
+            <Col
+              xs={{ offset: 2 }}
+              sm={{ offset: 2 }}
+              md={{ offset: 2 }}
+              lg={{ offset: 2 }}
+              xl={{ offset: 2 }}
+              xxl={{ offset: 2 }}
+              className="col-note-switch"
+            >
               <Switch
                 ref={completed}
                 tabIndex="-1"

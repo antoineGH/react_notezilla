@@ -75,3 +75,12 @@
     margin: unset;
   }
 }
+
+@media (max-width: 576px) {
+  .container-addnote {
+    margin: unset;
+  }
+  .button-add-form {
+    width: 85%;
+  }
+}
