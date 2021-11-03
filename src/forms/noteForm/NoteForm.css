@@ -1,5 +1,4 @@
 .col-notesub-title #note_title {
-  border: none;
   color: var(--gray-secondary-title);
   font-weight: 600;
   font-size: 0.9rem;
@@ -8,4 +7,18 @@
 
 #btn-cross:hover {
   color: var(--green);
+}
+.read-only {
+  border: none !important;
+}
+
+.read-only:focus {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#edit-note {
+}
+#edit-note:hover {
+  color: var(--green) !important;
 }
