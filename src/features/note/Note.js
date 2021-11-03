@@ -24,7 +24,6 @@ export default function Note() {
   const isLoadingDeleteNote = useSelector(selectIsLoadingDeleteNote)
   const isLoadingUdpateNote = useSelector(selectIsLoadingUpdateNote)
   const noteIdUpdated = useSelector(selectNoteIdUpdated)
-
   const [sort, setSort] = useState(false)
   const [sortBy, setSortBy] = useState('Date')
 
