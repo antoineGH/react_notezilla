@@ -17,8 +17,6 @@
   box-shadow: none !important;
 }
 
-#edit-note {
-}
 #edit-note:hover {
   color: var(--green) !important;
 }
