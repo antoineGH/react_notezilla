@@ -27,6 +27,19 @@ export default function Note() {
   const [sort, setSort] = useState(false)
   const [sortBy, setSortBy] = useState('Date')
 
+  var steps = [
+    {
+      target: '.my-first-step',
+      content: 'This is my awesome feature!',
+    },
+    {
+      target: '.my-other-step',
+      content: 'This another awesome feature!',
+    },
+  ]
+
+  const [tourSteps, setTourSteps] = useState(steps)
+
   useEffect(() => {
     dispatch(loadNotes())
   }, [dispatch])
