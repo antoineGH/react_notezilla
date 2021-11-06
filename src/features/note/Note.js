@@ -17,6 +17,13 @@ import Scratch from '../../features/scratch/Scratch'
 import { Row, Col } from 'antd'
 import './Note.css'
 
+import Joyride, {
+  CallBackProps,
+  STATUS,
+  Step,
+  StoreHelpers,
+} from 'react-joyride'
+
 export default function Note() {
   const dispatch = useDispatch()
   const notes = useSelector(selectNotes)
@@ -29,16 +36,38 @@ export default function Note() {
 
   var steps = [
     {
-      target: '.my-first-step',
-      content: 'This is my awesome feature!',
+      target: '#edit-note',
+      content: 'Want to edit an existing note? Click here!',
+      disableBeacon: true,
     },
     {
-      target: '.my-other-step',
-      content: 'This another awesome feature!',
+      target: '.autosave-note',
+      content: 'Did I save my..? Say no more! Notes are automatically saved.',
+      disableBeacon: true,
+    },
+    {
+      target: '#btn-cross',
+      content: 'Want to get rid of your note? Click here!',
+      disableBeacon: true,
+    },
+    {
+      target: '#completed',
+      content: 'Note status completed? Toggle the switch!',
+      disableBeacon: true,
+    },
+    {
+      target: '.container-addnote',
+      content: 'Feeling inspired? Write a new note!',
+      disableBeacon: true,
+    },
+    {
+      target: '.container-scratchpad',
+      content: 'Start writing your ideas on the scratchpad!',
+      disableBeacon: true,
     },
   ]
 
-  const [tourSteps, setTourSteps] = useState(steps)
+  const [runTour, setRunTour] = useState(false)
 
   useEffect(() => {
     dispatch(loadNotes())
@@ -50,6 +79,18 @@ export default function Note() {
 
   const handleUpdateNote = (note_id, note_title, note_content, completed) => {
     dispatch(updateNote({ note_id, note_title, note_content, completed }))
+  }
+
+  const handleJoyrideCallback = data => {
+    const { status, type } = data
+    const finishedStatuses = [STATUS.FINISHED, STATUS.SKIPPED]
+
+    if (finishedStatuses.includes(status)) {
+      setRunTour(false)
+    }
+    console.groupCollapsed(type)
+    console.log(data)
+    console.groupEnd()
   }
 
   const sortStatus = () => {
@@ -72,8 +113,29 @@ export default function Note() {
   return (
     <div className="container-content">
       <>
+        <Joyride
+          callback={handleJoyrideCallback}
+          continuous={true}
+          run={runTour}
+          scrollToFirstStep={true}
+          showProgress={true}
+          showSkipButton={true}
+          steps={steps}
+          styles={{
+            options: {
+              arrowColor: 'white',
+              backgroundColor: 'white',
+              overlayColor: 'rgb(0 0 0 / 37%)',
+              primaryColor: '#000',
+              textColor: '#004a14',
+              width: 'auto',
+              zIndex: 1000,
+            },
+          }}
+        />
         <Row className="row-listnotes">
           <Col span={24} className="col-listnotes">
+            <button onClick={() => setRunTour(!runTour)}>START TOUR</button>
             <NoteListComponent
               notes={searchParam ? search() : notes}
               handleDeleteNote={handleDeleteNote}

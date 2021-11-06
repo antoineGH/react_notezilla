@@ -123,6 +123,7 @@ export default function NoteForm(props) {
               </div>
             </Col>
             <Col
+              className="edit-note"
               span={2}
               style={{
                 height: '2rem',
@@ -145,6 +146,7 @@ export default function NoteForm(props) {
             </Col>
 
             <Col
+              className="autosave-note"
               span={2}
               style={{
                 height: '2rem',
