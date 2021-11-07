@@ -4,7 +4,7 @@ import {
   selectIsLoadingNotes,
   selectHasErrorNotes,
   loadNotes,
-} from '../../features/note/NoteSlice'
+} from '../../features/note/noteSlice'
 import {
   sortDateAsc,
   sortDateDesc,

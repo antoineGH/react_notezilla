@@ -7,7 +7,7 @@ import {
   selectIsLoadingAddNote,
   addNote,
   updateNote,
-} from '../../features/note/NoteSlice'
+} from '../../features/note/noteSlice'
 import { openNotificationWithIcon } from '../../utils/notification'
 import { Skeleton } from 'antd'
 import './LastNoteComponent.css'

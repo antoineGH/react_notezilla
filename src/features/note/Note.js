@@ -7,9 +7,9 @@ import {
   selectIsLoadingUpdateNote,
   selectNotes,
   selectNoteIdUpdated,
-} from './NoteSlice'
+} from './noteSlice'
 import { selectSearch } from '../search/searchSlice'
-import { updateNote } from '../note/NoteSlice'
+import { updateNote } from './noteSlice'
 import Joyride, { STATUS, ACTIONS } from 'react-joyride'
 import { steps } from './utils/steps'
 import NoteListComponent from '../../components/noteListComponent/NoteListComponent'

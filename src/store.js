@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
-import userReducer from './features/user/userSlice.js'
-import noteReducer from './features/note/NoteSlice'
+import userReducer from './features/user/userSlice'
+import noteReducer from './features/note/noteSlice'
 import searchReducer from './features/search/searchSlice'
 import scratchReducer from './features/scratch/scratchSlice'
 
