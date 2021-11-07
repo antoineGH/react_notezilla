@@ -116,7 +116,7 @@ export default function NoteAddForm(props) {
               onClick={() => handleSubmit()}
               disabled={isLoadingAddNote}
             >
-              New Note
+              Add
               {isLoadingAddNote && <Spin size="small" indicator={antIcon} />}
             </Button>
           </Form.Item>
