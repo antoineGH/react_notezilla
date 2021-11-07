@@ -6,27 +6,27 @@ import { Col, Layout, Row, Typography } from 'antd'
 import './NavbarComponent.css'
 
 export default function NavbarComponent() {
-	const user = useSelector(selectUser)
-	const isLoadingUser = useSelector(selectUserIsLoading)
-	const { Header } = Layout
-	const { Text, Title } = Typography
+  const user = useSelector(selectUser)
+  const isLoadingUser = useSelector(selectUserIsLoading)
+  const { Header } = Layout
+  const { Text, Title } = Typography
 
-	return (
-		<>
-			<Header id='header'>
-				<Row className='row-navbar-top'>
-					<Col xs={24} md={12} className='col-navbar-left'>
-						<Title level={4} id='text-greet'>
-							{renderGreetUser(isLoadingUser, user)}
-						</Title>
-					</Col>
-					<Col xs={24} md={12} className='col-navbar-right'>
-						<Text strong id='text-date'>
-							{getDate()}
-						</Text>
-					</Col>
-				</Row>
-			</Header>
-		</>
-	)
+  return (
+    <>
+      <Header id="header">
+        <Row className="row-navbar-top">
+          <Col xs={24} md={12} className="col-navbar-left">
+            <Title level={4} id="text-greet">
+              {renderGreetUser(isLoadingUser, user)}
+            </Title>
+          </Col>
+          <Col xs={24} md={12} className="col-navbar-right">
+            <Text strong id="text-date">
+              {getDate()}
+            </Text>
+          </Col>
+        </Row>
+      </Header>
+    </>
+  )
 }

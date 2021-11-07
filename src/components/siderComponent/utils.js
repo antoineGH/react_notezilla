@@ -1,3 +1,4 @@
+import React from 'react'
 import { Avatar, Typography, Skeleton } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 import './SiderComponent.css'

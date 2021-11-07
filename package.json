@@ -4,15 +4,6 @@
   "engines": {
     "node": "16.13.0"
   },
-  "exports": {
-    ".": {
-      "require": "./lib/postcss.js",
-      "import": "./lib/postcss.mjs",
-      "types": "./lib/postcss.d.ts"
-    },
-    "./*": "./*",
-    "./": "./"
-  },
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
@@ -28,7 +19,7 @@
     "react-joyride": "^2.3.2",
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.3.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^3.4.4",
     "react-token-auth": "^1.1.9",
     "web-vitals": "^1.0.1",
     "yup": "^0.32.11"
