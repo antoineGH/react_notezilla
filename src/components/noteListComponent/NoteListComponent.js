@@ -149,7 +149,7 @@ export default function NoteListComponent(props) {
                       xs={24}
                       md={12}
                       lg={8}
-                      xl={6}
+                      xl={8}
                       xxl={4}
                       key={note.note_id}
                       className="col-note"

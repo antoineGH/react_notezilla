@@ -8,107 +8,111 @@ import './SearchBarComponent.css'
 import { SearchOutlined, CloseOutlined } from '@ant-design/icons'
 
 export default function SearchBarComponent(props) {
-	const { handleSearch, handleResetSearch, notes } = props
-	const dispatch = useDispatch()
-	const [value, setValue] = useState('')
-	const [options, setOptions] = useState([])
-	const searchParam = useSelector(selectSearch)
+  const { handleSearch, handleResetSearch, notes } = props
+  const dispatch = useDispatch()
+  const [value, setValue] = useState('')
+  const [options, setOptions] = useState([])
+  const searchParam = useSelector(selectSearch)
 
-	useEffect(() => {
-		notes.forEach((note) => {
-			setOptions((previousState) => {
-				return uniqBy([...previousState, { value: note.note_title }], 'value')
-			})
-		})
-	}, [notes])
+  useEffect(() => {
+    notes.forEach(note => {
+      setOptions(previousState => {
+        return uniqBy([...previousState, { value: note.note_title }], 'value')
+      })
+    })
+  }, [notes])
 
-	useEffect(() => {
-		if (value.length === 0) {
-			dispatch(setSearch(''))
-		}
-	}, [value, dispatch])
+  useEffect(() => {
+    if (value.length === 0) {
+      dispatch(setSearch(''))
+    }
+  }, [value, dispatch])
 
-	const onSearch = (searchText) => {
-		setOptions(!searchText ? resetOptions(notes) : checkExists(searchText))
-	}
+  const onSearch = searchText => {
+    setOptions(!searchText ? resetOptions(notes) : checkExists(searchText))
+  }
 
-	const onSelect = (data) => {
-		handleSearch(data)
-	}
+  const onSelect = data => {
+    handleSearch(data)
+  }
 
-	const onChange = (data) => {
-		setValue(data)
-	}
+  const onChange = data => {
+    setValue(data)
+  }
 
-	const checkExists = (str) => {
-		if (str.length < value.length) {
-			const resetOptions = []
-			notes.forEach((note) => {
-				resetOptions.push({ value: note.note_title })
-			})
-			const newValues = []
-			Object.values(resetOptions).forEach((value) => {
-				if (value.value.toLowerCase().includes(str.toLowerCase())) {
-					newValues.push({ value: value.value })
-				}
-			})
-			return uniqBy(newValues, Object.entries.value)
-		}
-		if (options) {
-			const newValues = []
-			Object.values(options).forEach((value) => {
-				if (value.value.toLowerCase().includes(str.toLowerCase())) {
-					newValues.push({ value: value.value })
-				}
-			})
-			return uniqBy(newValues, Object.entries.value)
-		} else {
-			return { value: [] }
-		}
-	}
+  const checkExists = str => {
+    if (str.length < value.length) {
+      const resetOptions = []
+      notes.forEach(note => {
+        resetOptions.push({ value: note.note_title })
+      })
+      const newValues = []
+      Object.values(resetOptions).forEach(value => {
+        if (value.value.toLowerCase().includes(str.toLowerCase())) {
+          newValues.push({ value: value.value })
+        }
+      })
+      return uniqBy(newValues, Object.entries.value)
+    }
+    if (options) {
+      const newValues = []
+      Object.values(options).forEach(value => {
+        if (value.value.toLowerCase().includes(str.toLowerCase())) {
+          newValues.push({ value: value.value })
+        }
+      })
+      return uniqBy(newValues, Object.entries.value)
+    } else {
+      return { value: [] }
+    }
+  }
 
-	const clickResetSearch = () => {
-		handleResetSearch()
-		setValue('')
-	}
+  const clickResetSearch = () => {
+    handleResetSearch()
+    setValue('')
+  }
 
-	return (
-		<>
-			<Row className='row-search-component'>
-				<Col span={18}>
-					<AutoComplete
-						className='search-component'
-						id='search-component'
-						value={value}
-						options={options}
-						style={{
-							width: 200,
-						}}
-						onSelect={onSelect}
-						onSearch={onSearch}
-						onChange={onChange}
-						placeholder='Search'
-					/>
-				</Col>
-				<Col span={4}>
-					<Button
-						id='search-button'
-						type='primary'
-						onClick={() => handleSearch(value)}
-						icon={<SearchOutlined style={{ fontSize: '1rem' }} />}
-					/>
-				</Col>
-			</Row>
-			{searchParam && (
-				<Row className='row-delete-search'>
-					<Col>
-						<Button id='button-delete-search' type='primary' onClick={clickResetSearch}>
-							{searchParam}
-							<CloseOutlined />
-						</Button>
-					</Col>
-				</Row>
-			)}
-		</>
-	)
+  return (
+    <>
+      <Row className="row-search-component">
+        <Col span={18}>
+          <AutoComplete
+            className="search-component"
+            id="search-component"
+            value={value}
+            options={options}
+            style={{
+              width: '100%',
+            }}
+            onSelect={onSelect}
+            onSearch={onSearch}
+            onChange={onChange}
+            placeholder="Search"
+          />
+        </Col>
+        <Col span={4}>
+          <Button
+            id="search-button"
+            type="primary"
+            onClick={() => handleSearch(value)}
+            icon={<SearchOutlined style={{ fontSize: '1rem' }} />}
+          />
+        </Col>
+      </Row>
+      <Row className="row-delete-search">
+        <Col>
+          {searchParam && (
+            <Button
+              id="button-delete-search"
+              type="primary"
+              onClick={clickResetSearch}
+            >
+              {searchParam}
+              <CloseOutlined />
+            </Button>
+          )}
+        </Col>
+      </Row>
+    </>
+  )
 }
