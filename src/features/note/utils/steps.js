@@ -6,7 +6,7 @@ export var steps = [
   },
   {
     target: '.autosave-note',
-    content: 'Did I save my..? Say no more! Notes are automatically saved.',
+    content: 'Notes are automatically saved.',
     disableBeacon: true,
   },
   {

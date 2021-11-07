@@ -14,7 +14,7 @@ import './App.css'
 
 function App() {
   const [logged] = useAuth()
-  const [runTour, setRunTour] = useState(false)
+  const [runTour, setRunTour] = useState(true)
   const { Content } = Layout
   const { useBreakpoint } = Grid
   const screens = useBreakpoint()

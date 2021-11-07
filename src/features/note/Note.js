@@ -88,7 +88,7 @@ export default function Note(props) {
               backgroundColor: 'white',
               overlayColor: 'rgb(0 0 0 / 37%)',
               primaryColor: '#000',
-              textColor: '#004a14',
+              textColor: 'rgba(0, 0, 0, 0.85)',
               width: 'auto',
               zIndex: 1000,
             },

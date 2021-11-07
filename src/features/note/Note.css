@@ -63,10 +63,22 @@
 }
 
 .react-joyride__tooltip:nth-child(1) {
-  /* display: flex !important;
-  justify-content: center !important;
-  align-items: flex-end !important;
-  align-self: flex-end !important;
-  align-content: flex-end !important; */
   padding-top: 2rem !important;
+}
+
+.react-joyride__tooltip div div {
+  font-size: 14px !important;
+}
+.react-joyride__tooltip div button:nth-child(3),
+.react-joyride__tooltip div button:nth-child(2) {
+  font-size: 14px !important;
+  background-color: var(--green) !important;
+  color: rgb(255, 255, 255) !important;
+  cursor: pointer !important;
+  border-radius: 6px !important;
+}
+
+.react-joyride__tooltip div button:nth-child(3):hover,
+.react-joyride__tooltip div button:nth-child(2):hover {
+  background-color: var(--dark-green) !important;
 }
