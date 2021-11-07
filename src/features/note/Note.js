@@ -10,7 +10,7 @@ import {
 } from './NoteSlice'
 import { selectSearch } from '../search/searchSlice'
 import { updateNote } from '../note/NoteSlice'
-import Joyride, { STATUS } from 'react-joyride'
+import Joyride, { STATUS, ACTIONS } from 'react-joyride'
 import NoteListComponent from '../../components/noteListComponent/NoteListComponent'
 import AddNoteComponent from '../../components/addNoteComponent/AddNoteComponent'
 import LastNoteComponent from '../../components/lastNoteComponent/LastNoteComponent'
@@ -75,10 +75,13 @@ export default function Note(props) {
   }
 
   const handleJoyrideCallback = data => {
-    const { status } = data
+    const { status, action } = data
     const finishedStatuses = [STATUS.FINISHED, STATUS.SKIPPED]
 
     if (finishedStatuses.includes(status)) {
+      setRunTour(false)
+    }
+    if (action === ACTIONS.CLOSE && runTour) {
       setRunTour(false)
     }
   }
