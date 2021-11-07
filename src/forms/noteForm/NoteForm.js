@@ -198,7 +198,15 @@ export default function NoteForm(props) {
           </Col>
 
           <Row>
-            <Col span={17} className="col-note-date">
+            <Col
+              xs={{ span: 16 }}
+              sm={{ span: 18 }}
+              md={{ span: 17 }}
+              lg={{ span: 16 }}
+              xl={{ span: 17 }}
+              xxl={{ span: 15 }}
+              className="col-note-date"
+            >
               <Text className="note-date">{getDate(note.date_created)}</Text>
             </Col>
             <Col offset={3} className="col-note-switch">
