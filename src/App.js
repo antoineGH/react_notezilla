@@ -31,7 +31,14 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {!lg && <TopBarComponent className="topbarcomponent" logged={logged} />}
+        {!lg && (
+          <TopBarComponent
+            className="topbarcomponent"
+            logged={logged}
+            runTour={runTour}
+            setRunTour={setRunTour}
+          />
+        )}
         <Layout>
           <SiderComponent
             logged={logged}

@@ -46,11 +46,6 @@ export default function Note(props) {
       disableBeacon: true,
     },
     {
-      target: '#completed',
-      content: 'Note status completed? Toggle the switch!',
-      disableBeacon: true,
-    },
-    {
       target: '.container-addnote',
       content: 'Feeling inspired? Write a new note!',
       disableBeacon: true,

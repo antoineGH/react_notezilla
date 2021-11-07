@@ -23,7 +23,7 @@ import {
 import './TopBarComponent.css'
 
 export default function TopBarComponent(props) {
-  const { logged } = props
+  const { logged, runTour, setRunTour } = props
   const [visible, setVisible] = useState(false)
   const user = useSelector(state => selectUserLogged(state, logged))
   const hasErrorUser = useSelector(selectUserHasError)
@@ -38,6 +38,11 @@ export default function TopBarComponent(props) {
   const logoutCloseSlider = () => {
     setVisible(false)
     logout()
+  }
+
+  const setRunTourSlider = () => {
+    setVisible(false)
+    setRunTour(!runTour)
   }
 
   const menuAuth = () => {
@@ -64,11 +69,7 @@ export default function TopBarComponent(props) {
           Edit Account
         </Menu.Item>
         {get(location, 'pathname') === '/note' && (
-          <Menu.Item
-            key="4"
-            onClick={logoutCloseSlider}
-            icon={<BulbOutlined />}
-          >
+          <Menu.Item key="4" onClick={setRunTourSlider} icon={<BulbOutlined />}>
             Start Tour
           </Menu.Item>
         )}
