@@ -16,7 +16,9 @@ const initialValue = {
 }
 
 export const loadScratch = createAsyncThunk('scratch/getScratch', async () => {
-  const data = await authFetch('http://127.0.0.1:5000/api/scratch')
+  const data = await authFetch(
+    'https://flask-notezilla.herokuapp.com/api/scratch',
+  )
   const json = await data.json()
   if (json.hasOwnProperty('message')) {
     if (json['message'] === 'Scratch not found') {
@@ -33,13 +35,16 @@ export const addScratch = createAsyncThunk('scratch/addScratch', async args => {
     scratch_content,
     completed: isCompleted,
   }
-  const data = await authFetch('http://127.0.0.1:5000/api/scratch', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
+  const data = await authFetch(
+    'https://flask-notezilla.herokuapp.com/api/scratch',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(scratch),
     },
-    body: JSON.stringify(scratch),
-  })
+  )
   const json = await data.json()
   if (!json.scratch.hasOwnProperty('scratch_id')) {
     openNotificationWithIcon(
@@ -54,9 +59,12 @@ export const addScratch = createAsyncThunk('scratch/addScratch', async args => {
 export const deleteScratch = createAsyncThunk(
   'scratch/deleteScratch',
   async () => {
-    const data = await authFetch('http://127.0.0.1:5000/api/scratch', {
-      method: 'DELETE',
-    })
+    const data = await authFetch(
+      'https://flask-notezilla.herokuapp.com/api/scratch',
+      {
+        method: 'DELETE',
+      },
+    )
     const json = await data.json()
     if (json) {
       openNotificationWithIcon(

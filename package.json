@@ -1,6 +1,10 @@
 {
   "name": "react_note",
   "version": "0.1.0",
+  "engines": {
+    "node": "v16.13.0",
+    "yarn": "1.22.17"
+  },
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
