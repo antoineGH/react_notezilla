@@ -32,7 +32,6 @@ export default function SiderComponent(props) {
         theme="dark"
         defaultSelectedKeys={['1']}
         mode="inline"
-        style={{ marginTop: '2.5rem' }}
       >
         <Menu.Item
           key="1"
@@ -69,7 +68,6 @@ export default function SiderComponent(props) {
         theme="dark"
         defaultSelectedKeys={['1']}
         mode="inline"
-        style={{ marginTop: '2.5rem' }}
       >
         <Menu.Item
           key="1"

@@ -1,24 +1,32 @@
 .navbar {
-	background-color: #1a1a1a;
-	padding-left: 2rem;
-	padding-top: 1rem;
-	padding-bottom: 1rem;
+  background-color: #1a1a1a;
+  padding-left: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .container-drawer .ant-drawer-content-wrapper .ant-drawer-content {
-	background-color: #1a1a1a;
+  background-color: #1a1a1a;
 }
 
 .container-drawer div div .ant-drawer-header-no-title button span svg {
-	color: var(--green) !important;
+  color: white !important;
 }
 .navbar .ant-btn-primary {
-	background-color: var(--green);
-	border: var(--green);
+  background-color: var(--green);
+  border: var(--green);
+}
+
+.menu-slider {
+  background-color: transparent !important;
+}
+
+.menu-slider .ant-menu-item-selected {
+  background-color: #404040 !important;
 }
 
 @media (min-width: 992px) {
-	.menu {
-		display: none;
-	}
+  .menu {
+    display: none;
+  }
 }
