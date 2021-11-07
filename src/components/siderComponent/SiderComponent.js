@@ -8,12 +8,13 @@ import {
 } from '../../features/user/userSlice'
 import { renderUserInput, renderUserAvatar } from './utils'
 import Search from '../../features/search/Search'
-import { Typography, Menu, Dropdown, Col, Layout, Row, Button } from 'antd'
+import { Menu, Col, Layout, Row } from 'antd'
 import {
   UserOutlined,
   LogoutOutlined,
   HomeOutlined,
   LoginOutlined,
+  BulbOutlined,
 } from '@ant-design/icons'
 import './SiderComponent.css'
 
@@ -23,49 +24,39 @@ export default function SiderComponent(props) {
   const hasErrorUser = useSelector(selectUserHasError)
   const history = useHistory()
   const { Sider } = Layout
-  const { Text } = Typography
 
   const menuAuth = () => {
     return (
-      <Menu className="menu-navbar">
+      <Menu
+        className="menu-slider"
+        theme="dark"
+        defaultSelectedKeys={['1']}
+        mode="inline"
+        style={{ marginTop: '2.5rem' }}
+      >
         <Menu.Item
-          onClick={() => history.push('/')}
-          className="submenu-navbar"
           key="1"
+          onClick={() => history.push('/')}
+          icon={<HomeOutlined />}
         >
-          <Row style={{ display: 'flex', justifyContent: 'center!important' }}>
-            <Col span={6}>
-              <HomeOutlined style={{ fontSize: '1.1rem' }} />
-            </Col>
-            <Col span={12}>
-              <Text>Home</Text>
-            </Col>
-          </Row>
+          Dashboard
         </Menu.Item>
         <Menu.Item
-          onClick={() => history.push('/user')}
-          className="submenu-navbar"
           key="2"
+          onClick={() => history.push('/user')}
+          icon={<UserOutlined />}
         >
-          <Row style={{ display: 'flex', justifyContent: 'center!important' }}>
-            <Col span={6}>
-              <UserOutlined style={{ fontSize: '1.1rem' }} />
-            </Col>
-            <Col span={12}>
-              <Text>Edit Account</Text>
-            </Col>
-          </Row>
+          Edit Account
         </Menu.Item>
-        <Menu.Divider />
-        <Menu.Item onClick={logout} className="submenu-navbar" key="3">
-          <Row style={{ display: 'flex', justifyContent: 'center!important' }}>
-            <Col span={6}>
-              <LogoutOutlined style={{ fontSize: '1.1rem' }} />
-            </Col>
-            <Col span={12}>
-              <Text>Logout</Text>
-            </Col>
-          </Row>
+        <Menu.Item
+          key="4"
+          onClick={() => setRunTour(!runTour)}
+          icon={<BulbOutlined />}
+        >
+          Start Tour
+        </Menu.Item>
+        <Menu.Item key="3" onClick={logout} icon={<LogoutOutlined />}>
+          Logout
         </Menu.Item>
       </Menu>
     )
@@ -73,35 +64,26 @@ export default function SiderComponent(props) {
 
   const menuUnAuth = () => {
     return (
-      <Menu className="menu-navbar">
+      <Menu
+        className="menu-slider"
+        theme="dark"
+        defaultSelectedKeys={['1']}
+        mode="inline"
+        style={{ marginTop: '2.5rem' }}
+      >
         <Menu.Item
-          onClick={() => history.push('/login')}
-          className="submenu-navbar"
           key="1"
+          onClick={() => history.push('/login')}
+          icon={<LoginOutlined />}
         >
-          <Row style={{ display: 'flex', justifyContent: 'center!important' }}>
-            <Col span={6}>
-              <LoginOutlined style={{ fontSize: '1.1rem' }} />
-            </Col>
-            <Col span={12}>
-              <Text>Login</Text>
-            </Col>
-          </Row>
+          Login
         </Menu.Item>
-        <Menu.Divider />
         <Menu.Item
-          onClick={() => history.push('/register')}
-          className="submenu-navbar"
           key="2"
+          onClick={() => history.push('/register')}
+          icon={<UserOutlined />}
         >
-          <Row style={{ display: 'flex', justifyContent: 'center!important' }}>
-            <Col span={6}>
-              <UserOutlined style={{ fontSize: '1.1rem' }} />
-            </Col>
-            <Col span={12}>
-              <Text>Register</Text>
-            </Col>
-          </Row>
+          Register
         </Menu.Item>
       </Menu>
     )
@@ -114,20 +96,15 @@ export default function SiderComponent(props) {
       collapsedWidth={0}
       trigger={null}
     >
-      <Dropdown overlay={logged ? menuAuth() : menuUnAuth()}>
-        <Row className="row-user-sider">
-          <Col className="col-user-avatar">
-            {renderUserAvatar(logged, user)}
-          </Col>
-          <Col className="col-user-user">
-            {renderUserInput(logged, hasErrorUser, user, false)}
-          </Col>
-        </Row>
-      </Dropdown>
+      <Row className="row-user-sider">
+        <Col className="col-user-avatar">{renderUserAvatar(logged, user)}</Col>
+        <Col className="col-user-user">
+          {renderUserInput(logged, hasErrorUser, user, false)}
+        </Col>
+      </Row>
+
       <Search logged={logged} />
-      {logged && (
-        <Button onClick={() => setRunTour(!runTour)}>Start Tour</Button>
-      )}
+      {logged ? menuAuth() : menuUnAuth()}
     </Sider>
   )
 }
