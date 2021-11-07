@@ -6,6 +6,8 @@ import {
   selectUserHasError,
   selectUserLogged,
 } from '../../features/user/userSlice'
+import { useLocation } from 'react-router'
+import get from 'lodash-es/get'
 import { renderUserInput, renderUserAvatar } from './utils'
 import Search from '../../features/search/Search'
 import { Menu, Col, Layout, Row } from 'antd'
@@ -24,6 +26,7 @@ export default function SiderComponent(props) {
   const hasErrorUser = useSelector(selectUserHasError)
   const history = useHistory()
   const { Sider } = Layout
+  const location = useLocation()
 
   const menuAuth = () => {
     return (
@@ -47,13 +50,15 @@ export default function SiderComponent(props) {
         >
           Edit Account
         </Menu.Item>
-        <Menu.Item
-          key="4"
-          onClick={() => setRunTour(!runTour)}
-          icon={<BulbOutlined />}
-        >
-          Start Tour
-        </Menu.Item>
+        {get(location, 'pathname') === '/note' && (
+          <Menu.Item
+            key="4"
+            onClick={() => setRunTour(!runTour)}
+            icon={<BulbOutlined />}
+          >
+            Start Tour
+          </Menu.Item>
+        )}
         <Menu.Item key="3" onClick={logout} icon={<LogoutOutlined />}>
           Logout
         </Menu.Item>

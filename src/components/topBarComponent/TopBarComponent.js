@@ -8,6 +8,8 @@ import {
   selectUserLogged,
 } from '../../features/user/userSlice'
 import { logout } from '../../utils/authHook'
+import { useLocation } from 'react-router'
+import get from 'lodash/get'
 import { renderUserAvatar, renderUserInput } from '../siderComponent/utils'
 import { Menu, Row, Col } from 'antd'
 import Search from '../../features/search/Search'
@@ -26,6 +28,7 @@ export default function TopBarComponent(props) {
   const user = useSelector(state => selectUserLogged(state, logged))
   const hasErrorUser = useSelector(selectUserHasError)
   const history = useHistory()
+  const location = useLocation()
 
   const pushCloseSlider = path => {
     setVisible(false)
@@ -60,9 +63,15 @@ export default function TopBarComponent(props) {
         >
           Edit Account
         </Menu.Item>
-        <Menu.Item key="4" onClick={logoutCloseSlider} icon={<BulbOutlined />}>
-          Start Tour
-        </Menu.Item>
+        {get(location, 'pathname') === '/note' && (
+          <Menu.Item
+            key="4"
+            onClick={logoutCloseSlider}
+            icon={<BulbOutlined />}
+          >
+            Start Tour
+          </Menu.Item>
+        )}
         <Menu.Item
           key="3"
           onClick={logoutCloseSlider}
