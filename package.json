@@ -1,13 +1,6 @@
 {
   "name": "react_note",
   "version": "0.1.0",
-  "engines": {
-    "node": "16.13.0"
-  },
-  "exports": {
-    "./*": "./*",
-    "./": "./"
-  },
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
