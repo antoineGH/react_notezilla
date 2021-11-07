@@ -10,6 +10,7 @@ import {
 } from './NoteSlice'
 import { selectSearch } from '../search/searchSlice'
 import { updateNote } from '../note/NoteSlice'
+import Joyride, { STATUS } from 'react-joyride'
 import NoteListComponent from '../../components/noteListComponent/NoteListComponent'
 import AddNoteComponent from '../../components/addNoteComponent/AddNoteComponent'
 import LastNoteComponent from '../../components/lastNoteComponent/LastNoteComponent'
@@ -17,14 +18,8 @@ import Scratch from '../../features/scratch/Scratch'
 import { Row, Col } from 'antd'
 import './Note.css'
 
-import Joyride, {
-  CallBackProps,
-  STATUS,
-  Step,
-  StoreHelpers,
-} from 'react-joyride'
-
-export default function Note() {
+export default function Note(props) {
+  const { runTour, setRunTour } = props
   const dispatch = useDispatch()
   const notes = useSelector(selectNotes)
   const searchParam = useSelector(selectSearch)
@@ -67,8 +62,6 @@ export default function Note() {
     },
   ]
 
-  const [runTour, setRunTour] = useState(false)
-
   useEffect(() => {
     dispatch(loadNotes())
   }, [dispatch])
@@ -82,15 +75,12 @@ export default function Note() {
   }
 
   const handleJoyrideCallback = data => {
-    const { status, type } = data
+    const { status } = data
     const finishedStatuses = [STATUS.FINISHED, STATUS.SKIPPED]
 
     if (finishedStatuses.includes(status)) {
       setRunTour(false)
     }
-    console.groupCollapsed(type)
-    console.log(data)
-    console.groupEnd()
   }
 
   const sortStatus = () => {
@@ -135,7 +125,6 @@ export default function Note() {
         />
         <Row className="row-listnotes">
           <Col span={24} className="col-listnotes">
-            <button onClick={() => setRunTour(!runTour)}>START TOUR</button>
             <NoteListComponent
               notes={searchParam ? search() : notes}
               handleDeleteNote={handleDeleteNote}

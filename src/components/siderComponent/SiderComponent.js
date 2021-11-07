@@ -8,7 +8,7 @@ import {
 } from '../../features/user/userSlice'
 import { renderUserInput, renderUserAvatar } from './utils'
 import Search from '../../features/search/Search'
-import { Typography, Menu, Dropdown, Col, Layout, Row } from 'antd'
+import { Typography, Menu, Dropdown, Col, Layout, Row, Button } from 'antd'
 import {
   UserOutlined,
   LogoutOutlined,
@@ -18,7 +18,7 @@ import {
 import './SiderComponent.css'
 
 export default function SiderComponent(props) {
-  const { logged } = props
+  const { logged, runTour, setRunTour } = props
   const user = useSelector(state => selectUserLogged(state, logged))
   const hasErrorUser = useSelector(selectUserHasError)
   const history = useHistory()
@@ -125,6 +125,9 @@ export default function SiderComponent(props) {
         </Row>
       </Dropdown>
       <Search logged={logged} />
+      {logged && (
+        <Button onClick={() => setRunTour(!runTour)}>Start Tour</Button>
+      )}
     </Sider>
   )
 }
