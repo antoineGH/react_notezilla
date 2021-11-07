@@ -82,7 +82,7 @@ export default function SearchBarComponent(props) {
             value={value}
             options={options}
             style={{
-              width: 200,
+              width: '100%',
             }}
             onSelect={onSelect}
             onSearch={onSearch}
