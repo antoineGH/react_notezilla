@@ -22,7 +22,8 @@
     "react-scripts": "^3.4.4",
     "react-token-auth": "^1.1.9",
     "web-vitals": "^1.0.1",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "serve": "^11.3.2"
   },
   "scripts": {
     "start": "serve -s build",
