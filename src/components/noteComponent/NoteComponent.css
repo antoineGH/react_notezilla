@@ -46,6 +46,7 @@
   align-self: flex-start !important;
   align-content: flex-start !important;
   height: 100%;
+  padding: 0 !important;
 }
 
 .row-notesub-title {

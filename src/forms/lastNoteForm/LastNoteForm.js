@@ -73,9 +73,13 @@ export default function LastNoteForm(props) {
     <>
       <div className="container-addnote">
         <Form onSubmit={handleSubmit} onChange={debounceHandleUpdateNote}>
-          <Row className="row-lastnote-top">
-            <Col xs={21} sm={22} md={22} lg={21} xl={21} xxl={22}>
-              <Title level={5} className="title-section">
+          <Row style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Col>
+              <Title
+                level={5}
+                style={{ padding: 0, paddingTop: '.5rem', margin: 0 }}
+                className="title-section"
+              >
                 MOST RECENT NOTE{' '}
                 <RightOutlined
                   style={{
@@ -87,11 +91,9 @@ export default function LastNoteForm(props) {
               </Title>
             </Col>
             <Col
-              xs={{ offset: 1 }}
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                height: '2.5rem',
               }}
             >
               <Tooltip title="Auto Save">
@@ -150,30 +152,22 @@ export default function LastNoteForm(props) {
               <Text type="danger">{errors.last_note_content}</Text>
             )}
           </div>
-          <Row>
-            <Col
-              xs={{ span: 14 }}
-              sm={{ span: 18 }}
-              md={{ span: 19 }}
-              lg={{ span: 16 }}
-              xl={{ span: 16 }}
-              xxl={{ span: 18 }}
-              className="col-note-date"
-              style={{ marginLeft: '1rem' }}
-            >
-              <Text className="note-date">
+          <Row style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Col className="col-note-date">
+              <Text
+                className="note-date"
+                style={{ color: '#717171', fontSize: '.85rem' }}
+              >
                 {getDate(lastNote.date_created)}
               </Text>
             </Col>
             <Col
-              xs={{ offset: 2 }}
-              sm={{ offset: 2 }}
-              md={{ offset: 2 }}
-              lg={{ offset: 2 }}
-              xl={{ offset: 2 }}
-              xxl={{ offset: 2 }}
               className="col-note-switch"
+              style={{ display: 'flex', flexDirection: 'row', gap: '.5rem' }}
             >
+              <Text style={{ color: '#717171', fontSize: '.85rem' }}>
+                Completion
+              </Text>
               <Switch
                 ref={completed}
                 tabIndex="-1"

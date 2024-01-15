@@ -1,20 +1,21 @@
 .container-content {
-  min-height: 100vh;
-
   margin: auto 1.5rem;
 }
 
 .row-listnotes {
   position: relative;
   top: -6rem;
+  margin-left: 0.5rem !important;
+  margin-right: 9px !important;
 }
 
 .col-listnotes {
   width: 100%;
   background-color: white !important;
-  border-radius: 8px;
+  border-radius: 3px;
   margin: 1rem 0.5rem;
   padding: 1rem;
+  padding-top: 0rem;
   box-shadow: rgb(0 0 0 / 15%) 2.4px 2.4px 3.2px;
   z-index: 2;
 }

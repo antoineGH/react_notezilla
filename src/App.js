@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter, Switch } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { useAuth } from './utils/authHook'
 import { useDispatch } from 'react-redux'
 import { loadUser } from './features/user/userSlice'
@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
+      <Router>
         {!lg && (
           <TopBarComponent
             className="topbarcomponent"
@@ -48,18 +48,16 @@ function App() {
           <Layout>
             <Content>
               <div className="div-content">
-                <Switch>
-                  {logged ? (
-                    <AuthApp runTour={runTour} setRunTour={setRunTour} />
-                  ) : (
-                    <UnAuthApp />
-                  )}
-                </Switch>
+                {logged ? (
+                  <AuthApp runTour={runTour} setRunTour={setRunTour} />
+                ) : (
+                  <UnAuthApp />
+                )}
               </div>
             </Content>
           </Layout>
         </Layout>
-      </BrowserRouter>
+      </Router>
     </div>
   )
 }

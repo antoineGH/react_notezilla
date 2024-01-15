@@ -23,6 +23,7 @@
 
 .menu-slider .ant-menu-item-selected {
   background-color: #404040 !important;
+  border-radius: 3px !important;
 }
 
 @media (min-width: 992px) {

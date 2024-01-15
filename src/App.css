@@ -1,5 +1,3 @@
-@import '~antd/dist/antd.css';
-
 :root {
   --green: #00a82d;
   --dark-green: #007620;
@@ -24,6 +22,10 @@
 
 .ant-switch-checked {
   background-color: var(--green);
+}
+
+#completed.ant-switch-checked {
+  background-color: var(--green) !important;
 }
 
 .ant-spin-dot-item {

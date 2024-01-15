@@ -64,8 +64,10 @@ export default function NoteComponent(props) {
           </Col>
           <Col span={11} className="col-note-switch">
             <Switch
-              id="completed"
-              name="completed"
+              className="custom-switch"
+              style={{
+                backgroundColor: note.completed ? 'green' : 'orange',
+              }}
               onChange={() => handleToggleNote(note.note_id, !note.completed)}
               defaultChecked={note.completed}
               disabled={isLoadingToggleNote}

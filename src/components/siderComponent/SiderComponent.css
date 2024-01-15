@@ -16,6 +16,11 @@
   text-transform: capitalize;
 }
 
+.ant-layout-sider-children {
+  padding-left: 6px !important;
+  padding-right: 6px !important;
+}
+
 .row-user-sider {
   margin: 2rem auto 0.8rem auto;
   display: flex;

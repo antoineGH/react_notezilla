@@ -1,16 +1,14 @@
 import React from 'react'
-import { Switch, Route, Redirect } from 'react-router'
-import userLogingForm from '../forms/userLoginForm/UserLoginForm'
-import userRegisterForm from '../forms/userRegisterForm/UserRegisterForm'
+import { Routes, Route } from 'react-router'
+import UserLoginForm from '../forms/userLoginForm/UserLoginForm'
+import UserRegisterForm from '../forms/userRegisterForm/UserRegisterForm'
 
 export default function UnAuthApp() {
-	return (
-		<>
-			<Switch>
-				<Route path='/login' component={userLogingForm} />
-				<Route path='/register' component={userRegisterForm} />
-				<Redirect from='*' to='/login' />
-			</Switch>
-		</>
-	)
+  return (
+    <Routes>
+      <Route path="/login" element={<UserLoginForm />} />
+      <Route path="/register" element={<UserRegisterForm />} />
+      <Route path="*" element={<UserLoginForm />} />
+    </Routes>
+  )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { logout } from '../../utils/authHook'
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import {
   selectUserHasError,
@@ -24,7 +24,7 @@ export default function SiderComponent(props) {
   const { logged, runTour, setRunTour } = props
   const user = useSelector(state => selectUserLogged(state, logged))
   const hasErrorUser = useSelector(selectUserHasError)
-  const history = useHistory()
+  const navigate = useNavigate()
   const { Sider } = Layout
   const location = useLocation()
 
@@ -38,14 +38,14 @@ export default function SiderComponent(props) {
       >
         <Menu.Item
           key="1"
-          onClick={() => history.push('/')}
+          onClick={() => navigate('/')}
           icon={<HomeOutlined />}
         >
           Dashboard
         </Menu.Item>
         <Menu.Item
           key="2"
-          onClick={() => history.push('/user')}
+          onClick={() => navigate('/user')}
           icon={<UserOutlined />}
         >
           Edit Account
@@ -76,14 +76,14 @@ export default function SiderComponent(props) {
       >
         <Menu.Item
           key="1"
-          onClick={() => history.push('/login')}
+          onClick={() => navigate('/login')}
           icon={<LoginOutlined />}
         >
           Login
         </Menu.Item>
         <Menu.Item
           key="2"
-          onClick={() => history.push('/register')}
+          onClick={() => navigate('/register')}
           icon={<UserOutlined />}
         >
           Register

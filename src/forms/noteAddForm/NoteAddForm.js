@@ -37,7 +37,11 @@ export default function NoteAddForm(props) {
   return (
     <>
       <div className="container-addnote">
-        <Title level={5} className="title-section">
+        <Title
+          level={5}
+          style={{ padding: 0, paddingTop: '.5rem', margin: 0 }}
+          className="title-section"
+        >
           ADD NOTES
           <RightOutlined
             style={{
@@ -48,10 +52,14 @@ export default function NoteAddForm(props) {
           />
         </Title>
         <Form onSubmit={handleSubmit}>
-          <Row className="row-addnote-top">
-            <Col className="col-addnote-topleft" span={16}>
+          <Row
+            className="row-addnote-top"
+            style={{ display: 'flex', justifyContent: 'space-between' }}
+          >
+            <Col className="col-addnote-topleft">
               <Form.Item className="form-item">
                 <Input
+                  style={{ minWidth: '350px' }}
                   id="note_title"
                   name="note_title"
                   type="text"
@@ -70,7 +78,7 @@ export default function NoteAddForm(props) {
                 </div>
               </Form.Item>
             </Col>
-            <Col className="col-addnote-topright" span={8}>
+            <Col className="col-addnote-topright">
               {' '}
               <Form.Item className="form-item">
                 <Switch
@@ -90,13 +98,16 @@ export default function NoteAddForm(props) {
           <Form.Item className="form-item">
             <TextArea
               style={{ resize: 'none' }}
-              rows={6}
+              rows={7}
               id="note_content"
               name="note_content"
               type="text"
               placeholder="Note Content"
               className={
-                errors.note_content && touched.note_content && 'error_field'
+                'note-content' &&
+                errors.note_content &&
+                touched.note_content &&
+                'error_field'
               }
               onBlur={handleBlur}
               value={values.note_content}
@@ -116,7 +127,7 @@ export default function NoteAddForm(props) {
               onClick={() => handleSubmit()}
               disabled={isLoadingAddNote}
             >
-              Add
+              Add Note
               {isLoadingAddNote && <Spin size="small" indicator={antIcon} />}
             </Button>
           </Form.Item>

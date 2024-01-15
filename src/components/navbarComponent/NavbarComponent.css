@@ -23,7 +23,7 @@
 }
 
 #header {
-  background: url('/assets/header.png') !important;
+  background: url('../../assets/header.png') !important;
   background-position: 50% 46% !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;

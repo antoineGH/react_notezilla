@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Drawer, Button } from 'antd'
 import { MenuOutlined } from '@ant-design/icons'
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import {
   selectUserHasError,
@@ -27,12 +27,12 @@ export default function TopBarComponent(props) {
   const [visible, setVisible] = useState(false)
   const user = useSelector(state => selectUserLogged(state, logged))
   const hasErrorUser = useSelector(selectUserHasError)
-  const history = useHistory()
+  const navigate = useNavigate()
   const location = useLocation()
 
   const pushCloseSlider = path => {
     setVisible(false)
-    history.push(path)
+    navigate(path)
   }
 
   const logoutCloseSlider = () => {
@@ -95,14 +95,14 @@ export default function TopBarComponent(props) {
       >
         <Menu.Item
           key="1"
-          onClick={() => history.push('/login')}
+          onClick={() => navigate('/login')}
           icon={<LoginOutlined />}
         >
           Login
         </Menu.Item>
         <Menu.Item
           key="2"
-          onClick={() => history.push('/register')}
+          onClick={() => navigate('/register')}
           icon={<UserOutlined />}
         >
           Register
@@ -123,7 +123,7 @@ export default function TopBarComponent(props) {
         className="container-drawer"
         placement="left"
         onClose={() => setVisible(false)}
-        visible={visible}
+        open={visible}
       >
         <Row className="row-user-sider">
           <Col className="col-user-avatar">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import requestLogin from '../../utils/requestLogin'
@@ -11,7 +11,7 @@ import './UserLoginForm.css'
 
 export default function UserLoginForm() {
   const [isDisabled, setIsDisabled] = useState(false)
-  const history = useHistory()
+  const navigate = useNavigate()
   const { Text, Title } = Typography
   const antIcon = <LoadingOutlined style={{ fontSize: 16 }} spin />
 
@@ -51,7 +51,7 @@ export default function UserLoginForm() {
     requestLogin(email, password)
       .then(response => {
         login(response)
-        history.push('/')
+        navigate('/')
       })
       .catch(error => {
         console.log(error)
@@ -129,7 +129,7 @@ export default function UserLoginForm() {
             <Button
               type="link"
               disabled={isDisabled}
-              onClick={() => history.push('/register')}
+              onClick={() => navigate('/register')}
             >
               Register
             </Button>

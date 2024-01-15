@@ -15,17 +15,7 @@ export const renderUserInput = (logged, hasErrorUser, user, mobile) => {
           </Text>
         </>
       )
-    return (
-      <Skeleton.Input
-        style={{
-          width: 120,
-          height: 22,
-          marginLeft: '1rem',
-        }}
-        active
-        size={'default'}
-      />
-    )
+    return null
   } else {
     return (
       <Text className="avatar-username" strong>
@@ -38,13 +28,25 @@ export const renderUserAvatar = (logged, user) => {
   if (logged) {
     if (user) return <Avatar shape="square" icon={<UserOutlined />} />
     return (
-      <Skeleton.Input
-        style={{
-          width: 32,
-          height: 32,
-        }}
-        active
-      />
+      <>
+        <Skeleton.Input
+          style={{
+            width: 140,
+            height: 32,
+            marginLeft: '1.4rem',
+          }}
+          active
+        />
+        <Skeleton.Input
+          style={{
+            marginTop: '2.6rem',
+            width: 240,
+            height: 32,
+            marginBottom: '1.4rem',
+          }}
+          active
+        />
+      </>
     )
   } else {
     return <Avatar shape="square" icon={<UserOutlined />} />

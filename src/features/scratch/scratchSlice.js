@@ -87,50 +87,51 @@ export const scratchSlice = createSlice({
   name: 'scratch',
   initialState: initialValue,
   reducers: {},
-  extraReducers: {
-    [loadScratch.pending]: state => {
-      state.isLoadingScratch = true
-      state.hasErrorScratch = false
-    },
-    [loadScratch.fulfilled]: (state, action) => {
-      if (action.payload.scratch.length < 1) {
-        state.value = []
-      } else {
-        state.value = action.payload.scratch
-      }
-      state.isLoadingScratch = false
-      state.hasErrorScratch = false
-    },
-    [loadScratch.rejected]: state => {
-      state.isLoadingScratch = false
-      state.hasErrorScratch = true
-    },
-    [addScratch.pending]: state => {
-      state.isLoadingAddScratch = true
-      state.hasErrorAddScratch = false
-    },
-    [addScratch.fulfilled]: (state, action) => {
-      state.value = [action.payload.scratch]
-      state.isLoadingAddScratch = false
-      state.hasErrorAddScratch = false
-    },
-    [addScratch.rejected]: state => {
-      state.isLoadingAddScratch = false
-      state.hasErrorAddScratch = true
-    },
-    [deleteScratch.pending]: state => {
-      state.isLoadingDeleteScratch = true
-      state.hasErrorDeleteScratch = false
-    },
-    [deleteScratch.fulfilled]: (state, action) => {
-      state.value = [action.payload.scratch]
-      state.isLoadingDeleteScratch = false
-      state.hasErrorDeleteScratch = false
-    },
-    [deleteScratch.rejected]: state => {
-      state.isLoadingDeleteScratch = false
-      state.hasErrorDeleteScratch = true
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(loadScratch.pending, state => {
+        state.isLoadingScratch = true
+        state.hasErrorScratch = false
+      })
+      .addCase(loadScratch.fulfilled, (state, action) => {
+        if (action.payload.scratch.length < 1) {
+          state.value = []
+        } else {
+          state.value = action.payload.scratch
+        }
+        state.isLoadingScratch = false
+        state.hasErrorScratch = false
+      })
+      .addCase(loadScratch.rejected, state => {
+        state.isLoadingScratch = false
+        state.hasErrorScratch = true
+      })
+      .addCase(addScratch.pending, state => {
+        state.isLoadingAddScratch = true
+        state.hasErrorAddScratch = false
+      })
+      .addCase(addScratch.fulfilled, (state, action) => {
+        state.value = [action.payload.scratch]
+        state.isLoadingAddScratch = false
+        state.hasErrorAddScratch = false
+      })
+      .addCase(addScratch.rejected, state => {
+        state.isLoadingAddScratch = false
+        state.hasErrorAddScratch = true
+      })
+      .addCase(deleteScratch.pending, state => {
+        state.isLoadingDeleteScratch = true
+        state.hasErrorDeleteScratch = false
+      })
+      .addCase(deleteScratch.fulfilled, (state, action) => {
+        state.value = [action.payload.scratch]
+        state.isLoadingDeleteScratch = false
+        state.hasErrorDeleteScratch = false
+      })
+      .addCase(deleteScratch.rejected, state => {
+        state.isLoadingDeleteScratch = false
+        state.hasErrorDeleteScratch = true
+      })
   },
 })
 

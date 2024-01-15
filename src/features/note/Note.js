@@ -111,7 +111,11 @@ export default function Note(props) {
             />
           </Col>
         </Row>
-        <Row justify="space-between" className="row-scratchpad-add">
+        <Row
+          justify="space-between"
+          className="row-scratchpad-add"
+          style={{ width: '100%', marginLeft: '.5rem', gap: '0rem' }}
+        >
           <Col xs={24} lg={12} xl={8} className="col-addnote">
             <AddNoteComponent />
           </Col>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router'
+import { useNavigate } from 'react-router'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import createUser from '../../utils/createUser'
@@ -10,7 +10,7 @@ import './UserRegisterForm.css'
 
 export default function UserRegisterForm() {
   const [isDisabled, setIsDisabled] = useState(false)
-  const history = useHistory()
+  const navigate = useNavigate()
   const { Text, Title } = Typography
   const antIcon = <LoadingOutlined style={{ fontSize: 16 }} spin />
 
@@ -76,7 +76,7 @@ export default function UserRegisterForm() {
           `${response.user.first_name} ${response.user.last_name}, Your account has been created. Please use ${response.user.email} to log in.`,
         )
         setTimeout(() => {
-          history.push('/login')
+          navigate('/login')
         }, 3500)
         setIsDisabled(false)
       })
@@ -234,7 +234,7 @@ export default function UserRegisterForm() {
               <Button
                 type="link"
                 disabled={isDisabled}
-                onClick={() => history.push('/login')}
+                onClick={() => navigate('/login')}
               >
                 Login
               </Button>

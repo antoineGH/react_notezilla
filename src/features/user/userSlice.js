@@ -75,46 +75,47 @@ export const userSlice = createSlice({
   name: 'user',
   initialState: initialValue,
   reducers: {},
-  extraReducers: {
-    [loadUser.pending]: state => {
-      state.isLoading = true
-      state.hasError = false
-    },
-    [loadUser.fulfilled]: (state, action) => {
-      state.value = action.payload
-      state.isLoading = false
-      state.hasError = false
-    },
-    [loadUser.rejected]: state => {
-      state.isLoading = false
-      state.hasError = true
-    },
-    [updateUser.pending]: state => {
-      state.isLoadingUpdateUser = true
-      state.hasErrorUpdateUser = false
-    },
-    [updateUser.fulfilled]: (state, action) => {
-      state.value = action.payload
-      state.isLoadingUpdateUser = false
-      state.hasErrorUpdateUser = false
-    },
-    [updateUser.rejected]: state => {
-      state.isLoadingUpdateUser = false
-      state.hasErrorUpdateUser = true
-    },
-    [deleteUser.pending]: state => {
-      state.isLoadingDeleteUser = true
-      state.hasErrorDeleteUser = false
-    },
-    [deleteUser.fulfilled]: state => {
-      state.value = {}
-      state.isLoadingDeleteUser = false
-      state.hasErrorDeleteUser = false
-    },
-    [deleteUser.rejected]: state => {
-      state.isLoadingDeleteUser = false
-      state.hasErrorDeleteUser = true
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(loadUser.pending, state => {
+        state.isLoading = true
+        state.hasError = false
+      })
+      .addCase(loadUser.fulfilled, (state, action) => {
+        state.value = action.payload
+        state.isLoading = false
+        state.hasError = false
+      })
+      .addCase(loadUser.rejected, state => {
+        state.isLoading = false
+        state.hasError = true
+      })
+      .addCase(updateUser.pending, state => {
+        state.isLoadingUpdateUser = true
+        state.hasErrorUpdateUser = false
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.value = action.payload
+        state.isLoadingUpdateUser = false
+        state.hasErrorUpdateUser = false
+      })
+      .addCase(updateUser.rejected, state => {
+        state.isLoadingUpdateUser = false
+        state.hasErrorUpdateUser = true
+      })
+      .addCase(deleteUser.pending, state => {
+        state.isLoadingDeleteUser = true
+        state.hasErrorDeleteUser = false
+      })
+      .addCase(deleteUser.fulfilled, state => {
+        state.value = {}
+        state.isLoadingDeleteUser = false
+        state.hasErrorDeleteUser = false
+      })
+      .addCase(deleteUser.rejected, state => {
+        state.isLoadingDeleteUser = false
+        state.hasErrorDeleteUser = true
+      })
   },
 })
 

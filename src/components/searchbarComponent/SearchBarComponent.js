@@ -77,21 +77,22 @@ export default function SearchBarComponent(props) {
       <Row className="row-search-component">
         <Col span={18}>
           <AutoComplete
-            className="search-component"
+            className="search-component custom-autocomplete"
             id="search-component"
             value={value}
             options={options}
             style={{
               width: '100%',
+              borderRadius: '3px!important',
             }}
             onSelect={onSelect}
             onSearch={onSearch}
             onChange={onChange}
-            placeholder="Search"
           />
         </Col>
         <Col span={4}>
           <Button
+            className="custom-search-button"
             id="search-button"
             type="primary"
             onClick={() => handleSearch(value)}

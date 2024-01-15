@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { authFetch } from '../../utils/authHook'
+
 import { openNotificationWithIcon } from '../../utils/notification'
 import toTitle from '../../utils/toTitle'
 import get from 'lodash/get'
+import { authFetch } from '../../utils/authHook'
 
 // Slice Reducer
 ////////////////////////////////
@@ -140,84 +141,85 @@ export const noteSlice = createSlice({
   name: 'notes',
   initialState: initialValue,
   reducers: {},
-  extraReducers: {
-    [loadNotes.pending]: state => {
-      state.isLoadingNotes = true
-      state.hasErrorNotes = false
-    },
-    [loadNotes.fulfilled]: (state, action) => {
-      if (action.payload.notes.length < 1) {
-        state.value = []
-      } else {
-        state.value = action.payload.notes
-      }
-      state.isLoadingNotes = false
-      state.hasErrorNotes = false
-    },
-    [loadNotes.rejected]: state => {
-      state.isLoadingNotes = false
-      state.hasErrorNotes = true
-    },
-    [addNote.pending]: state => {
-      state.isLoadingAddNote = true
-      state.hasErrorAddNote = false
-    },
-    [addNote.fulfilled]: (state, action) => {
-      state.value.push(action.payload.note)
-      state.isLoadingAddNote = false
-      state.hasErrorAddNote = false
-    },
-    [addNote.rejected]: state => {
-      state.isLoadingAddNote = false
-      state.hasErrorAddNote = true
-    },
-    [toggleCheck.pending]: state => {
-      state.isLoadingToggleNote = true
-      state.hasErrorToggleNote = false
-    },
-    [toggleCheck.fulfilled]: (state, action) => {
-      const indexObject = state.value.findIndex(
-        note => note.note_id === action.payload.note.note_id,
-      )
-      state.value[indexObject].completed = !state.value[indexObject].completed
-      state.isLoadingToggleNote = false
-      state.hasErrorToggleNote = false
-    },
-    [toggleCheck.rejected]: state => {
-      state.isLoadingToggleNote = false
-      state.hasErrorToggleNote = true
-    },
-    [updateNote.pending]: (state, action) => {
-      state.noteIdUpdated = get(action.meta.arg, 'note_id', 1)
-      state.isLoadingUpdateNote = true
-      state.hasErrorUpdateNote = false
-    },
-    [updateNote.fulfilled]: (state, action) => {
-      const indexObject = state.value.findIndex(
-        note => note.note_id === action.payload.note.note_id,
-      )
-      state.value[indexObject] = action.payload.note
-      state.isLoadingUpdateNote = false
-      state.hasErrorUpdateNote = false
-    },
-    [updateNote.rejected]: state => {
-      state.isLoadingUpdateNote = false
-      state.hasErrorUpdateNote = true
-    },
-    [deleteNote.pending]: state => {
-      state.isLoadingDeleteNote = true
-      state.hasErrorDeleteNote = false
-    },
-    [deleteNote.fulfilled]: (state, action) => {
-      const { note_id } = action.payload
-      state.value = state.value.filter(note => note.note_id !== note_id)
-      state.isLoadingDeleteNote = false
-      state.hasErrorDeleteNote = false
-    },
-    [deleteNote.rejected]: state => {
-      state.isLoadingDeleteNote = false
-      state.hasErrorDeleteNote = true
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(loadNotes.pending, state => {
+        state.isLoadingNotes = true
+        state.hasErrorNotes = false
+      })
+      .addCase(loadNotes.fulfilled, (state, action) => {
+        if (action.payload.notes.length < 1) {
+          state.value = []
+        } else {
+          state.value = action.payload.notes
+        }
+        state.isLoadingNotes = false
+        state.hasErrorNotes = false
+      })
+      .addCase(loadNotes.rejected, state => {
+        state.isLoadingNotes = false
+        state.hasErrorNotes = true
+      })
+      .addCase(addNote.pending, state => {
+        state.isLoadingAddNote = true
+        state.hasErrorAddNote = false
+      })
+      .addCase(addNote.fulfilled, (state, action) => {
+        state.value.push(action.payload.note)
+        state.isLoadingAddNote = false
+        state.hasErrorAddNote = false
+      })
+      .addCase(addNote.rejected, state => {
+        state.isLoadingAddNote = false
+        state.hasErrorAddNote = true
+      })
+      .addCase(toggleCheck.pending, state => {
+        state.isLoadingToggleNote = true
+        state.hasErrorToggleNote = false
+      })
+      .addCase(toggleCheck.fulfilled, (state, action) => {
+        const indexObject = state.value.findIndex(
+          note => note.note_id === action.payload.note.note_id,
+        )
+        state.value[indexObject].completed = !state.value[indexObject].completed
+        state.isLoadingToggleNote = false
+        state.hasErrorToggleNote = false
+      })
+      .addCase(toggleCheck.rejected, state => {
+        state.isLoadingToggleNote = false
+        state.hasErrorToggleNote = true
+      })
+      .addCase(updateNote.pending, (state, action) => {
+        state.noteIdUpdated = get(action.meta.arg, 'note_id', 1)
+        state.isLoadingUpdateNote = true
+        state.hasErrorUpdateNote = false
+      })
+      .addCase(updateNote.fulfilled, (state, action) => {
+        const indexObject = state.value.findIndex(
+          note => note.note_id === action.payload.note.note_id,
+        )
+        state.value[indexObject] = action.payload.note
+        state.isLoadingUpdateNote = false
+        state.hasErrorUpdateNote = false
+      })
+      .addCase(updateNote.rejected, state => {
+        state.isLoadingUpdateNote = false
+        state.hasErrorUpdateNote = true
+      })
+      .addCase(deleteNote.pending, state => {
+        state.isLoadingDeleteNote = true
+        state.hasErrorDeleteNote = false
+      })
+      .addCase(deleteNote.fulfilled, (state, action) => {
+        const { note_id } = action.payload
+        state.value = state.value.filter(note => note.note_id !== note_id)
+        state.isLoadingDeleteNote = false
+        state.hasErrorDeleteNote = false
+      })
+      .addCase(deleteNote.rejected, state => {
+        state.isLoadingDeleteNote = false
+        state.hasErrorDeleteNote = true
+      })
   },
 })
 

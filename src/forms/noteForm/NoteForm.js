@@ -83,9 +83,9 @@ export default function NoteForm(props) {
         () =>
           handleUpdateNote(
             note_id,
-            title.current.props.value,
-            content.current.resizableTextArea.props.value,
-            completed.current.ariaChecked,
+            title.current?.props?.value,
+            content.current?.resizableTextArea?.props?.value,
+            completed.current?.ariaChecked,
           ),
         1200,
       ),
@@ -102,8 +102,8 @@ export default function NoteForm(props) {
     <>
       <>
         <Form onSubmit={handleSubmit} onChange={debounceHandleUpdateNote}>
-          <Row className="row-notesub-title">
-            <Col className="col-notesub-title" span={18}>
+          <Row className="row-notesub-title custom-row">
+            <Col className="col-notesub-title" span={16}>
               <Input
                 readOnly={readOnly}
                 ref={title}
@@ -162,23 +162,21 @@ export default function NoteForm(props) {
                 />
               </Tooltip>
             </Col>
-            <Col span={1} className="col-notesub-delete">
-              <Tooltip title="Delete Note">
-                <Button
-                  id="btn-cross"
-                  className="btn-closetodo"
-                  style={{ border: 'none' }}
-                  onClick={() => handleDeleteNote(note.note_id)}
-                  loading={isLoadingDelete}
-                  icon={<CloseOutlined />}
-                ></Button>
-              </Tooltip>
+            <Col span={2} className="col-notesub-delete">
+              <Button
+                id="btn-cross"
+                className="btn-closetodo"
+                style={{ border: 'none' }}
+                onClick={() => handleDeleteNote(note.note_id)}
+                loading={isLoadingDelete}
+                icon={<CloseOutlined />}
+              />
             </Col>
           </Row>
           <Col span={24} className="col-note-content">
             <TextArea
               readOnly={readOnly}
-              style={{ resize: 'none' }}
+              style={{ resize: 'none', padding: '0!important' }}
               ref={content}
               rows={15}
               id="note_content"
@@ -197,19 +195,22 @@ export default function NoteForm(props) {
             </div>
           </Col>
 
-          <Row>
-            <Col
-              xs={{ span: 16 }}
-              sm={{ span: 18 }}
-              md={{ span: 17 }}
-              lg={{ span: 16 }}
-              xl={{ span: 17 }}
-              xxl={{ span: 15 }}
-              className="col-note-date"
-            >
-              <Text className="note-date">{getDate(note.date_created)}</Text>
+          <Row style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Col className="col-note-date">
+              <Text
+                className="note-date"
+                style={{ color: '#717171', fontSize: '.85rem' }}
+              >
+                {getDate(note.date_created)}
+              </Text>
             </Col>
-            <Col offset={3} className="col-note-switch">
+            <Col
+              className="col-note-switch"
+              style={{ display: 'flex', flexDirection: 'row', gap: '.5rem' }}
+            >
+              <Text style={{ color: '#717171', fontSize: '.85rem' }}>
+                Completion
+              </Text>
               <Switch
                 ref={completed}
                 id="completed"

@@ -2,7 +2,14 @@
   color: var(--gray-secondary-title);
   font-weight: 600;
   font-size: 0.9rem;
+  padding-left: 0;
+  padding-right: 0;
   text-transform: uppercase;
+}
+
+.custom-row {
+  display: flex !important;
+  justify-content: space-between !important;
 }
 
 #btn-cross:hover {
