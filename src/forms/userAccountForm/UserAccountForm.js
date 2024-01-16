@@ -39,10 +39,7 @@ export default function UserAccountForm(props) {
     password: Yup.string()
       .min(6, 'Too Short')
       .max(12, 'Too Long')
-      .matches(
-        regexPassword,
-        'Password should be a mix of 6 characters and numbers',
-      ),
+      .matches(regexPassword, 'Password should mix characters and numbers'),
     confirm_password: Yup.string()
       .min(6, 'Too Short')
       .max(12, 'Too Long')
@@ -145,7 +142,16 @@ export default function UserAccountForm(props) {
                 />
                 <div className="errors">
                   {errors.last_name && touched.last_name && (
-                    <Text type="danger">{errors.last_name}</Text>
+                    <Text
+                      type="danger"
+                      style={{
+                        fontSize: '.8rem',
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                      }}
+                    >
+                      {errors.last_name}
+                    </Text>
                   )}
                 </div>
               </Form.Item>
@@ -168,7 +174,16 @@ export default function UserAccountForm(props) {
                 />
                 <div className="errors">
                   {errors.password && touched.password && (
-                    <Text type="danger">{errors.password}</Text>
+                    <Text
+                      type="danger"
+                      style={{
+                        fontSize: '.8rem',
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                      }}
+                    >
+                      {errors.password}
+                    </Text>
                   )}
                 </div>
               </Form.Item>
@@ -193,7 +208,16 @@ export default function UserAccountForm(props) {
                 />
                 <div className="errors">
                   {errors.confirm_password && touched.confirm_password && (
-                    <Text type="danger">{errors.confirm_password}</Text>
+                    <Text
+                      type="danger"
+                      style={{
+                        fontSize: '.8rem',
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                      }}
+                    >
+                      {errors.confirm_password}
+                    </Text>
                   )}
                 </div>
               </Form.Item>

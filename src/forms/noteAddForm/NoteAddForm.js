@@ -73,7 +73,16 @@ export default function NoteAddForm(props) {
                 />
                 <div className="div-error-input">
                   {errors.note_title && touched.note_title && (
-                    <Text type="danger">{errors.note_title}</Text>
+                    <Text
+                      type="danger"
+                      style={{
+                        fontSize: '.8rem',
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                      }}
+                    >
+                      {errors.note_title}
+                    </Text>
                   )}
                 </div>
               </Form.Item>
@@ -115,7 +124,16 @@ export default function NoteAddForm(props) {
             />{' '}
             <div className="div-error-input">
               {errors.note_content && touched.note_content && (
-                <Text type="danger">{errors.note_content}</Text>
+                <Text
+                  type="danger"
+                  style={{
+                    fontSize: '.8rem',
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                  }}
+                >
+                  {errors.note_content}
+                </Text>
               )}
             </div>
           </Form.Item>

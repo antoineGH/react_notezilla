@@ -8,6 +8,7 @@ import SiderComponent from './components/siderComponent/SiderComponent'
 import TopBarComponent from './components/topBarComponent/TopBarComponent'
 import AuthApp from './layouts/AuthApp'
 import UnAuthApp from './layouts/UnAuthApp'
+import backgroundSVG from './assets/bg.svg'
 import { Layout, Grid } from 'antd'
 import get from 'lodash/get'
 import './App.css'
@@ -45,7 +46,11 @@ function App() {
             runTour={runTour}
             setRunTour={setRunTour}
           />
-          <Layout>
+          <Layout
+            style={{
+              backgroundImage: !logged ? `url(${backgroundSVG})` : undefined,
+            }}
+          >
             <Content>
               <div className="div-content">
                 {logged ? (

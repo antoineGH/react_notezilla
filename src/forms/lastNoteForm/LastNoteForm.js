@@ -124,7 +124,16 @@ export default function LastNoteForm(props) {
               />
               <div className="div-error-input">
                 {errors.last_note_title && touched.last_note_title && (
-                  <Text type="danger">{errors.last_note_title}</Text>
+                  <Text
+                    type="danger"
+                    style={{
+                      fontSize: '.8rem',
+                      display: 'flex',
+                      justifyContent: 'flex-end',
+                    }}
+                  >
+                    {errors.last_note_title}
+                  </Text>
                 )}
               </div>
             </Col>
@@ -149,7 +158,16 @@ export default function LastNoteForm(props) {
           />{' '}
           <div className="div-error-input">
             {errors.last_note_content && touched.last_note_content && (
-              <Text type="danger">{errors.last_note_content}</Text>
+              <Text
+                type="danger"
+                style={{
+                  fontSize: '.8rem',
+                  display: 'flex',
+                  justifyContent: 'flex-end',
+                }}
+              >
+                {errors.last_note_content}
+              </Text>
             )}
           </div>
           <Row style={{ display: 'flex', justifyContent: 'space-between' }}>

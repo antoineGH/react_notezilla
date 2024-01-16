@@ -4,14 +4,14 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import createUser from '../../utils/createUser'
 import { openNotificationWithIcon } from '../../utils/notification'
-import { Spin, Form, Input, Button, Typography, Row, Col } from 'antd'
+import { Spin, Form, Input, Button, Typography, Row, Col, Card } from 'antd'
 import { LoadingOutlined } from '@ant-design/icons'
 import './UserRegisterForm.css'
 
 export default function UserRegisterForm() {
   const [isDisabled, setIsDisabled] = useState(false)
   const navigate = useNavigate()
-  const { Text, Title } = Typography
+  const { Text } = Typography
   const antIcon = <LoadingOutlined style={{ fontSize: 16 }} spin />
 
   const regexPassword = /^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,24}$/
@@ -35,10 +35,7 @@ export default function UserRegisterForm() {
     password: Yup.string()
       .min(6, 'Too Short')
       .max(12, 'Too Long')
-      .matches(
-        regexPassword,
-        'Password should be a mix of 6 characters and numbers',
-      )
+      .matches(regexPassword, 'Password should mix characters and numbers')
       .required('Required'),
     confirm_password: Yup.string()
       .min(6, 'Too Short')
@@ -89,15 +86,26 @@ export default function UserRegisterForm() {
 
   return (
     <>
-      <Row className="container-form">
-        <Col className="col-register-title">
-          <Title level={3} style={{ marginBottom: '1rem' }}>
-            Register
-          </Title>
-        </Col>
-        <Form onSubmit={handleSubmit} layout="vertical">
-          <Row>
-            <Col className="col-register-input">
+      <Form onSubmit={handleSubmit} layout="vertical">
+        <Card
+          style={{
+            position: 'absolute',
+            top: '15%',
+            left: '46%',
+            padding: '0rem',
+            paddingBottom: '2rem',
+            backgroundColor: 'white',
+            borderRadius: '5px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignContent: 'center',
+            margin: 'auto',
+            width: '360px',
+            boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
+          }}
+        >
+          <Row className="container-form">
+            <Col className="col-register-input" style={{ width: '100%' }}>
               <Form.Item label="Email" className="form-item-register">
                 <Input
                   id="email"
@@ -111,14 +119,22 @@ export default function UserRegisterForm() {
                 />
                 <div className="errors">
                   {errors.email && touched.email && (
-                    <Text type="danger">{errors.email}</Text>
+                    <Text
+                      type="danger"
+                      style={{
+                        fontSize: '.8rem',
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                      }}
+                    >
+                      {errors.email}
+                    </Text>
                   )}
                 </div>
               </Form.Item>
             </Col>
-          </Row>
-          <Row>
-            <Col className="col-register-input">
+
+            <Col className="col-register-input" style={{ width: '100%' }}>
               <Form.Item label="Password" className="form-item-register">
                 <Input
                   id="password"
@@ -134,18 +150,23 @@ export default function UserRegisterForm() {
                 />
                 <div className="errors">
                   {errors.password && touched.password && (
-                    <Text type="danger">{errors.password}</Text>
+                    <Text
+                      type="danger"
+                      style={{
+                        fontSize: '.8rem',
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                      }}
+                    >
+                      {errors.password}
+                    </Text>
                   )}
                 </div>
               </Form.Item>
             </Col>
-          </Row>
-          <Row>
-            <Col className="col-register-input">
-              <Form.Item
-                label="Confirm Password"
-                className="form-item-register"
-              >
+
+            <Col className="col-register-input" style={{ width: '100%' }}>
+              <Form.Item label="Password" className="form-item-register">
                 <Input
                   id="confirm_password"
                   name="confirm_password"
@@ -162,20 +183,28 @@ export default function UserRegisterForm() {
                 />
                 <div className="errors">
                   {errors.confirm_password && touched.confirm_password && (
-                    <Text type="danger">{errors.confirm_password}</Text>
+                    <Text
+                      type="danger"
+                      style={{
+                        fontSize: '.8rem',
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                      }}
+                    >
+                      {errors.confirm_password}
+                    </Text>
                   )}
                 </div>
               </Form.Item>
             </Col>
-          </Row>
-          <Row>
-            <Col className="col-register-input">
-              <Form.Item label="First Name" className="form-item-register">
+
+            <Col className="col-register-input" style={{ width: '100%' }}>
+              <Form.Item label="Firstname" className="form-item-register">
                 <Input
                   id="first_name"
                   name="first_name"
                   type="text"
-                  placeholder="First Name"
+                  placeholder="Firstname"
                   className={
                     errors.first_name && touched.first_name && 'error_field'
                   }
@@ -185,20 +214,28 @@ export default function UserRegisterForm() {
                 />
                 <div className="errors">
                   {errors.first_name && touched.first_name && (
-                    <Text type="danger">{errors.first_name}</Text>
+                    <Text
+                      type="danger"
+                      style={{
+                        fontSize: '.8rem',
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                      }}
+                    >
+                      {errors.first_name}
+                    </Text>
                   )}
                 </div>
               </Form.Item>
             </Col>
-          </Row>
-          <Row>
-            <Col className="col-register-input">
-              <Form.Item label="Last Name" className="form-item-register">
+
+            <Col className="col-register-input" style={{ width: '100%' }}>
+              <Form.Item label="Lastname" className="form-item-register">
                 <Input
                   id="last_name"
                   name="last_name"
                   type="text"
-                  placeholder="Last Name"
+                  placeholder="Lastname"
                   className={
                     errors.last_name && touched.last_name && 'error_field'
                   }
@@ -208,27 +245,41 @@ export default function UserRegisterForm() {
                 />
                 <div className="errors">
                   {errors.last_name && touched.last_name && (
-                    <Text type="danger">{errors.last_name}</Text>
+                    <Text
+                      type="danger"
+                      style={{
+                        fontSize: '.8rem',
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                      }}
+                    >
+                      {errors.last_name}
+                    </Text>
                   )}
                 </div>
               </Form.Item>
             </Col>
-          </Row>
 
-          <Row>
             <Col className="col-register-button">
-              <Button
-                id="btn-register"
-                onClick={() => handleSubmit()}
-                type="primary"
-                disabled={isDisabled}
+              <Form.Item
+                className="form-item-button"
+                style={{ marginTop: '0rem' }}
               >
-                Register{' '}
-                {isDisabled && <Spin size="small" indicator={antIcon} />}
-              </Button>
+                <Button
+                  id="btn-register"
+                  onClick={() => handleSubmit()}
+                  type="primary"
+                  disabled={isDisabled}
+                  style={{
+                    borderRadius: '3px',
+                  }}
+                >
+                  Register{' '}
+                  {isDisabled && <Spin size="small" indicator={antIcon} />}
+                </Button>
+              </Form.Item>
             </Col>
-          </Row>
-          <Row>
+
             <Col className="col-register-button">
               <Text type="secondary">Already have an account ?</Text>
               <Button
@@ -240,8 +291,8 @@ export default function UserRegisterForm() {
               </Button>
             </Col>
           </Row>
-        </Form>
-      </Row>
+        </Card>
+      </Form>
     </>
   )
 }

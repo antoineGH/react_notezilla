@@ -168,7 +168,16 @@ export default function ScratchAddForm(props) {
                 onChange={handleChange}
               />
               {errors.scratch_title && touched.scratch_title && (
-                <Text type="danger">{errors.scratch_title}</Text>
+                <Text
+                  type="danger"
+                  style={{
+                    fontSize: '.8rem',
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                  }}
+                >
+                  {errors.scratch_title}
+                </Text>
               )}
             </Form.Item>
           </Col>
@@ -215,7 +224,16 @@ export default function ScratchAddForm(props) {
                 onChange={handleChange}
               />
               {errors.scratch_content && touched.scratch_content && (
-                <Text type="danger">{errors.scratch_content}</Text>
+                <Text
+                  type="danger"
+                  style={{
+                    fontSize: '.8rem',
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                  }}
+                >
+                  {errors.scratch_content}
+                </Text>
               )}
             </Form.Item>
           </Col>

@@ -5,10 +5,15 @@ h1 {
 .container-form {
   max-width: 320px;
   margin: auto;
-  margin-top: 4rem !important;
+  margin-top: 2rem !important;
   display: flex;
   flex-direction: column !important;
   width: 100%;
+}
+
+.form-item-login .ant-form-item-label > label {
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .col-login-title {
@@ -102,7 +107,7 @@ h1 {
 }
 
 #btn-login:focus {
-  /* transform: scale(1.1); */
+  transform: scale(1.05);
 }
 
 #btn-login div {
