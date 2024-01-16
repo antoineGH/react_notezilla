@@ -132,17 +132,28 @@ export default function NoteListComponent(props) {
 
       <>
         <Row className="row-notes">
-          {isLoadingNotes && (
-            <Col className="col-note" xs={24} md={12} lg={8} xl={6} xxl={4}>
-              <Skeleton
-                active
-                paragraph={{ rows: 11 }}
-                style={{
-                  width: 200,
-                }}
-              ></Skeleton>
-            </Col>
-          )}
+          {isLoadingNotes &&
+            Array(3)
+              .fill()
+              .map((_, index) => (
+                <Col
+                  key={index}
+                  className="col-note"
+                  xs={24}
+                  md={12}
+                  lg={8}
+                  xl={6}
+                  xxl={4}
+                >
+                  <Skeleton
+                    active
+                    paragraph={{ rows: 10 }}
+                    style={{
+                      width: 424,
+                    }}
+                  />
+                </Col>
+              ))}
 
           {notes.length >= 1
             ? []

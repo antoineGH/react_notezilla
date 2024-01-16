@@ -9,16 +9,21 @@ export default function NavbarComponent() {
   const user = useSelector(selectUser)
   const isLoadingUser = useSelector(selectUserIsLoading)
   const { Header } = Layout
-  const { Text, Title } = Typography
+  const { Text } = Typography
 
   return (
     <>
       <Header id="header">
         <Row className="row-navbar-top">
-          <Col xs={24} md={12} className="col-navbar-left">
-            <Title level={4} id="text-greet">
+          <Col
+            xs={24}
+            md={12}
+            className="col-navbar-left"
+            style={{ paddingTop: '1.5rem' }}
+          >
+            <Text strong id="text-greet">
               {renderGreetUser(isLoadingUser, user)}
-            </Title>
+            </Text>
           </Col>
           <Col
             xs={24}

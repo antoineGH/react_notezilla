@@ -59,6 +59,13 @@ export default function SiderComponent(props) {
             Start Tour
           </Menu.Item>
         )}
+        <Menu.Divider
+          style={{
+            borderColor: '#404040',
+            width: '95%',
+            marginLeft: '.3rem',
+          }}
+        />
         <Menu.Item key="3" onClick={logout} icon={<LogoutOutlined />}>
           Logout
         </Menu.Item>
