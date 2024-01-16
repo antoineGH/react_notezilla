@@ -117,6 +117,9 @@ export default function UserLoginForm() {
               onClick={() => handleSubmit()}
               type="primary"
               disabled={isDisabled}
+              style={{
+                borderRadius: '3px',
+              }}
             >
               Login {isDisabled && <Spin size="small" indicator={antIcon} />}
             </Button>

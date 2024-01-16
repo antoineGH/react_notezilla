@@ -3,7 +3,7 @@ h1 {
 }
 
 .container-form {
-  max-width: 400px;
+  max-width: 320px;
   margin: auto;
   margin-top: 4rem !important;
   display: flex;
@@ -75,6 +75,7 @@ h1 {
   background-color: var(--green);
   border: none;
   transition: all 0.2s ease-in-out;
+  width: 252px;
 }
 
 .ant-btn-primary[disabled],
@@ -90,7 +91,6 @@ h1 {
 
 #btn-login:hover {
   background-color: var(--dark-green);
-  transform: scale(1.1);
 }
 
 #btn-login:after {
@@ -102,7 +102,7 @@ h1 {
 }
 
 #btn-login:focus {
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
 }
 
 #btn-login div {

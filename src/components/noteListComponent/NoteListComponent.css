@@ -41,6 +41,14 @@
   box-shadow: none;
 }
 
+:where(.css-dev-only-do-not-override-zl9ks2).ant-btn:not(
+    :disabled
+  ):focus-visible {
+  outline: none;
+  outline-offset: 0;
+  transition: none;
+}
+
 #sort-type {
   border: none;
   color: var(--green);
@@ -51,6 +59,26 @@
   display: flex;
   width: 100%;
   justify-content: flex-start;
+}
+
+#dropdown-sort:active,
+#dropdown-sort:focus,
+#dropdown-sort.ant-dropdown-link:active,
+#dropdown-sort.ant-dropdown-link:focus {
+  color: transparent;
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: transparent;
+  outline: transparent;
+}
+
+#sort-type.ant-btn:active,
+#sort-type.ant-btn:focus {
+  color: transparent;
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: transparent;
+  outline: transparent;
 }
 
 #sort-type span {

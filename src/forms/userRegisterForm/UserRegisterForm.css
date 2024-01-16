@@ -3,7 +3,7 @@ h1 {
 }
 
 .container-form {
-  max-width: 400px;
+  max-width: 320px;
   margin: auto;
   margin-top: 4rem !important;
   display: flex;
@@ -75,6 +75,8 @@ h1 {
   background-color: var(--green);
   border: none;
   transition: all 0.2s ease-in-out;
+  width: 252px;
+  border-radius: 3px;
 }
 
 .ant-btn-primary[disabled],
@@ -88,9 +90,27 @@ h1 {
   box-shadow: none;
 }
 
-#btn-register:hover {
-  background-color: var(--dark-green);
-  transform: scale(1.1);
+#btn-register.ant-btn-link:hover {
+  color: var(--dark-green) !important;
+}
+
+#btn-register.ant-btn-link {
+  color: var(--green) !important;
+}
+
+#btn-register.ant-btn-link:not(:disabled):not(.ant-btn-disabled):hover {
+  color: var(--dark-green) !important;
+  background: transparent !important;
+}
+:where(.css-dev-only-do-not-override-zl9ks2).ant-btn-link:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
+  color: var(--dark-green);
+  background: transparent;
+}
+
+.ant-btn-link:hover {
+  color: var(--dark-green);
 }
 
 #btn-register:after {
@@ -99,10 +119,6 @@ h1 {
   -o-animation: none !important;
   -ms-animation: none !important;
   animation: none !important;
-}
-
-#btn-register:focus {
-  transform: scale(1.1);
 }
 
 #btn-register div {

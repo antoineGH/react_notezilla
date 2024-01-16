@@ -26,7 +26,15 @@ export const renderUserInput = (logged, hasErrorUser, user, mobile) => {
 }
 export const renderUserAvatar = (logged, user) => {
   if (logged) {
-    if (user) return <Avatar shape="square" icon={<UserOutlined />} />
+    if (user)
+      return (
+        <Avatar
+          shape="square"
+          size="large"
+          icon={<UserOutlined />}
+          style={{ background: '#404040', borderRadius: '3px' }}
+        />
+      )
     return (
       <>
         <Skeleton.Input

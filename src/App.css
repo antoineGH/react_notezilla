@@ -16,6 +16,10 @@
   min-height: 360;
 }
 
+#custom-avatar {
+  background-color: white !important;
+}
+
 .div-content {
   padding: 0rem 0rem 1rem 2rem;
 }

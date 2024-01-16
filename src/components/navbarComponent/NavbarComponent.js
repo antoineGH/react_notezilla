@@ -20,7 +20,12 @@ export default function NavbarComponent() {
               {renderGreetUser(isLoadingUser, user)}
             </Title>
           </Col>
-          <Col xs={24} md={12} className="col-navbar-right">
+          <Col
+            xs={24}
+            md={12}
+            className="col-navbar-right"
+            style={{ paddingTop: '1.5rem' }}
+          >
             <Text strong id="text-date">
               {getDate()}
             </Text>

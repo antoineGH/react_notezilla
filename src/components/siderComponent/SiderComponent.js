@@ -99,7 +99,16 @@ export default function SiderComponent(props) {
       collapsedWidth={0}
       trigger={null}
     >
-      <Row className="row-user-sider">
+      <Row
+        className="row-user-sider"
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '1rem',
+          marginTop: '1.3rem',
+        }}
+      >
         <Col className="col-user-avatar">{renderUserAvatar(logged, user)}</Col>
         <Col className="col-user-user">
           {renderUserInput(logged, hasErrorUser, user, false)}

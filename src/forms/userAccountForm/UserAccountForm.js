@@ -82,7 +82,11 @@ export default function UserAccountForm(props) {
       >
         <Row className="row-container-userinfo">
           <Col>
-            <Title level={5} className="username-title">
+            <Title
+              level={5}
+              style={{ padding: 0, margin: 0 }}
+              className="username-title"
+            >
               {user['first_name']} {user['last_name']}
             </Title>
           </Col>
@@ -202,15 +206,17 @@ export default function UserAccountForm(props) {
                 type="primary"
                 onClick={() => handleSubmit()}
                 disabled={isDisabled}
+                style={{
+                  borderRadius: '3px',
+                }}
               >
                 Update {isDisabled && <Spin size="small" indicator={antIcon} />}
               </Button>
             </Col>
           </Row>
           <Row>
-            <Col className="col-user-button">
+            <Col className="col-user-button" style={{ marginTop: '.7rem' }}>
               <Button type="link" onClick={() => setIsModalVisible(true)}>
-                {' '}
                 <Text type="secondary">Delete my account</Text>
               </Button>
             </Col>

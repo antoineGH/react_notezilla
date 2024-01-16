@@ -6,9 +6,9 @@
   padding: 0%;
 }
 
-/* #note_content {
+#note_content {
   padding: 0 !important;
-} */
+}
 
 #note_content.note-content {
   padding: 1 !important;

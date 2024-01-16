@@ -105,7 +105,12 @@ export default function NoteListComponent(props) {
       </Row>
       <Row style={{ marginBottom: '.6rem' }}>
         <Col>
-          <Dropdown overlay={menu} placement="bottomCenter" arrow>
+          <Dropdown
+            id="dropdown-sort"
+            overlay={menu}
+            placement="bottomCenter"
+            arrow
+          >
             <Button id="sort-type">Sort By {sortBy}</Button>
           </Dropdown>
         </Col>

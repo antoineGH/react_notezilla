@@ -99,7 +99,7 @@ export default function NoteAddForm(props) {
             <TextArea
               style={{ resize: 'none' }}
               rows={7}
-              id="note_content"
+              id="note_content_add"
               name="note_content"
               type="text"
               placeholder="Note Content"
@@ -126,6 +126,9 @@ export default function NoteAddForm(props) {
               type="primary"
               onClick={() => handleSubmit()}
               disabled={isLoadingAddNote}
+              style={{
+                borderRadius: '3px',
+              }}
             >
               Add Note
               {isLoadingAddNote && <Spin size="small" indicator={antIcon} />}

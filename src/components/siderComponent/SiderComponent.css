@@ -5,6 +5,11 @@
   padding: 24px !important;
 }
 
+#custom-avatar {
+  background-color: white !important;
+  color: var(--green);
+}
+
 .avatar-username > * {
   color: #ccc;
   text-shadow: 1px 1px 2px rgb(0 0 0 / 40%);

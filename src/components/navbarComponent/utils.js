@@ -8,15 +8,14 @@ export const renderGreetUser = (isLoadingUser, user) => {
       <Skeleton.Input
         style={{
           width: 215,
-          height: 28,
-          marginTop: 12,
+          height: 26,
         }}
         active
         size={'default'}
       />
     )
   } else if (user) {
-    return `${greetingMessage()}, ${toTitle(user['first_name'])}!`
+    return `${greetingMessage()} ${toTitle(user['first_name'])}`
   }
   return greetingMessage()
 }
@@ -60,6 +59,6 @@ export const greetingMessage = () => {
   const date_now = new Date(Date.now())
   const hours = date_now.getHours()
   const message =
-    hours < 12 ? 'Good Morning' : hours < 18 ? 'Good Afternoon' : 'Good Evening'
+    hours < 12 ? 'Good morning' : hours < 18 ? 'Good afternoon' : 'Good evening'
   return message
 }
