@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
+      <Router basename="/note">
         {!lg && (
           <TopBarComponent
             className="topbarcomponent"
@@ -48,7 +48,7 @@ function App() {
           />
           <Layout
             style={{
-              backgroundImage: !logged ? `url(${backgroundSVG})` : undefined,
+              backgroundImage: logged ? 'none' : `url(${backgroundSVG})`,
             }}
           >
             <Content>

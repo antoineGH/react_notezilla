@@ -25,7 +25,7 @@ const initialValue = {
 
 export const loadNotes = createAsyncThunk('notes/getAllNotes', async () => {
   const data = await authFetch(
-    `https://flask-notezilla.herokuapp.com/api/notes`,
+    `https://antoineratat.xyz/api_notezilla/api/notes`,
   )
   const json = await data.json()
   if (json.hasOwnProperty('message')) {
@@ -41,7 +41,7 @@ export const addNote = createAsyncThunk('notes/addNote', async args => {
   const note = { note_title, note_content, completed: isCompleted }
   try {
     const data = await authFetch(
-      'https://flask-notezilla.herokuapp.com/api/notes',
+      'https://antoineratat.xyz/api_notezilla/api/notes',
       {
         method: 'POST',
         headers: {
@@ -83,7 +83,7 @@ export const deleteNote = createAsyncThunk(
   'notes/deleteNote',
   async note_id => {
     const data = await authFetch(
-      `https://flask-notezilla.herokuapp.com/api/note/${note_id}`,
+      `https://antoineratat.xyz/api_notezilla/api/note/${note_id}`,
       {
         method: 'DELETE',
       },
@@ -106,7 +106,7 @@ export const toggleCheck = createAsyncThunk('notes/toggleCheck', async args => {
   const { note_id, completed } = args
   const note = { completed }
   const data = await authFetch(
-    `https://flask-notezilla.herokuapp.com/api/note/${note_id}`,
+    `https://antoineratat.xyz/api_notezilla/api/note/${note_id}`,
     {
       method: 'PUT',
       headers: {
@@ -123,7 +123,7 @@ export const updateNote = createAsyncThunk('notes/udpateNote', async args => {
   const { note_id, note_title, note_content, completed } = args
   const note = { note_title, note_content, completed }
   const data = await authFetch(
-    `https://flask-notezilla.herokuapp.com/api/note/${note_id}`,
+    `https://antoineratat.xyz/api_notezilla/api/note/${note_id}`,
     {
       method: 'PUT',
       headers: {
@@ -133,7 +133,6 @@ export const updateNote = createAsyncThunk('notes/udpateNote', async args => {
     },
   )
   const json = await data.json()
-  console.log(json)
   return json
 })
 

@@ -78,7 +78,6 @@ export default function UserRegisterForm() {
         setIsDisabled(false)
       })
       .catch(error => {
-        console.log(error)
         openNotificationWithIcon('error', 'Error', error.message)
         setIsDisabled(false)
       })

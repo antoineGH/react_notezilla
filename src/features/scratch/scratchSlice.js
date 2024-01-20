@@ -17,7 +17,7 @@ const initialValue = {
 
 export const loadScratch = createAsyncThunk('scratch/getScratch', async () => {
   const data = await authFetch(
-    'https://flask-notezilla.herokuapp.com/api/scratch',
+    'https://antoineratat.xyz/api_notezilla/api/scratch',
   )
   const json = await data.json()
   if (json.hasOwnProperty('message')) {
@@ -36,7 +36,7 @@ export const addScratch = createAsyncThunk('scratch/addScratch', async args => {
     completed: isCompleted,
   }
   const data = await authFetch(
-    'https://flask-notezilla.herokuapp.com/api/scratch',
+    'https://antoineratat.xyz/api_notezilla/api/scratch',
     {
       method: 'POST',
       headers: {
@@ -60,7 +60,7 @@ export const deleteScratch = createAsyncThunk(
   'scratch/deleteScratch',
   async () => {
     const data = await authFetch(
-      'https://flask-notezilla.herokuapp.com/api/scratch',
+      'https://antoineratat.xyz/api_notezilla/api/scratch',
       {
         method: 'DELETE',
       },

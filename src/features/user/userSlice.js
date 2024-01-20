@@ -17,7 +17,9 @@ const initialValue = {
 }
 
 export const loadUser = createAsyncThunk('user/getUser', async () => {
-  const data = await authFetch('https://flask-notezilla.herokuapp.com/api/user')
+  const data = await authFetch(
+    'https://antoineratat.xyz/api_notezilla/api/user',
+  )
   const json = await data.json()
   return json
 })
@@ -32,7 +34,7 @@ export const updateUser = createAsyncThunk(
       password: password,
     }
     const data = await authFetch(
-      'https://flask-notezilla.herokuapp.com/api/user',
+      'https://antoineratat.xyz/api_notezilla/api/user',
       {
         method: 'PUT',
         headers: {
@@ -57,7 +59,7 @@ export const updateUser = createAsyncThunk(
 
 export const deleteUser = createAsyncThunk('user/deleteUser', async () => {
   const data = await authFetch(
-    'https://flask-notezilla.herokuapp.com/api/user',
+    'https://antoineratat.xyz/api_notezilla/api/user',
     {
       method: 'DELETE',
     },

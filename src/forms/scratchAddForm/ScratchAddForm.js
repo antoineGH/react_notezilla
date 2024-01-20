@@ -57,15 +57,13 @@ export default function ScratchAddForm(props) {
 
   const debounceHandleAddScratch = useMemo(
     () =>
-      debounce(
-        () =>
-          handleAddScratch(
-            title.current.props.value,
-            content.current.resizableTextArea.props.value,
-            false,
-          ),
-        1200,
-      ),
+      debounce(() => {
+        const titleValue = title?.current?.input?.value || ''
+        const contentValue =
+          content?.current?.resizableTextArea?.textArea?.value || ''
+
+        handleAddScratch(titleValue, contentValue, false)
+      }, 1200),
     [], // eslint-disable-line
   )
 

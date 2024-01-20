@@ -52,7 +52,6 @@ export default function UserLoginForm() {
         navigate('/')
       })
       .catch(error => {
-        console.log(error)
         openNotificationWithIcon('error', 'Error', 'Wrong Username Password.')
         setIsDisabled(false)
       })
