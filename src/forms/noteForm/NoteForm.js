@@ -226,9 +226,7 @@ export default function NoteForm(props) {
               className="col-note-switch"
               style={{ display: 'flex', flexDirection: 'row', gap: '.5rem' }}
             >
-              <Text style={{ color: '#717171', fontSize: '.85rem' }}>
-                Completion
-              </Text>
+              <Text style={{ color: '#717171', fontSize: '.85rem' }}>Done</Text>
               <Switch
                 ref={completed}
                 id="completed"

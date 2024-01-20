@@ -107,8 +107,7 @@
 }
 
 .submenu-scratchpad {
-  padding: 0.7rem 2.5rem !important;
-  padding-right: 3.8rem !important;
+  padding: 1rem !important;
   display: flex !important;
   justify-content: center !important;
 }

@@ -96,47 +96,34 @@ export default function ScratchAddForm(props) {
   }
 
   const menu = (
-    <Menu className="menu-scratchpad">
-      <Menu.Item key="1" className="submenu-scratchpad">
-        <a
-          onClick={e => onClickSaveScratch(e)}
-          href="Save"
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Row>
-            <Col span={6}>
-              <SaveOutlined style={{ fontSize: '1.2rem' }} />
-            </Col>
-            <Col span={12}>
-              <Text>Save ScratchPad</Text>
-            </Col>
-          </Row>
-        </a>
+    <Menu className="menu-scratchpad" style={{ minWidth: '200px' }}>
+      <Menu.Item
+        key="1"
+        onClick={e => onClickSaveScratch(e)}
+        className="submenu-scratchpad"
+        style={{ padding: '16px' }}
+      >
+        <Row>
+          <Col span={6}>
+            <SaveOutlined style={{ fontSize: '1.2rem' }} />
+          </Col>
+          <Col span={12}>Save</Col>
+        </Row>
       </Menu.Item>
 
-      <Menu.Item key="3" className="submenu-scratchpad">
-        <a
-          onClick={e => onClickDeleteScratch(e)}
-          href="Reset"
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Row>
-            <Col span={6}>
-              <ClearOutlined style={{ fontSize: '1.2rem' }} />
-            </Col>
-            <Col span={12}>
-              <Text>Clear ScratchPad</Text>
-            </Col>
-          </Row>
-        </a>
+      <Menu.Item
+        key="2"
+        className="submenu-scratchpad"
+        onClick={e => onClickDeleteScratch(e)}
+      >
+        <Row>
+          <Col span={6}>
+            <ClearOutlined style={{ fontSize: '1.2rem' }} />
+          </Col>
+          <Col span={12}>
+            <Text>Clear </Text>
+          </Col>
+        </Row>
       </Menu.Item>
     </Menu>
   )
@@ -185,6 +172,7 @@ export default function ScratchAddForm(props) {
                 <Button
                   tabIndex="-1"
                   type="primary"
+                  id="scratchpad-more-actions"
                   disabled={isLoadingAddScratch || isLoadingDeleteScratch}
                   icon={<EllipsisOutlined style={{ fontSize: '1.5rem' }} />}
                 />

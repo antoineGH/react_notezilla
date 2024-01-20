@@ -17,6 +17,8 @@ import {
   CaretUpOutlined,
   CaretDownOutlined,
   RightOutlined,
+  CalendarOutlined,
+  CheckOutlined,
 } from '@ant-design/icons'
 import './NoteListComponent.css'
 
@@ -77,12 +79,30 @@ export default function NoteListComponent(props) {
   }
 
   const menu = (
-    <Menu>
-      <Menu.Item key="1" onClick={() => setSortBy('Date')}>
-        Date
+    <Menu style={{ minWidth: '150px' }}>
+      <Menu.Item
+        key="1"
+        onClick={() => setSortBy('Date')}
+        style={{ padding: '1rem' }}
+      >
+        <Row>
+          <Col span={6}>
+            <CalendarOutlined style={{ fontSize: '1.2rem' }} />
+          </Col>
+          <Col span={12}>Date</Col>
+        </Row>
       </Menu.Item>
-      <Menu.Item key="2" onClick={() => setSortBy('Status')}>
-        Status
+      <Menu.Item
+        key="2"
+        onClick={() => setSortBy('Status')}
+        style={{ padding: '1rem' }}
+      >
+        <Row>
+          <Col span={6}>
+            <CheckOutlined style={{ fontSize: '1.2rem' }} />
+          </Col>
+          <Col span={12}>Status</Col>
+        </Row>
       </Menu.Item>
     </Menu>
   )
@@ -104,7 +124,7 @@ export default function NoteListComponent(props) {
         </Col>
       </Row>
       <Row style={{ marginBottom: '.6rem' }}>
-        <Col>
+        <Col style={{ paddingTop: '0.4rem' }}>
           <Dropdown
             id="dropdown-sort"
             overlay={menu}
@@ -115,14 +135,20 @@ export default function NoteListComponent(props) {
           </Dropdown>
         </Col>
         <Col>
-          <Button id="sort-toggle" onClick={() => setSort(!sort)}>
+          <Button type="text" onClick={() => setSort(!sort)}>
             {sort ? (
               <>
-                {sortStatus()} <CaretUpOutlined />
+                <strong>{sortStatus()} </strong>
+                <CaretUpOutlined
+                  style={{ color: 'var(--green)', marginLeft: '.2rem' }}
+                />
               </>
             ) : (
               <>
-                {sortStatus()} <CaretDownOutlined />
+                <strong>{sortStatus()}</strong>
+                <CaretDownOutlined
+                  style={{ color: 'var(--green)', marginLeft: '.2rem' }}
+                />
               </>
             )}
           </Button>

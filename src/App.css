@@ -68,6 +68,11 @@
   border-color: #000000;
 }
 
+button#scratchpad-more-actions:hover {
+  color: #fff;
+  background: #1818186b !important;
+}
+
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
