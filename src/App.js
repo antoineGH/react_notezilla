@@ -52,7 +52,7 @@ function App() {
             }}
           >
             <Content>
-              <div className="div-content">
+              <div className="div-content" style={{ height: '100%' }}>
                 {logged ? (
                   <AuthApp runTour={runTour} setRunTour={setRunTour} />
                 ) : (

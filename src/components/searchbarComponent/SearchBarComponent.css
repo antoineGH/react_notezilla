@@ -75,6 +75,12 @@
   border-bottom-left-radius: 0px;
 }
 
+@media (max-width: 992px) {
+  #search-button {
+    margin-left: 0rem;
+  }
+}
+
 #search-button:hover {
   background-color: var(--dark-green);
 }

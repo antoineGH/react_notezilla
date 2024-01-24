@@ -58,19 +58,24 @@ export default function UserLoginForm() {
   }
 
   return (
-    <Form onSubmit={handleSubmit} layout="vertical">
+    <Form
+      onSubmit={handleSubmit}
+      layout="vertical"
+      style={{
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignContent: 'center',
+      }}
+    >
       <Card
         style={{
           position: 'absolute',
-          top: '15%',
-          left: '46%',
+          top: '12%',
           padding: '0rem',
           paddingBottom: '3rem',
           backgroundColor: 'white',
           borderRadius: '5px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignContent: 'center',
           margin: 'auto',
           width: '360px',
           boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',

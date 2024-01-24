@@ -73,6 +73,10 @@ button#scratchpad-more-actions:hover {
   background: #1818186b !important;
 }
 
+.ant-drawer-close {
+  color: white !important;
+}
+
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */

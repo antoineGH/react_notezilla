@@ -9,6 +9,12 @@
   background-color: #1a1a1a;
 }
 
+@media screen and (max-width: 992px) {
+  .css-dev-only-do-not-override-zl9ks2.ant-drawer .ant-drawer-content {
+    background-color: #1a1a1a;
+  }
+}
+
 .container-drawer div div .ant-drawer-header-no-title button span svg {
   color: white !important;
 }

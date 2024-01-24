@@ -144,6 +144,12 @@
   padding-bottom: 1rem;
 }
 
+@media (max-width: 767px) {
+  .col-note {
+    min-width: 100%;
+  }
+}
+
 .col-loading-render-note,
 .col-error-render-note {
   display: flex !important;
