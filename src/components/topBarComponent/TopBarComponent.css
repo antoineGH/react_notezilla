@@ -10,7 +10,7 @@
 }
 
 @media screen and (max-width: 992px) {
-  .css-dev-only-do-not-override-zl9ks2.ant-drawer .ant-drawer-content {
+  .ant-drawer .ant-drawer-content {
     background-color: #1a1a1a;
   }
 }
