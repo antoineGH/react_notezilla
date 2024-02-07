@@ -113,3 +113,24 @@ h1 {
 #btn-login div {
   color: white !important;
 }
+
+.demo-alert {
+  background-color: #008323;
+  padding: 0.5rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  border: none;
+}
+
+.custom-paragraph .ant-typography-copy {
+  color: #00a82d;
+}
+
+.demo-alert .ant-alert-icon {
+  color: white;
+}
+
+.demo-alert .ant-alert-message {
+  color: white;
+  font-weight: bold;
+}

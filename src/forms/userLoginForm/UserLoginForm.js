@@ -4,11 +4,70 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import requestLogin from '../../utils/requestLogin'
 import { login } from '../../utils/authHook'
-import { Spin, Form, Input, Button, Typography, Row, Col, Card } from 'antd'
+import {
+  Spin,
+  Form,
+  Input,
+  Button,
+  Typography,
+  Row,
+  Col,
+  Card,
+  Alert,
+} from 'antd'
 import { LoadingOutlined } from '@ant-design/icons'
 import { openNotificationWithIcon } from '../../utils/notification'
 import logo from '../../assets/logo.png'
 import './UserLoginForm.css'
+
+function DemoDescription() {
+  const { Paragraph, Text } = Typography
+
+  return (
+    <Row>
+      <Text
+        style={{
+          color: 'white',
+          fontSize: '.85rem',
+        }}
+      >
+        username:
+      </Text>
+      <Paragraph
+        className="custom-paragraph"
+        copyable
+        style={{
+          marginLeft: '.5rem',
+          color: 'white',
+          fontWeight: 'bold',
+          fontSize: '.85rem',
+        }}
+      >
+        demo@demo.au
+      </Paragraph>
+      <Text
+        style={{
+          color: 'white',
+          fontSize: '.85rem',
+        }}
+      >
+        password:
+      </Text>
+      <Paragraph
+        className="custom-paragraph"
+        copyable
+        style={{
+          marginLeft: '.5rem',
+          color: 'white',
+          fontWeight: 'bold',
+          fontSize: '.85rem',
+        }}
+      >
+        demo1234
+      </Paragraph>
+    </Row>
+  )
+}
 
 export default function UserLoginForm() {
   const [isDisabled, setIsDisabled] = useState(false)
@@ -87,11 +146,25 @@ export default function UserLoginForm() {
               className="col-login-input"
               style={{
                 width: '100%',
-                marginBottom: '1rem',
                 paddingRight: '2rem',
               }}
             >
               <img src={logo} alt="Logo" width="60%" />
+            </Col>
+            <Col
+              style={{
+                width: '100%',
+                marginBottom: '2rem',
+                padding: '0 .5rem',
+              }}
+            >
+              <Alert
+                className="demo-alert"
+                message="Demo App"
+                description={<DemoDescription />}
+                type="info"
+                showIcon
+              />
             </Col>
             <Col className="col-login-input" style={{ width: '252px' }}>
               <Form.Item label="Email" className="form-item-login">
