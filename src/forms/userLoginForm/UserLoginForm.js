@@ -13,61 +13,61 @@ import {
   Row,
   Col,
   Card,
-  Alert,
+  // Alert,
 } from 'antd'
 import { LoadingOutlined } from '@ant-design/icons'
 import { openNotificationWithIcon } from '../../utils/notification'
 import logo from '../../assets/logo.png'
 import './UserLoginForm.css'
 
-function DemoDescription() {
-  const { Paragraph, Text } = Typography
+// function DemoDescription() {
+//   const { Paragraph, Text } = Typography
 
-  return (
-    <Row>
-      <Text
-        style={{
-          color: 'white',
-          fontSize: '.85rem',
-        }}
-      >
-        username:
-      </Text>
-      <Paragraph
-        className="custom-paragraph"
-        copyable
-        style={{
-          marginLeft: '.5rem',
-          color: 'white',
-          fontWeight: 'bold',
-          fontSize: '.85rem',
-        }}
-      >
-        demo@demo.au
-      </Paragraph>
-      <Text
-        style={{
-          color: 'white',
-          fontSize: '.85rem',
-        }}
-      >
-        password:
-      </Text>
-      <Paragraph
-        className="custom-paragraph"
-        copyable
-        style={{
-          marginLeft: '.5rem',
-          color: 'white',
-          fontWeight: 'bold',
-          fontSize: '.85rem',
-        }}
-      >
-        demo1234
-      </Paragraph>
-    </Row>
-  )
-}
+//   return (
+//     <Row>
+//       <Text
+//         style={{
+//           color: 'white',
+//           fontSize: '.85rem',
+//         }}
+//       >
+//         username:
+//       </Text>
+//       <Paragraph
+//         className="custom-paragraph"
+//         copyable
+//         style={{
+//           marginLeft: '.5rem',
+//           color: 'white',
+//           fontWeight: 'bold',
+//           fontSize: '.85rem',
+//         }}
+//       >
+//         demo@demo.au
+//       </Paragraph>
+//       <Text
+//         style={{
+//           color: 'white',
+//           fontSize: '.85rem',
+//         }}
+//       >
+//         password:
+//       </Text>
+//       <Paragraph
+//         className="custom-paragraph"
+//         copyable
+//         style={{
+//           marginLeft: '.5rem',
+//           color: 'white',
+//           fontWeight: 'bold',
+//           fontSize: '.85rem',
+//         }}
+//       >
+//         password
+//       </Paragraph>
+//     </Row>
+//   )
+// }
 
 export default function UserLoginForm() {
   const [isDisabled, setIsDisabled] = useState(false)
@@ -151,7 +151,7 @@ export default function UserLoginForm() {
             >
               <img src={logo} alt="Logo" width="60%" />
             </Col>
-            <Col
+            {/* <Col
               style={{
                 width: '100%',
                 marginBottom: '2rem',
@@ -165,7 +165,7 @@ export default function UserLoginForm() {
                 type="info"
                 showIcon
               />
-            </Col>
+            </Col> */}
             <Col className="col-login-input" style={{ width: '252px' }}>
               <Form.Item label="Email" className="form-item-login">
                 <Input
