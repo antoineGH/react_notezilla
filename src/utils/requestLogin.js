@@ -1,7 +1,7 @@
 export default async function requestLogin(email, password) {
   const user = { email, password }
   const response = await fetch(
-    'https://antoineratat.xyz/api_notezilla/api/login',
+    'https://antoineratat.online/api_notezilla/api/login',
     {
       method: 'POST',
       headers: {

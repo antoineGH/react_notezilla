@@ -6,7 +6,7 @@ export default async function createUser(
 ) {
   const user = { email, password, first_name, last_name }
   const response = await fetch(
-    'https://antoineratat.xyz/api_notezilla/api/register',
+    'https://antoineratat.online/api_notezilla/api/register',
     {
       method: 'POST',
       headers: {
